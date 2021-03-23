@@ -31,3 +31,8 @@ This app also provides users with official institutions rules and changes about 
 | **Team member** | Stangl, Tobias |
 | **Team member** | Tarkhanova, Elizaveta |
 | **Team member** | Tögl, Christina |
+
+
+## Implemented Features
+
+**TODO** 

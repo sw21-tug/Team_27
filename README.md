@@ -23,12 +23,12 @@ This app also provides users with official institutions rules and changes about 
 | **Scrum Master** | Tögl, Christina |
 | **Team member** | Brugger, Lukas |
 | **Developer** | Csordás, Bálint |
-| **Team member** | Ghiriti, Alex-Ioan |
+| **Developer** | Ghiriti, Alex-Ioan |
 | **Team member** | Kohl, Andreas |
 | **Team member** | Lemle, Béla |
 | **Developer** | Nagler, Gabriel |
 | **Team member** | Scheiber, Dominik |
-| **Team member** | Schrimpf, Simon Wolfgang |
+| **Developer** | Schrimpf, Simon Wolfgang |
 | **Team member** | Stangl, Tobias |
 | **Team member** | Tarkhanova, Elizaveta |
 

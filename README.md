@@ -20,8 +20,9 @@ This app also provides users with official institutions rules and changes about 
 | Role | Name |
 | ---- | ---- |
 | **Product Owner** | Alesevic, Muharem |
+| **Scrum Master** | Tögl, Christina |
 | **Team member** | Brugger, Lukas |
-| **Team member** | Csordás, Bálint |
+| **Developer** | Csordás, Bálint |
 | **Team member** | Ghiriti, Alex-Ioan |
 | **Team member** | Kohl, Andreas |
 | **Team member** | Lemle, Béla |
@@ -30,7 +31,7 @@ This app also provides users with official institutions rules and changes about 
 | **Team member** | Schrimpf, Simon Wolfgang |
 | **Team member** | Stangl, Tobias |
 | **Team member** | Tarkhanova, Elizaveta |
-| **Team member** | Tögl, Christina |
+
 
 
 ## Implemented Features

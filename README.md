@@ -21,16 +21,16 @@ This app also provides users with official institutions rules and changes about 
 | ---- | ---- |
 | **Product Owner** | Alesevic, Muharem |
 | **Scrum Master** | Tögl, Christina |
-| **Team member** | Brugger, Lukas |
+| **Developer** | Brugger, Lukas |
 | **Developer** | Csordás, Bálint |
 | **Developer** | Ghiriti, Alex-Ioan |
-| **Team member** | Kohl, Andreas |
-| **Team member** | Lemle, Béla |
+| **Developer** | Kohl, Andreas |
+| **Developer** | Lemle, Béla |
 | **Developer** | Nagler, Gabriel |
-| **Team member** | Scheiber, Dominik |
+| **Developer** | Scheiber, Dominik |
 | **Developer** | Schrimpf, Simon Wolfgang |
-| **Team member** | Stangl, Tobias |
-| **Team member** | Tarkhanova, Elizaveta |
+| **Developer** | Stangl, Tobias |
+| **Developer** | Tarkhanova, Elizaveta |
 
 
 

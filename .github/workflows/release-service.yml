@@ -1,9 +1,10 @@
-name: Android Release Testsuite
+name: Android CI (release)
 
 on:
   pull_request:
     branches:
       - 'main'
+
 
 jobs:
   lint_and_unittest:
@@ -11,37 +12,60 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Make gradlew executable
+        run: |
+          cd AntiCovid/ 
+          chmod +x ./gradlew
+
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
       
-      - name: Run Kotlin Linter
-        run: ./gradlew lintDebug
+      - name: Run Lint
+        run: |
+          cd AntiCovid/
+          ./gradlew lint
 
       - name: Run Unit Test
-        run: ./gradlew testDebugUnitTest
+        run: |
+          cd AntiCovid/
+          ./gradlew test
+
+      - name: Android Test Report
+        uses: asadmansr/android-test-report-action@v1.2.0
+        if: ${{ always() }}
+
 
   instrumentation_test:
     name: Instrumentation testsuite
     runs-on: macos-latest
 
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Run Instrumentation tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          script: ./gradlew connectedDebugAndroidTest
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+
+    - name: Run Instrumentation tests
+      uses: reactivecircus/android-emulator-runner@v2.15.0
+      with:
+        working-directory: ./AntiCovid
+        api-level: 29
+        script: ./gradlew connectedCheck
 
   apk:
     name: Generate APK file
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Set up JDK 1.8
@@ -50,7 +74,9 @@ jobs:
             java-version: 1.8
       
       - name: Build debug APK file
-        run: bash ./gradlew assembleDebug --stacktrace
+        run: |
+          cd AntiCovid/
+          ./gradlew assembleDebug --stacktrace
 
       - name: Upload APK file
         uses: actions/upload-artifact@v1

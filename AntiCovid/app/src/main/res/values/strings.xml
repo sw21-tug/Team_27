@@ -6,4 +6,9 @@
     <string name="valid_qr_code">Valid QR Code</string>
     <string name="my_previous_test_reports">My previous Test Reports</string>
     <string name="sign_in">Sign In</string>
+    <string name="back">Back</string>
+    <string name="e_mail_address">E-Mail Address</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="reset_password">Forgot password?</string>
 </resources>

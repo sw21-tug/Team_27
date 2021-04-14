@@ -1,0 +1,60 @@
+name: Android Release Testsuite
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  lint_and_unittest:
+    name: Lint and Unit testsuite
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      
+      - name: Run Kotlin Linter
+        run: ./gradlew lintDebug
+
+      - name: Run Unit Test
+        run: ./gradlew testDebugUnitTest
+
+  instrumentation_test:
+    name: Instrumentation testsuite
+    runs-on: macos-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Run Instrumentation tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          script: ./gradlew connectedDebugAndroidTest
+
+  apk:
+    name: Generate APK file
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+          with:
+            java-version: 1.8
+      
+      - name: Build debug APK file
+        run: bash ./gradlew assembleDebug --stacktrace
+
+      - name: Upload APK file
+        uses: actions/upload-artifact@v1
+        with:
+          name: antic-app
+          path: app/build/outputs/apk/debug/antic-app-debug.apk
+

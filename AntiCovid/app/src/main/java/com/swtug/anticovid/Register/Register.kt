@@ -2,6 +2,7 @@ package com.swtug.anticovid.Register
 
 import android.content.Context
 import com.swtug.anticovid.Database.DatabaseSchema
+import com.swtug.anticovid.User
 
 class Register(private val context: Context) {
 
@@ -25,6 +26,8 @@ class Register(private val context: Context) {
         {
             return false;
         }
+
+        databaseSchema.newUser(User(-1, name, surname, email, address, secid, phonenumber, password));
 
         return true
     }

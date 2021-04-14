@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "607677867597",
+    "project_id": "anti-covid-app",
+    "storage_bucket": "anti-covid-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607677867597:android:04b87605fe30315c7a5e04",
+        "android_client_info": {
+          "package_name": "com.swtug.anticovid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607677867597-pcd8f9vnt4oaugvljf30m09tf5c530ig.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.swtug.anticovid",
+            "certificate_hash": "c17ae9a66b055a48b641f3c0a00f6eac0236ef24"
+          }
+        },
+        {
+          "client_id": "607677867597-4k0ed1rg0r40t7h429sarsd41v5m0q81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3lWQ6mSseVSCiZK-I7rthVs-gJkgM85Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607677867597-4k0ed1rg0r40t7h429sarsd41v5m0q81.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

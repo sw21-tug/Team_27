@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.swtug.anticovid.main.MainFragment"
+        android:label="MainFragment">
+        <action
+            android:id="@+id/action_mainFragment_to_vaccineFragment"
+            app:destination="@id/vaccineFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_addTestReportFragment"
+            app:destination="@id/addTestReportFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_QRCodeFragment"
+            app:destination="@id/QRCodeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_testResultFragment"
+            app:destination="@id/testResultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addTestReportFragment"
+        android:name="com.swtug.anticovid.addTestReport.AddTestReportFragment"
+        android:label="AddTestReportFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.swtug.anticovid.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/QRCodeFragment"
+        android:name="com.swtug.anticovid.qrCode.QRCodeFragment"
+        android:label="QRCodeFragment" />
+    <fragment
+        android:id="@+id/vaccineFragment"
+        android:name="com.swtug.anticovid.vaccineInfo.VaccineFragment"
+        android:label="VaccineFragment" />
+    <fragment
+        android:id="@+id/testResultFragment"
+        android:name="com.swtug.anticovid.testResults.TestResultFragment"
+        android:label="TestResultFragment" />
+</navigation>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Anti Covid</string>
+    <string name="profile">Profile</string>
+    <string name="add_test_report">Add Test Report</string>
+    <string name="my_vaccine_information">My vaccine Information</string>
+    <string name="valid_qr_code">Valid QR Code</string>
+    <string name="my_previous_test_reports">My previous Test Reports</string>
 </resources>

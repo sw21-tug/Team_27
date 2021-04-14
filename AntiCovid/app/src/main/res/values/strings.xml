@@ -5,4 +5,5 @@
     <string name="my_vaccine_information">My vaccine Information</string>
     <string name="valid_qr_code">Valid QR Code</string>
     <string name="my_previous_test_reports">My previous Test Reports</string>
+    <string name="sign_in">Sign In</string>
 </resources>

@@ -10,7 +10,7 @@ import com.swtug.anticovid.R
 
 class LoginFragment : Fragment() {
 
-    private lateinit var loginViewModel: LoginViewModel
+  /*  private lateinit var loginViewModel: LoginViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,6 +23,6 @@ class LoginFragment : Fragment() {
 
         return root
     }
-
+*/
 
 }

@@ -51,7 +51,7 @@
         android:label="TestResultFragment" />
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.swtug.anticovid.ui.login.RegisterFragment"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        android:name="com.swtug.anticovid.register.RegisterFragment"
+        android:label="RegisterFragment" />
+
 </navigation>

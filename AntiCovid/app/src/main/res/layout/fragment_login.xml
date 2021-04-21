@@ -91,23 +91,11 @@
         android:padding="0dp"
         android:text="@string/login"
         android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayoutHeader" />
 
-    <Button
-        android:id="@+id/buttonResetPassword"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:backgroundTint="@color/transparent"
-        android:text="@string/reset_password"
-        android:textColor="@color/grey"
-        android:textSize="21sp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+ 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

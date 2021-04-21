@@ -18,11 +18,11 @@
             android:id="@+id/action_mainFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_QRCodeFragment"
-            app:destination="@id/QRCodeFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_testResultFragment"
             app:destination="@id/testResultFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_QRCodeFragment"
+            app:destination="@id/QRCodeFragment" />
     </fragment>
 
     <fragment

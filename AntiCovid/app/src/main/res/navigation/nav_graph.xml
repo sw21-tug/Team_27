@@ -5,6 +5,16 @@
     app:startDestination="@id/splashScreenFragment">
 
     <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.swtug.anticovid.login.LoginFragment"
+        android:label="LoginFragment">
+
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
         android:id="@+id/splashScreenFragment"
         android:name="com.swtug.anticovid.view.splashScreen.SplashScreenFragment"
         android:label="SplashScreen">

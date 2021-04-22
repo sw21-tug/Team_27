@@ -5,4 +5,20 @@
     <string name="my_vaccine_information">My vaccine Information</string>
     <string name="valid_qr_code">Valid QR Code</string>
     <string name="my_previous_test_reports">My previous Test Reports</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign up -></string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="create_acc">Create account</string>
+    <string name="address">Address</string>
+    <string name="social_sec_id">Social security ID</string>
+    <string name="phone_number">Phone number</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="register_title">Create Account</string>
 </resources>

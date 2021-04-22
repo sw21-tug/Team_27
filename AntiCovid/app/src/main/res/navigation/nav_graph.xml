@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/mainFragment">
 
@@ -18,11 +20,14 @@
             android:id="@+id/action_mainFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
+            android:id="@+id/action_mainFragment_to_QRCodeFragment"
+            app:destination="@id/QRCodeFragment" />
+        <action
             android:id="@+id/action_mainFragment_to_testResultFragment"
             app:destination="@id/testResultFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_QRCodeFragment"
-            app:destination="@id/QRCodeFragment" />
+            android:id="@+id/action_mainFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
 
     <fragment
@@ -45,4 +50,9 @@
         android:id="@+id/testResultFragment"
         android:name="com.swtug.anticovid.testResults.TestResultFragment"
         android:label="TestResultFragment" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.swtug.anticovid.register.RegisterFragment"
+        android:label="RegisterFragment" />
+
 </navigation>

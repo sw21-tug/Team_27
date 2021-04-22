@@ -52,5 +52,4 @@ class QRCodeFragment : BaseFragment() {
         textField.text = qrCodeContent
     }
 
-
 }

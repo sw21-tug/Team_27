@@ -1,4 +1,4 @@
-package com.swtug.anticovid
+package com.swtug.anticovid.view
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.appbar.MaterialToolbar
+import com.swtug.anticovid.MainActivity
+import com.swtug.anticovid.R
 
 open class BaseFragment : Fragment() {
 
@@ -13,13 +15,17 @@ open class BaseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupToolBar(view)
-
     }
 
     private fun setupToolBar(view: View) {
+        //For Testing purposes
+        if(requireActivity() !is AppCompatActivity) {
+            return
+        }
+
         val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)
-        (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
-        (requireActivity() as AppCompatActivity).supportActionBar?.let {  actionBar ->
+        (requireActivity() as MainActivity).setSupportActionBar(toolbar)
+        (requireActivity() as MainActivity).supportActionBar?.let {  actionBar ->
             actionBar.setDisplayShowHomeEnabled(true)
             actionBar.setDisplayHomeAsUpEnabled(true)
         }

@@ -1,4 +1,4 @@
-package com.swtug.anticovid.main
+package com.swtug.anticovid.view.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.swtug.anticovid.R
+import com.swtug.anticovid.repositories.PreferencesRepo
 
 class MainFragment : Fragment() {
     private lateinit var btnProfile: Button
@@ -49,7 +49,13 @@ class MainFragment : Fragment() {
         }
 
         btnVaccineInfo.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_vaccineFragment)
+            val vaccination = PreferencesRepo.getVaccination(requireContext())
+            if(vaccination == null) {
+                findNavController().navigate(R.id.action_mainFragment_to_notVaccinatedFragment)
+            } else {
+                val direction = MainFragmentDirections.actionMainFragmentToVaccinatedFragment(vaccination)
+                findNavController().navigate(direction)
+            }
         }
 
         btnQRCode.setOnClickListener {

@@ -8,7 +8,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.swtug.anticovid.main.MainFragment
+import com.swtug.anticovid.view.main.MainFragment
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -17,7 +17,7 @@ import org.mockito.Mockito.verify
 
 
 @RunWith(AndroidJUnit4::class)
-class NavigationTest {
+class MainNavigationTest {
     private lateinit var navController: NavController
 
     @Before
@@ -36,14 +36,6 @@ class NavigationTest {
         onView(withId(R.id.button_profile)).perform(click())
         verify(navController).navigate(
             R.id.action_mainFragment_to_profileFragment
-        )
-    }
-
-    @Test
-    fun testNavigateFromHomeToVaccineInfo() {
-        onView(withId(R.id.button_vaccine_info)).perform(click())
-        verify(navController).navigate(
-            R.id.action_mainFragment_to_vaccineFragment
         )
     }
 

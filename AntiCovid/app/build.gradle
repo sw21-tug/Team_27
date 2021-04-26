@@ -2,7 +2,9 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
+    id 'androidx.navigation.safeargs.kotlin'
 }
+
 
 android {
     compileSdkVersion 30
@@ -80,5 +82,9 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 
+    //Zxing for QR code creation
     implementation 'com.google.zxing:core:3.4.0'
+
+    //Gson
+    implementation 'com.google.code.gson:gson:2.8.5'
 }

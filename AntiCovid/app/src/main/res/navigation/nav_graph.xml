@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.swtug.anticovid.main.MainFragment"
+        android:name="com.swtug.anticovid.view.main.MainFragment"
         android:label="MainFragment">
-        <action
-            android:id="@+id/action_mainFragment_to_vaccineFragment"
-            app:destination="@id/vaccineFragment" />
         <action
             android:id="@+id/action_mainFragment_to_addTestReportFragment"
             app:destination="@id/addTestReportFragment" />
@@ -28,31 +23,53 @@
         <action
             android:id="@+id/action_mainFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_notVaccinatedFragment"
+            app:destination="@id/notVaccinatedFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_vaccinatedFragment"
+            app:destination="@id/vaccinatedFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/addTestReportFragment"
-        android:name="com.swtug.anticovid.addTestReport.AddTestReportFragment"
+        android:name="com.swtug.anticovid.view.addTestReport.AddTestReportFragment"
         android:label="AddTestReportFragment" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.swtug.anticovid.profile.ProfileFragment"
+        android:name="com.swtug.anticovid.view.profile.ProfileFragment"
         android:label="ProfileFragment" />
     <fragment
         android:id="@+id/QRCodeFragment"
-        android:name="com.swtug.anticovid.qrCode.QRCodeFragment"
+        android:name="com.swtug.anticovid.view.qrCode.QRCodeFragment"
         android:label="QRCodeFragment" />
     <fragment
-        android:id="@+id/vaccineFragment"
-        android:name="com.swtug.anticovid.vaccineInfo.VaccineFragment"
-        android:label="VaccineFragment" />
-    <fragment
         android:id="@+id/testResultFragment"
-        android:name="com.swtug.anticovid.testResults.TestResultFragment"
+        android:name="com.swtug.anticovid.view.testResults.TestResultFragment"
         android:label="TestResultFragment" />
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.swtug.anticovid.register.RegisterFragment"
+        android:name="com.swtug.anticovid.view.register.RegisterFragment"
         android:label="RegisterFragment" />
+    <fragment
+        android:id="@+id/notVaccinatedFragment"
+        android:name="com.swtug.anticovid.view.vaccineInfo.NotVaccinatedFragment"
+        android:label="NotVaccinatedFragment" >
+        <action
+            android:id="@+id/action_notVaccinatedFragment_to_vaccinatedFragment"
+            app:popUpTo="@id/notVaccinatedFragment"
+            app:destination="@id/vaccinatedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vaccinatedFragment"
+        android:name="com.swtug.anticovid.view.vaccineInfo.VaccinatedFragment"
+        android:label="VaccinatedFragment" >
+        <argument
+            android:name="vaccination"
+            app:argType="com.swtug.anticovid.models.Vaccination" />
+        <action
+            android:id="@+id/action_vaccinatedFragment_to_QRCodeFragment"
+            app:destination="@id/QRCodeFragment" />
+    </fragment>
 
 </navigation>

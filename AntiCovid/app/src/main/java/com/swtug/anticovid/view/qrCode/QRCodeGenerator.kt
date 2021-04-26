@@ -1,4 +1,4 @@
-package com.swtug.anticovid.qrCode
+package com.swtug.anticovid.view.qrCode
 
 import android.graphics.Bitmap
 import android.graphics.Color

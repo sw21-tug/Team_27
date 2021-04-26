@@ -1,7 +1,7 @@
 package com.swtug.anticovid
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.swtug.anticovid.qrCode.QRCodeGenerator
+import com.swtug.anticovid.view.qrCode.QRCodeGenerator
 import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test

@@ -53,7 +53,7 @@ class MainFragment : Fragment() {
             if(vaccination == null) {
                 findNavController().navigate(R.id.action_mainFragment_to_notVaccinatedFragment)
             } else {
-                val direction = MainFragmentDirections.actionMainFragmentToVaccinetedFragment(vaccination)
+                val direction = MainFragmentDirections.actionMainFragmentToVaccinatedFragment(vaccination)
                 findNavController().navigate(direction)
             }
         }

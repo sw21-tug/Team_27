@@ -18,6 +18,11 @@ open class BaseFragment : Fragment() {
     }
 
     private fun setupToolBar(view: View) {
+        //For Testing purposes
+        if(requireActivity() !is AppCompatActivity) {
+            return
+        }
+
         val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)
         (requireActivity() as MainActivity).setSupportActionBar(toolbar)
         (requireActivity() as MainActivity).supportActionBar?.let {  actionBar ->

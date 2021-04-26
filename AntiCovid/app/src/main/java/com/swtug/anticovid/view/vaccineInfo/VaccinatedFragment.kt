@@ -31,7 +31,7 @@ class VaccinatedFragment : BaseFragment() {
         setupLayout()
 
         btnQRCode.setOnClickListener {
-            findNavController().navigate(R.id.action_vaccinetedFragment_to_QRCodeFragment)
+            findNavController().navigate(R.id.action_vaccinatedFragment_to_QRCodeFragment)
         }
     }
 

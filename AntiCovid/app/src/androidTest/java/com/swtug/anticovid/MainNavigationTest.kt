@@ -17,7 +17,7 @@ import org.mockito.Mockito.verify
 
 
 @RunWith(AndroidJUnit4::class)
-class NavigationTest {
+class MainNavigationTest {
     private lateinit var navController: NavController
 
     @Before
@@ -36,14 +36,6 @@ class NavigationTest {
         onView(withId(R.id.button_profile)).perform(click())
         verify(navController).navigate(
             R.id.action_mainFragment_to_profileFragment
-        )
-    }
-
-    @Test
-    fun testNavigateFromHomeToVaccineInfo() {
-        onView(withId(R.id.button_vaccine_info)).perform(click())
-        verify(navController).navigate(
-            R.id.action_mainFragment_to_vaccineFragment
         )
     }
 

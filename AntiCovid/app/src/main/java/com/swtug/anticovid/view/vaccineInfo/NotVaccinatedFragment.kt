@@ -39,7 +39,7 @@ class NotVaccinatedFragment : BaseFragment() {
         btnAddVaccine.setOnClickListener {
             val vaccination = getVaccinationFromVaccineID()
             PreferencesRepo.saveVaccination(requireContext(), vaccination)
-            val direction = NotVaccinatedFragmentDirections.actionNotVaccinatedFragmentToVaccinetedFragment(vaccination)
+            val direction = NotVaccinatedFragmentDirections.actionNotVaccinatedFragmentToVaccinatedFragment(vaccination)
             findNavController().navigate(direction)
         }
     }

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/mainFragment">
 
@@ -29,8 +27,8 @@
             android:id="@+id/action_mainFragment_to_notVaccinatedFragment"
             app:destination="@id/notVaccinatedFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_vaccinetedFragment"
-            app:destination="@id/vaccinetedFragment" />
+            android:id="@+id/action_mainFragment_to_vaccinatedFragment"
+            app:destination="@id/vaccinatedFragment" />
     </fragment>
 
     <fragment
@@ -58,19 +56,19 @@
         android:name="com.swtug.anticovid.view.vaccineInfo.NotVaccinatedFragment"
         android:label="NotVaccinatedFragment" >
         <action
-            android:id="@+id/action_notVaccinatedFragment_to_vaccinetedFragment"
+            android:id="@+id/action_notVaccinatedFragment_to_vaccinatedFragment"
             app:popUpTo="@id/notVaccinatedFragment"
-            app:destination="@id/vaccinetedFragment" />
+            app:destination="@id/vaccinatedFragment" />
     </fragment>
     <fragment
-        android:id="@+id/vaccinetedFragment"
+        android:id="@+id/vaccinatedFragment"
         android:name="com.swtug.anticovid.view.vaccineInfo.VaccinatedFragment"
-        android:label="VaccinetedFragment" >
+        android:label="VaccinatedFragment" >
         <argument
             android:name="vaccination"
             app:argType="com.swtug.anticovid.models.Vaccination" />
         <action
-            android:id="@+id/action_vaccinetedFragment_to_QRCodeFragment"
+            android:id="@+id/action_vaccinatedFragment_to_QRCodeFragment"
             app:destination="@id/QRCodeFragment" />
     </fragment>
 

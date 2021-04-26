@@ -1,10 +1,10 @@
-package com.swtug.anticovid.Database
+package com.swtug.anticovid.database
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.swtug.anticovid.User
+import com.swtug.anticovid.models.User
 
 class DatabaseSchema(context: Context) : SQLiteOpenHelper(context, "AntiCovid.db", null, 1) {
 

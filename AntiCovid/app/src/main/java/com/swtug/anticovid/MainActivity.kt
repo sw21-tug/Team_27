@@ -2,7 +2,6 @@ package com.swtug.anticovid
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.swtug.anticovid.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -21,4 +21,14 @@
     <string name="name">Name</string>
     <string name="surname">Surname</string>
     <string name="register_title">Create Account</string>
+    <string name="no_vaccine_info">We have no information about your vaccination.</string>
+    <string name="recently_vaccined_question">Have you recently vaccinated?</string>
+    <string name="insert_id_for_vaccine_qr_code">If so please add your vaccine ID in order to generate a permanent QR Code</string>
+    <string name="qr_code_created_after_second_dose">Please have in mind that the permanent QR Code is generated when you get the second dosis</string>
+    <string name="add_vaccine_id">Add Vaccine ID</string>
+    <string name="add_vaccine">Add Vaccine</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="first_dose_date">First dose date</string>
+    <string name="second_dose_date">Second dose date</string>
+    <string name="institution">Institution</string>
 </resources>

@@ -1,10 +1,10 @@
-package com.swtug.anticovid.register
+package com.swtug.anticovid.view.register
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.swtug.anticovid.BaseFragment
+import com.swtug.anticovid.view.BaseFragment
 import com.swtug.anticovid.R
 
 class RegisterFragment : BaseFragment()

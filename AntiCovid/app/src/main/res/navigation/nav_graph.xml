@@ -2,7 +2,33 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/splashScreenFragment">
+
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.swtug.anticovid.view.splashScreen.SplashScreenFragment"
+        android:label="SplashScreen">
+        <action
+            android:id="@+id/action_splashFragment_to_termsOfUse"
+            app:destination="@id/termsOfUseFragment"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/termsOfUseFragment"
+        android:name="com.swtug.anticovid.view.termsOfUse.TermsOfUseFragment"
+        android:label="TermsOfUseFragment" >
+
+        <action
+            android:id="@+id/action_termsOfUseFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/mainFragment"
@@ -60,6 +86,7 @@
             app:popUpTo="@id/notVaccinatedFragment"
             app:destination="@id/vaccinatedFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/vaccinatedFragment"
         android:name="com.swtug.anticovid.view.vaccineInfo.VaccinatedFragment"

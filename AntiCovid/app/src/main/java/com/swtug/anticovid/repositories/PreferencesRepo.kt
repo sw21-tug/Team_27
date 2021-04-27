@@ -8,9 +8,21 @@ import com.swtug.anticovid.models.Vaccination
 object PreferencesRepo {
     private const val PREFERENCES_NAME = "ANTI_COVID_APP"
     private const val VACCINATION = "VACCINATION"
+    private val TERMS_OF_USE = "TERMS_OF_USE_ACCEPTED"
 
     private fun getPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
+    }
+
+    fun saveAcceptTermsOfUse(context: Context, accept: Boolean) {
+        getPreferences(context)
+            .edit()
+            .putBoolean(TERMS_OF_USE, accept)
+            .apply()
+    }
+
+    fun getTermsOfUseAccepted(context: Context) : Boolean {
+        return getPreferences(context).getBoolean(TERMS_OF_USE, false)
     }
 
     fun saveVaccination(context: Context, vaccination: Vaccination) {

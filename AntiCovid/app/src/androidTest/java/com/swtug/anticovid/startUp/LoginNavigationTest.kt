@@ -51,7 +51,7 @@ class LoginNavigationTest {
         onView(withId(R.id.editTextPassword)).perform(ViewActions.typeText("123456789"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.buttonLogin)).perform(click())
-        Thread.sleep(1000)
+        Thread.sleep(3000)
 
         TestCase.assertEquals(navController.currentDestination?.id, R.id.loginFragment)
     }
@@ -63,7 +63,7 @@ class LoginNavigationTest {
         onView(withId(R.id.editTextPassword)).perform(ViewActions.typeText("testtest"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.buttonLogin)).perform(click())
-        Thread.sleep(1000)
+        Thread.sleep(3000)
 
         TestCase.assertEquals(navController.currentDestination?.id, R.id.mainFragment)
     }

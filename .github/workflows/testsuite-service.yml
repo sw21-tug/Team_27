@@ -51,7 +51,11 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
-
+    - name: Make gradlew executable
+      run: |
+        cd AntiCovid/ 
+        chmod +x ./gradlew
+        
     - name: Run Instrumentation tests
       uses: reactivecircus/android-emulator-runner@v2.15.0
       with:

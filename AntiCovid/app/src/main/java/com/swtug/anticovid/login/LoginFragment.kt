@@ -1,6 +1,5 @@
 package com.swtug.anticovid.login
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,16 +7,19 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.firestore.FirebaseFirestore
 import com.swtug.anticovid.R
+import com.swtug.anticovid.models.User
+import com.swtug.anticovid.repositories.FirebaseListener
+import com.swtug.anticovid.repositories.FirebaseRepo
+import com.swtug.anticovid.repositories.PreferencesRepo
+import com.swtug.anticovid.view.BaseFragment
+import java.util.*
 
-class LoginFragment : Fragment() {
+
+class LoginFragment : BaseFragment() {
 
     private lateinit var btnLogin: Button
-    private lateinit var btnBack: Button
     private lateinit var editTextEmail: EditText
     private lateinit var editTextPassword: EditText
 
@@ -33,89 +35,73 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
-        if (sharedPref?.getBoolean("loggedIn", false) == true) {
-            findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
-        }
-
-
         initFields(view)
-        initListeners()
+        initListeners(object : FirebaseListener {
+            override fun onSuccess(user: User?) {
+                btnLogin.isEnabled = true
 
-        val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    // User is not allowed to go back to login
+                if (user == null) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Wrong login credentials",
+                        Toast.LENGTH_LONG
+                    ).show()
+                } else {
+                    if (editTextPassword.text.toString() == user.password) {
+                        PreferencesRepo.saveUser(requireContext(), user)
+                        findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+
+                    } else {
+                        Toast.makeText(requireContext(), "Login failed!", Toast.LENGTH_LONG)
+                            .show()
+                    }
+
                 }
             }
-        requireActivity().onBackPressedDispatcher.addCallback(requireActivity(), callback);
+
+            override fun onStart() {
+                btnLogin.isEnabled = false
+
+            }
+
+            override fun onFailure() {
+                btnLogin.isEnabled = true
+
+                Toast.makeText(
+                    requireContext(),
+                    "Wrong login credentials",
+                    Toast.LENGTH_LONG
+                ).show()
+
+            }
+        })
 
     }
 
 
-    private fun initListeners() {
+    private fun initListeners(firebaseListener: FirebaseListener) {
+
         btnLogin.setOnClickListener {
-
-            val db = FirebaseFirestore.getInstance()
-            db.collection("User")
-                .whereEqualTo("email", editTextEmail.text.toString().toLowerCase().trim())
-                .get()
-                .addOnSuccessListener { documents ->
-                    if (documents.size() == 0) {
-                        Toast.makeText(
-                            requireContext(),
-                            "You do not have an account. Please create one first.",
-                            Toast.LENGTH_LONG
-                        )
-                            .show()
-                    } else if (documents.size() > 1) {
-                        Toast.makeText(requireContext(), "Login not possible!", Toast.LENGTH_LONG)
-                            .show()
-                    } else {
-                        val document = documents.first()
-                        if (editTextPassword.text.toString() == document.data["password"]) {
-
-                            val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
-                            if (sharedPref != null) {
-                                with(sharedPref.edit()) {
-                                    putBoolean("loggedIn", true)
-                                    apply()
-                                }
-                                findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
-                            } else {
-                                Toast.makeText(requireContext(), "Login failed!", Toast.LENGTH_LONG)
-                                    .show()
-                            }
-
-
-                        } else {
-                            Toast.makeText(
-                                requireContext(),
-                                "Wrong login credentials",
-                                Toast.LENGTH_LONG
-                            ).show()
-
-                        }
-                    }
-
-                }
-
-
-        }
-        btnBack.setOnClickListener {
-            //findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
-            Toast.makeText(requireContext(), "Back not implementet!", Toast.LENGTH_LONG).show()
+            checkUserCredentials(firebaseListener)
         }
 
     }
 
     private fun initFields(view: View) {
         btnLogin = view.findViewById(R.id.buttonLogin)
-        btnBack = view.findViewById(R.id.buttonBack)
         editTextEmail = view.findViewById(R.id.editTextTextEmailAddress)
         editTextPassword = view.findViewById(R.id.editTextPassword)
 
     }
+
+    private fun checkUserCredentials(firebaseListener: FirebaseListener) {
+        val email = editTextEmail.text.toString().toLowerCase(Locale.ROOT).trim()
+
+        FirebaseRepo.getUser(email, firebaseListener)
+
+
+    }
+
+
 }
 

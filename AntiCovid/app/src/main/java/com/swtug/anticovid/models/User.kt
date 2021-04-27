@@ -1,7 +1,7 @@
 package com.swtug.anticovid.models
 
 data class User(
-    val id: Int = -1,
+    val id: Long = -1,
     val name: String,
     val surname: String,
     val email: String,

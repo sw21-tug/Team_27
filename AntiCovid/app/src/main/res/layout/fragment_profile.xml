@@ -17,7 +17,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/profile"
-        app:titleTextColor="@color/white" />
+        app:titleTextColor="@color/white" >
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log out"
+        android:layout_gravity="right"
+        />
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <EditText
         android:id="@+id/editTextTextPersonName5"
@@ -115,5 +123,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

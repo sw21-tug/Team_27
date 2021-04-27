@@ -23,7 +23,11 @@ class SplashScreenFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Handler(Looper.getMainLooper()).postDelayed({
             if(PreferencesRepo.getTermsOfUseAccepted(requireContext())) {
-                findNavController().navigate(R.id.action_splashFragment_to_mainFragment)
+                if(PreferencesRepo.getUser(requireContext()) != null){
+                    findNavController().navigate(R.id.action_splashFragment_to_mainFragment)
+                }else{
+                    findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+                }
             } else {
                 findNavController().navigate(R.id.action_splashFragment_to_termsOfUse)
             }

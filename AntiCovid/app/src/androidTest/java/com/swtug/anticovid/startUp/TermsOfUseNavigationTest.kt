@@ -1,34 +1,20 @@
-package com.swtug.anticovid.termsOfUse
+package com.swtug.anticovid.startUp
 
 import android.content.Context
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.fragment.app.testing.withFragment
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.replaceText
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.R
-import com.swtug.anticovid.models.Vaccination
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.view.splashScreen.SplashScreenFragment
-import com.swtug.anticovid.view.vaccineInfo.NotVaccinatedFragment
 import junit.framework.TestCase
-import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mockito.mock
-import org.mockito.Mockito.verify
-import java.util.*
 
 
 @RunWith(AndroidJUnit4::class)
@@ -61,7 +47,7 @@ class TermsOfUseNavigationTest {
     fun testTermsOfUseAccepted() {
         PreferencesRepo.saveAcceptTermsOfUse(InstrumentationRegistry.getInstrumentation().targetContext, true)
         Thread.sleep(3500);
-        TestCase.assertEquals(navController.currentDestination?.id, R.id.mainFragment)
+        TestCase.assertEquals(navController.currentDestination?.id, R.id.loginFragment)
     }
 
     private fun clearSharedPreferences() {

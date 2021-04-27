@@ -41,7 +41,11 @@ class TermsOfUseFragment: Fragment() {
 
         btnAccept.setOnClickListener {
             PreferencesRepo.saveAcceptTermsOfUse(requireContext(), true)
-            findNavController().navigate(R.id.action_termsOfUseFragment_to_mainFragment)
+            if(PreferencesRepo.getUser(requireContext()) != null){
+                findNavController().navigate(R.id.action_termsOfUseFragment_to_mainFragment)
+            }else{
+                findNavController().navigate(R.id.action_termsOfUseFragment_to_loginFragment)
+            }
         }
     }
 

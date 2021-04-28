@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.swtug.anticovid.R
 import com.swtug.anticovid.models.User
@@ -17,9 +18,10 @@ import com.swtug.anticovid.view.BaseFragment
 import java.util.*
 
 
-class LoginFragment : BaseFragment() {
+class LoginFragment : Fragment() {
 
     private lateinit var btnLogin: Button
+    private lateinit var btnRegister: Button
     private lateinit var editTextEmail: EditText
     private lateinit var editTextPassword: EditText
 
@@ -85,10 +87,15 @@ class LoginFragment : BaseFragment() {
             checkUserCredentials(firebaseListener)
         }
 
+        btnRegister.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
+
     }
 
     private fun initFields(view: View) {
         btnLogin = view.findViewById(R.id.buttonLogin)
+        btnRegister = view.findViewById(R.id.buttonRegister)
         editTextEmail = view.findViewById(R.id.editTextTextEmailAddress)
         editTextPassword = view.findViewById(R.id.editTextPassword)
 
@@ -96,10 +103,7 @@ class LoginFragment : BaseFragment() {
 
     private fun checkUserCredentials(firebaseListener: FirebaseListener) {
         val email = editTextEmail.text.toString().toLowerCase(Locale.ROOT).trim()
-
         FirebaseRepo.getUser(email, firebaseListener)
-
-
     }
 
 

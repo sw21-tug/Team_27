@@ -19,7 +19,7 @@
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="261dp"
+        android:layout_width="280dp"
         android:layout_height="72dp"
         android:layout_marginTop="196dp"
         android:autofillHints="email"
@@ -35,7 +35,7 @@
 
     <EditText
         android:id="@+id/editTextPassword"
-        android:layout_width="261dp"
+        android:layout_width="280dp"
         android:layout_height="72dp"
         android:layout_marginTop="28dp"
         android:autofillHints="password"
@@ -54,7 +54,7 @@
     <Button
         android:id="@+id/buttonLogin"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="166dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="148dp"
         android:background="@drawable/button_border_radius"
@@ -67,6 +67,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@color/transparent"
+        android:color="@color/purple_500"
+        android:elevation="2dp"
+        android:padding="0dp"
+        android:text="@string/register_button_text"
+        android:textColor="@color/purple_500"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

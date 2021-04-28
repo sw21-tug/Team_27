@@ -43,6 +43,7 @@
             app:popUpTo="@id/termsOfUseFragment"
             app:popUpToInclusive="true"/>
     </fragment>
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.swtug.anticovid.login.LoginFragment"
@@ -54,7 +55,23 @@
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true"
             />
+
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment"  />
     </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.swtug.anticovid.view.register.RegisterFragment"
+        android:label="RegisterFragment" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/mainFragment"
@@ -72,9 +89,6 @@
         <action
             android:id="@+id/action_mainFragment_to_testResultFragment"
             app:destination="@id/testResultFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
         <action
             android:id="@+id/action_mainFragment_to_notVaccinatedFragment"
             app:destination="@id/notVaccinatedFragment" />
@@ -99,10 +113,11 @@
         android:id="@+id/testResultFragment"
         android:name="com.swtug.anticovid.view.testResults.TestResultFragment"
         android:label="TestResultFragment" />
-    <fragment
-        android:id="@+id/registerFragment"
-        android:name="com.swtug.anticovid.view.register.RegisterFragment"
-        android:label="RegisterFragment" />
+
+
+
+
+
     <fragment
         android:id="@+id/notVaccinatedFragment"
         android:name="com.swtug.anticovid.view.vaccineInfo.NotVaccinatedFragment"

@@ -69,4 +69,8 @@ object PreferencesRepo {
             gson.fromJson(json, User::class.java)
         }
     }
+    fun deleteUser(context: Context){
+        getPreferences(context).edit().remove(LOGGED_IN_USER).apply()
+    }
+
 }

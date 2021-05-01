@@ -46,7 +46,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.swtug.anticovid.login.LoginFragment"
+        android:name="com.swtug.anticovid.view.login.LoginFragment"
         android:label="LoginFragment">
 
         <action

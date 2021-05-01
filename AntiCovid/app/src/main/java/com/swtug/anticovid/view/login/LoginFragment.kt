@@ -1,4 +1,4 @@
-package com.swtug.anticovid.login
+package com.swtug.anticovid.view.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -34,7 +34,7 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return layoutInflater.inflate(R.layout.fragment_login, null)
+        return layoutInflater.inflate(R.layout.fragment_login, container, false)
     }
 
 

@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.AntiCovid">
         <activity
+            android:configChanges="layoutDirection|locale"
             android:name="com.swtug.anticovid.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>

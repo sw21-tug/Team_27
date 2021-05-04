@@ -14,6 +14,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.R
+import com.swtug.anticovid.TestUtils
 import com.swtug.anticovid.models.Vaccination
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.view.main.MainFragment
@@ -45,12 +46,12 @@ class VaccinationInfoNavigationTest {
             Navigation.setViewNavController(requireView(), navController)
         }
 
-        clearSharedPreferences()
+        TestUtils.clearSharedPreferences(InstrumentationRegistry.getInstrumentation().targetContext)
     }
 
     @After
     fun tearDown() {
-        clearSharedPreferences()
+        TestUtils.clearSharedPreferences(InstrumentationRegistry.getInstrumentation().targetContext)
     }
 
     @Test
@@ -71,14 +72,6 @@ class VaccinationInfoNavigationTest {
         onView(withId(R.id.button_vaccine_info)).perform(click())
         assertEquals(navController.currentDestination?.id, R.id.notVaccinatedFragment)
 
-    }
-
-    private fun clearSharedPreferences() {
-        val context = InstrumentationRegistry.getInstrumentation().targetContext
-        val preferences = context.getSharedPreferences("ANTI_COVID_APP", Context.MODE_PRIVATE)
-        preferences.edit()
-            .clear()
-            .commit()
     }
 }
 

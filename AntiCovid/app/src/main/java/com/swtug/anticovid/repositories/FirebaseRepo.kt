@@ -10,7 +10,7 @@ object FirebaseRepo {
     private const val COLLECTION_USER = "User"
 
 
-    fun saveUser(context: Context, user: User, firebaseListener: FirebaseListener) {
+    fun saveUser(user: User, firebaseListener: FirebaseListener) {
         firebaseListener.onStart()
         val firebaseFireStore = FirebaseFirestore.getInstance()
 

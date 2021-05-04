@@ -63,7 +63,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun trySignUpNewUser(user: User, firebaseListener: FirebaseListener) {
-        FirebaseRepo.saveUser(requireContext(), user, firebaseListener)
+        FirebaseRepo.saveUser(user, firebaseListener)
     }
 
     private fun initListeners(firebaseListener: FirebaseListener) {

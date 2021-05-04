@@ -7,24 +7,22 @@ import com.swtug.anticovid.models.User
 
 object FirebaseRepo {
 
+    private const val COLLECTION_USER = "User"
+
 
     fun saveUser(context: Context, user: User) {
-        //TODO: store new user in firebase
+
     }
 
     fun getUser(email: String, firebaseListener: FirebaseListener) {
         firebaseListener.onStart()
         var user: User? = null
-        val db = FirebaseFirestore.getInstance()
+        val firebaseStore = FirebaseFirestore.getInstance()
 
-        db.collection("User")
-            .whereEqualTo("email", email)
-            .get()
-            .addOnSuccessListener { documents ->
+        firebaseStore.collection(COLLECTION_USER).document(email).get()
+            .addOnSuccessListener { document ->
 
-                if (documents.size() != 0) {
-
-                    val document: QueryDocumentSnapshot = documents.first()
+                if(document != null) {
                     user = User(
                         document["id"] as Long,
                         document["name"] as String,
@@ -36,11 +34,11 @@ object FirebaseRepo {
                         document["password"] as String
                     )
                 }
+
                 firebaseListener.onSuccess(user)
             }
             .addOnFailureListener {
                 firebaseListener.onFailure()
-
             }
     }
 }

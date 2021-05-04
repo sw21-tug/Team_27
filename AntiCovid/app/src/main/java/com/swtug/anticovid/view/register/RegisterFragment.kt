@@ -5,16 +5,38 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import com.swtug.anticovid.view.BaseFragment
 import com.swtug.anticovid.R
 
 class RegisterFragment : BaseFragment()
 {
+    private lateinit var btnSignUp: Button
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return layoutInflater.inflate(R.layout.fragment_register, null)
     }
-}
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initFields(view)
+        initListeners()
+    }
+
+    private fun trySignUpNewUser() {
+        Toast.makeText(requireContext(), "Try to sign up ...", Toast.LENGTH_LONG).show()
+    }
+
+    private fun initListeners() {
+        btnSignUp.setOnClickListener {
+            trySignUpNewUser()
+        }
+    }
+
+    private fun initFields(view: View) {
+        btnSignUp = view.findViewById(R.id.buttonSignUp)
+    }
+}
 
 /*class Register(private val context: Context): AppCompatActivity(), View.OnClickListener{
 

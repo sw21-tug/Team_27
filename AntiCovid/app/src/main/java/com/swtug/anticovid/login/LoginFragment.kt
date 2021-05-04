@@ -7,17 +7,18 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.swtug.anticovid.R
 import com.swtug.anticovid.models.User
 import com.swtug.anticovid.repositories.FirebaseListener
 import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
-import com.swtug.anticovid.view.BaseFragment
 import java.util.*
 
 
-class LoginFragment : BaseFragment() {
+class LoginFragment : Fragment() {
 
     private lateinit var btnLogin: Button
     private lateinit var editTextEmail: EditText
@@ -75,6 +76,12 @@ class LoginFragment : BaseFragment() {
 
             }
         })
+        val callback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // User is not allowed to go back
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(requireActivity(), callback);
 
     }
 

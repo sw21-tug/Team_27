@@ -64,6 +64,11 @@
         justo duo dolores et ea rebum. Stet clita\n
     </string>
     <string name="terms_of_use_header">Terms Of Use</string>
+    <string name="log_out">Log out</string>
+    <string name="e_mail">E-Mail</string>
+    <string name="social_security_id">Social security ID</string>
+    <string name="change_password">Change Password</string>
+    <string name="edit"><![CDATA[Edit ->]]></string>
     <string name="register_button_text"><u>Register</u></string>
     <string name="phone_number_hint">Phone Number</string>
     <string name="social_security_id_hint">Social security id</string>

@@ -37,6 +37,10 @@ object PreferencesRepo {
             .apply()
     }
 
+    fun deleteVaccination(context: Context){
+        getPreferences(context).edit().remove(VACCINATION).apply()
+    }
+
     fun getVaccination(context: Context): Vaccination? {
         val json =  getPreferences(context)
             .getString(VACCINATION, null)
@@ -69,4 +73,8 @@ object PreferencesRepo {
             gson.fromJson(json, User::class.java)
         }
     }
+    fun deleteUser(context: Context){
+        getPreferences(context).edit().remove(LOGGED_IN_USER).apply()
+    }
+
 }

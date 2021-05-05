@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.swtug.anticovid.R
-import com.swtug.anticovid.repositories.IPreferencesRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.view.BaseFragment
 import java.util.*
@@ -56,11 +55,11 @@ class ProfileFragment : BaseFragment() {
         toggleGroupLanguage.addOnButtonCheckedListener { _, checkedId, isChecked ->
             when (checkedId) {
                 R.id.btn_chinese -> {
-                    PreferencesRepo.saveLocale(Locale.SIMPLIFIED_CHINESE)
+                    PreferencesRepo.saveLocale(requireContext(), Locale.SIMPLIFIED_CHINESE)
                     requireActivity().recreate()
                 }
                 R.id.btn_english -> {
-                    PreferencesRepo.saveLocale(Locale.ENGLISH)
+                    PreferencesRepo.saveLocale(requireContext(), Locale.ENGLISH)
                     requireActivity().recreate()
                 }
             }

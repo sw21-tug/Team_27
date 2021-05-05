@@ -13,7 +13,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.R
 import com.swtug.anticovid.TestUtils
-import com.swtug.anticovid.repositories.IPreferencesRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.view.profile.ProfileFragment
 import junit.framework.TestCase
@@ -27,7 +26,7 @@ import org.mockito.Mockito.verify
 import java.util.*
 
 @RunWith(AndroidJUnit4::class)
-class LanguageTest {
+class SetLanguageTest {
     private lateinit var navController: TestNavHostController
 
     @Before
@@ -52,11 +51,14 @@ class LanguageTest {
 
     @Test
     fun testLanguageChange() {
-
         Espresso.onView(ViewMatchers.withId(R.id.btn_chinese)).perform(ViewActions.click())
         assert(PreferencesRepo.getLocale(ApplicationProvider.getApplicationContext())
                 == Locale.SIMPLIFIED_CHINESE)
     }
+
+
+
+
 
 
 }

@@ -7,20 +7,8 @@ import com.swtug.anticovid.models.User
 import com.swtug.anticovid.models.Vaccination
 import java.util.*
 
-interface IPreferencesRepo{
-    fun saveAcceptTermsOfUse(context: Context, accept: Boolean)
-    fun getTermsOfUseAccepted(context: Context): Boolean
-    fun saveVaccination(context: Context, vaccination: Vaccination)
-    fun deleteVaccination(context: Context)
-    fun getVaccination(context: Context): Vaccination?
-    fun saveUser(context: Context, user: User)
-    fun getUser(context: Context): User?
-    fun saveLocale(locale: Locale)
-    fun getLocale(context: Context): Locale
-    fun deleteUser(context: Context)
-}
 
-object PreferencesRepo :  IPreferencesRepo{
+object PreferencesRepo {
     private const val PREFERENCES_NAME = "ANTI_COVID_APP"
     private const val VACCINATION = "VACCINATION"
     private const val TERMS_OF_USE = "TERMS_OF_USE_ACCEPTED"
@@ -31,18 +19,18 @@ object PreferencesRepo :  IPreferencesRepo{
         return context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
     }
 
-    override fun saveAcceptTermsOfUse(context: Context, accept: Boolean) {
+    fun saveAcceptTermsOfUse(context: Context, accept: Boolean) {
         getPreferences(context)
             .edit()
             .putBoolean(TERMS_OF_USE, accept)
             .apply()
     }
 
-    override fun getTermsOfUseAccepted(context: Context): Boolean {
+    fun getTermsOfUseAccepted(context: Context): Boolean {
         return getPreferences(context).getBoolean(TERMS_OF_USE, false)
     }
 
-    override fun saveVaccination(context: Context, vaccination: Vaccination) {
+    fun saveVaccination(context: Context, vaccination: Vaccination) {
         val gson = Gson()
         val json = gson.toJson(vaccination)
 
@@ -52,11 +40,11 @@ object PreferencesRepo :  IPreferencesRepo{
             .apply()
     }
 
-    override fun deleteVaccination(context: Context){
+    fun deleteVaccination(context: Context){
         getPreferences(context).edit().remove(VACCINATION).apply()
     }
 
-    override fun getVaccination(context: Context): Vaccination? {
+    fun getVaccination(context: Context): Vaccination? {
         val json = getPreferences(context)
             .getString(VACCINATION, null)
 
@@ -68,7 +56,7 @@ object PreferencesRepo :  IPreferencesRepo{
         }
     }
 
-    override fun saveUser(context: Context, user: User) {
+    fun saveUser(context: Context, user: User) {
         val gson = Gson()
         val json = gson.toJson(user)
 
@@ -78,7 +66,7 @@ object PreferencesRepo :  IPreferencesRepo{
             .apply()
     }
 
-    override fun getUser(context: Context): User? {
+    fun getUser(context: Context): User? {
         val json = getPreferences(context)
             .getString(LOGGED_IN_USER, null)
 
@@ -90,17 +78,17 @@ object PreferencesRepo :  IPreferencesRepo{
         }
     }
 
-    override fun saveLocale(locale: Locale) {
+    fun saveLocale(context: Context, locale: Locale) {
         val gson = Gson()
         val json = gson.toJson(locale)
 
-        //getPreferences(context)
-        //    .edit()
-        //    .putString(CURRENT_LOCALE, json)
-        //    .apply()
+        getPreferences(context)
+            .edit()
+            .putString(CURRENT_LOCALE, json)
+            .apply()
     }
 
-    override fun getLocale(context: Context): Locale {
+    fun getLocale(context: Context): Locale {
         val json = getPreferences(context)
             .getString(CURRENT_LOCALE, null)
 
@@ -111,8 +99,7 @@ object PreferencesRepo :  IPreferencesRepo{
             gson.fromJson(json, Locale::class.java)
         }
     }
-
-    override fun deleteUser(context: Context){
+    fun deleteUser(context: Context){
         getPreferences(context).edit().remove(LOGGED_IN_USER).apply()
     }
 

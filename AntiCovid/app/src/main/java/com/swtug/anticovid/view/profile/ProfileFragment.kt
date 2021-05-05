@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.swtug.anticovid.R
+import com.swtug.anticovid.repositories.IPreferencesRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.view.BaseFragment
 import java.util.*
@@ -19,7 +20,6 @@ class ProfileFragment : BaseFragment() {
     private lateinit var btnEnglish: MaterialButton
     private lateinit var toggleGroupLanguage: MaterialButtonToggleGroup
     private lateinit var btnlogout: Button
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,11 +56,11 @@ class ProfileFragment : BaseFragment() {
         toggleGroupLanguage.addOnButtonCheckedListener { _, checkedId, isChecked ->
             when (checkedId) {
                 R.id.btn_chinese -> {
-                    PreferencesRepo.saveLocale(requireContext(), Locale.SIMPLIFIED_CHINESE)
+                    PreferencesRepo.saveLocale(Locale.SIMPLIFIED_CHINESE)
                     requireActivity().recreate()
                 }
                 R.id.btn_english -> {
-                    PreferencesRepo.saveLocale(requireContext(), Locale.ENGLISH)
+                    PreferencesRepo.saveLocale(Locale.ENGLISH)
                     requireActivity().recreate()
                 }
             }

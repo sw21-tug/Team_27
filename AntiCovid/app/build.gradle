@@ -74,6 +74,7 @@ dependencies {
     // Mockito
     androidTestImplementation "org.mockito:mockito-core:2.18.3"
     androidTestImplementation "org.mockito:mockito-android:2.18.3"
+    implementation 'org.powermock:powermock-core:2.0.9'
 
     // FragmentScenario
     debugImplementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.21"

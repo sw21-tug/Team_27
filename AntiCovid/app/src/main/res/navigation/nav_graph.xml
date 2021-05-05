@@ -105,6 +105,9 @@
         <action
             android:id="@+id/action_mainFragment_to_vaccinatedFragment"
             app:destination="@id/vaccinatedFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_advancedFeatureFragment"
+            app:destination="@id/advancedFeatureFragment" />
     </fragment>
 
     <fragment
@@ -154,5 +157,9 @@
             android:id="@+id/action_vaccinatedFragment_to_QRCodeFragment"
             app:destination="@id/QRCodeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/advancedFeatureFragment"
+        android:name="com.swtug.anticovid.view.qrCode.AdvancedFeatureFragment"
+        android:label="AdvancedFeatureFragment" />
 
 </navigation>

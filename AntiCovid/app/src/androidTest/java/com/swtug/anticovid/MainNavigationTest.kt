@@ -62,5 +62,13 @@ class MainNavigationTest {
             R.id.action_mainFragment_to_QRCodeFragment
         )
     }
+
+    @Test
+    fun testNavigateFromHomeToAdvancedFeatures() {
+        onView(withId(R.id.button_advaced_features)).perform(click())
+        verify(navController).navigate(
+            R.id.action_mainFragment_to_advancedFeatureFragment
+        )
+    }
 }
 

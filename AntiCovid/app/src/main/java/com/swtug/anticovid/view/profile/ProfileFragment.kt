@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
+import com.swtug.anticovid.models.User
 import com.swtug.anticovid.R
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.view.BaseFragment
@@ -20,6 +21,7 @@ class ProfileFragment : BaseFragment() {
     private lateinit var btnEnglish: MaterialButton
     private lateinit var toggleGroupLanguage: MaterialButtonToggleGroup
     private lateinit var btnlogout: Button
+    private lateinit var btnedit: Button
     private lateinit var editTextName: EditText
     private lateinit var editTextSurname: EditText
     private lateinit var editTextEMail: EditText
@@ -100,5 +102,44 @@ class ProfileFragment : BaseFragment() {
 
     }
 
+    private fun initListeners() {
+        btnlogout.setOnClickListener {
+            PreferencesRepo.deleteUser(requireContext())
+            PreferencesRepo.deleteVaccination(requireContext())
+            findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
 
+        }
+
+        btnedit.setOnClickListener {
+            val old_user = PreferencesRepo.getUser(requireContext())
+            if(old_user!=null)
+            {
+                val user = User(
+                    old_user.id,
+                    editTextName.text.toString(),
+                    editTextSurname.text.toString(),
+                    editTextEMail.text.toString(),
+                    editTextAddress.text.toString(),
+                    editTextSocialSecurityID.text.toString(),
+                    editTextPhoneNumber.text.toString(),
+                    old_user.password
+                )
+                PreferencesRepo.saveUser(requireContext(),user)
+            }
+
+
+
+        }
+    }
+
+    private fun initFields(view: View) {
+        btnlogout = view.findViewById(R.id.logoutbutton)
+        btnedit = view.findViewById(R.id.button2)
+        editTextName = view.findViewById(R.id.editTextProfileName)
+        editTextSurname = view.findViewById(R.id.editTextProfileSurname)
+        editTextEMail = view.findViewById(R.id.editTextProfileEmail)
+        editTextAddress = view.findViewById(R.id.editTextProfileAddress)
+        editTextSocialSecurityID = view.findViewById(R.id.editTextProfileSocialSecurityID)
+        editTextPhoneNumber = view.findViewById(R.id.editTextProfilePhoneNumber)
+    }
 }

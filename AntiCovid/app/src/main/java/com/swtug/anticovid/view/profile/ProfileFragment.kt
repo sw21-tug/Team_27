@@ -44,9 +44,10 @@ class ProfileFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initFields(view)
-        initListeners()
         initView()
+        initListeners()
         assignValues()
+
     }
 
     private fun initView() {
@@ -58,9 +59,11 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun initFields(view: View) {
+        btnlogout = view.findViewById(R.id.logoutbutton)
+        btnedit = view.findViewById(R.id.button2)
+
         btnChinese = view.findViewById(R.id.btn_chinese)
         btnEnglish = view.findViewById(R.id.btn_english)
-        btnlogout = view.findViewById(R.id.logoutbutton)
         toggleGroupLanguage = view.findViewById(R.id.toggle_group_language)
 
         editTextName = view.findViewById(R.id.editTextProfileName)
@@ -69,10 +72,24 @@ class ProfileFragment : BaseFragment() {
         editTextAddress = view.findViewById(R.id.editTextProfileAddress)
         editTextSocialSecurityID = view.findViewById(R.id.editTextProfileSocialSecurityID)
         editTextPhoneNumber = view.findViewById(R.id.editTextProfilePhoneNumber)
+
+    }
+
+
+    private fun assignValues() {
+        val user = PreferencesRepo.getUser(requireContext())
+        if (user != null) {
+            editTextName.setText(user.name)
+            editTextSurname.setText(user.surname)
+            editTextEMail.setText(user.email)
+            editTextAddress.setText(user.address)
+            editTextSocialSecurityID.setText(user.secid)
+            editTextPhoneNumber.setText(user.phonenumber)
+        }
+
     }
 
     private fun initListeners() {
-
         btnlogout.setOnClickListener {
             PreferencesRepo.deleteUser(requireContext())
             PreferencesRepo.deleteVaccination(requireContext())
@@ -91,78 +108,8 @@ class ProfileFragment : BaseFragment() {
             }
         }
 
-    }
-    private fun assignValues(){
-        val user = PreferencesRepo.getUser(requireContext())
-        if (user != null) {
-            editTextName.setText(user.name)
-            editTextSurname.setText(user.surname)
-            editTextEMail.setText(user.email)
-            editTextAddress.setText(user.address)
-            editTextSocialSecurityID.setText(user.secid)
-            editTextPhoneNumber.setText(user.phonenumber)
-        }
-
-    }
-
-    private fun initListeners() {
-        btnlogout.setOnClickListener {
-            PreferencesRepo.deleteUser(requireContext())
-            PreferencesRepo.deleteVaccination(requireContext())
-            findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
-
-        }
-
         btnedit.setOnClickListener {
-            val oldUser = PreferencesRepo.getUser(requireContext())
-            val validValues = checkEditTextInputs()
-            if (validValues != null) {
-
-                Toast.makeText(
-                    requireContext(),
-                    validValues,
-                    Toast.LENGTH_LONG
-                ).show()
-
-            } else if (oldUser != null) {
-
-                val user = User(
-                    oldUser.id,
-                    editTextName.text.toString(),
-                    editTextSurname.text.toString(),
-                    oldUser.email,
-                    editTextAddress.text.toString(),
-                    editTextSocialSecurityID.text.toString(),
-                    editTextPhoneNumber.text.toString(),
-                    oldUser.password
-                )
-                PreferencesRepo.saveUser(requireContext(), user)
-
-                FirebaseRepo.updateUser(user, object : FirebaseListener {
-                    override fun onSuccess(user: User?) {
-                        btnedit.isEnabled = true
-                        Toast.makeText(
-                            requireContext(),
-                            getString(R.string.changes_saved),
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-
-                    override fun onStart() {
-                        btnedit.isEnabled = false
-                    }
-
-                    override fun onFailure() {
-                        btnedit.isEnabled = true
-                        Toast.makeText(
-                            requireContext(),
-                            getString(R.string.error_firebase_communication),
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                })
-            }
-
+            storeNewUserData()
 
         }
     }
@@ -190,14 +137,57 @@ class ProfileFragment : BaseFragment() {
         return null;
     }
 
-    private fun initFields(view: View) {
-        btnlogout = view.findViewById(R.id.logoutbutton)
-        btnedit = view.findViewById(R.id.button2)
-        editTextName = view.findViewById(R.id.editTextProfileName)
-        editTextSurname = view.findViewById(R.id.editTextProfileSurname)
-        editTextEMail = view.findViewById(R.id.editTextProfileEmail)
-        editTextAddress = view.findViewById(R.id.editTextProfileAddress)
-        editTextSocialSecurityID = view.findViewById(R.id.editTextProfileSocialSecurityID)
-        editTextPhoneNumber = view.findViewById(R.id.editTextProfilePhoneNumber)
+    private fun storeNewUserData() {
+        val oldUser = PreferencesRepo.getUser(requireContext())
+        val validValues = checkEditTextInputs()
+        if (validValues != null) {
+
+            Toast.makeText(
+                requireContext(),
+                validValues,
+                Toast.LENGTH_LONG
+            ).show()
+
+        } else if (oldUser != null) {
+
+            val user = User(
+                oldUser.id,
+                editTextName.text.toString(),
+                editTextSurname.text.toString(),
+                oldUser.email,
+                editTextAddress.text.toString(),
+                editTextSocialSecurityID.text.toString(),
+                editTextPhoneNumber.text.toString(),
+                oldUser.password
+            )
+            PreferencesRepo.saveUser(requireContext(), user)
+
+            FirebaseRepo.updateUser(user, object : FirebaseListener {
+                override fun onSuccess(user: User?) {
+                    btnedit.isEnabled = true
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.changes_saved),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+                override fun onStart() {
+                    btnedit.isEnabled = false
+                }
+
+                override fun onFailure() {
+                    btnedit.isEnabled = true
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.error_firebase_communication),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            })
+        }
+
     }
+
+
 }

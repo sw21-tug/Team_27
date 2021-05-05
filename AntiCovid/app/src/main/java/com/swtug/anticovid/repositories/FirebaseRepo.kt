@@ -25,21 +25,44 @@ object FirebaseRepo {
 
         firebaseFireStore.collection(COLLECTION_USER).document(user.email).get()
             .addOnSuccessListener { document ->
-                if(document == null || !document.exists()) {
+                if (document == null || !document.exists()) {
                     firebaseFireStore.collection(COLLECTION_USER).document(user.email).set(user)
-                    .addOnSuccessListener {
-                        firebaseListener.onSuccess(user)
-                    }
-                    .addOnFailureListener {
-                        firebaseListener.onFailure()
-                    }
+                        .addOnSuccessListener {
+                            firebaseListener.onSuccess(user)
+                        }
+                        .addOnFailureListener {
+                            firebaseListener.onFailure()
+                        }
                 } else {
                     firebaseListener.onSuccess(null)
                 }
-        }.addOnFailureListener {
-            firebaseListener.onFailure()
-        }
+            }.addOnFailureListener {
+                firebaseListener.onFailure()
+            }
     }
+
+    fun updateUser(user: User, firebaseListener: FirebaseListener) {
+        firebaseListener.onStart()
+        val firebaseFireStore = FirebaseFirestore.getInstance()
+
+        firebaseFireStore.collection(COLLECTION_USER).document(user.email).get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    firebaseFireStore.collection(COLLECTION_USER).document(user.email).set(user)
+                        .addOnSuccessListener {
+                            firebaseListener.onSuccess(user)
+                        }
+                        .addOnFailureListener {
+                            firebaseListener.onFailure()
+                        }
+                } else {
+                    firebaseListener.onSuccess(null)
+                }
+            }.addOnFailureListener {
+                firebaseListener.onFailure()
+            }
+    }
+
 
     fun getUser(email: String, firebaseListener: FirebaseListener) {
         firebaseListener.onStart()
@@ -49,7 +72,7 @@ object FirebaseRepo {
         firebaseStore.collection(COLLECTION_USER).document(email).get()
             .addOnSuccessListener { document ->
 
-                if(document != null && document.exists()) {
+                if (document != null && document.exists()) {
                     user = User(
                         document[USER_ID] as Long,
                         document[USER_NAME] as String,

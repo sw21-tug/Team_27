@@ -5,6 +5,7 @@ import androidx.fragment.app.testing.withFragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -47,6 +48,57 @@ class ContentTest {
 
     @Test
     fun checkLoadingContent() {
+        val user =
+            PreferencesRepo.getUser(InstrumentationRegistry.getInstrumentation().targetContext)
+
+        user!!
+
+        onView(ViewMatchers.withId(R.id.editTextProfileName))
+            .check(ViewAssertions.matches(ViewMatchers.withText(user.name)))
+
+        onView(ViewMatchers.withId(R.id.editTextProfileSurname))
+            .check(ViewAssertions.matches(ViewMatchers.withText(user.surname)))
+
+        onView(ViewMatchers.withId(R.id.editTextProfileEmail))
+            .check(ViewAssertions.matches(ViewMatchers.withText(user.email)))
+
+        onView(ViewMatchers.withId(R.id.editTextProfileAddress))
+            .check(ViewAssertions.matches(ViewMatchers.withText(user.address)))
+
+        onView(ViewMatchers.withId(R.id.editTextProfilePhoneNumber))
+            .check(ViewAssertions.matches(ViewMatchers.withText(user.phonenumber)))
+
+        onView(ViewMatchers.withId(R.id.editTextProfileSocialSecurityID))
+            .check(ViewAssertions.matches(ViewMatchers.withText(user.secid)))
+
+
+    }
+
+    @Test
+    fun checkEditContent() {
+
+        onView(ViewMatchers.withId(R.id.editTextProfileName)).perform(ViewActions.replaceText("User"))
+        onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
+        onView(ViewMatchers.withId(R.id.editTextProfileSurname)).perform(ViewActions.replaceText("SurName"))
+        onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
+        onView(ViewMatchers.withId(R.id.editTextProfileAddress)).perform(ViewActions.replaceText("Address 123"))
+        onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
+        onView(ViewMatchers.withId(R.id.editTextProfilePhoneNumber)).perform(
+            ViewActions.replaceText(
+                "+123343421234"
+            )
+        )
+        onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
+        onView(ViewMatchers.withId(R.id.editTextProfileSocialSecurityID)).perform(
+            ViewActions.replaceText(
+                "712384732"
+            )
+        )
+        onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
+
+        onView(ViewMatchers.withId(R.id.button2)).perform(ViewActions.click())
+
+
         val user =
             PreferencesRepo.getUser(InstrumentationRegistry.getInstrumentation().targetContext)
 

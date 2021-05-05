@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
-import com.swtug.anticovid.models.User
 import com.swtug.anticovid.R
+import com.swtug.anticovid.models.User
+import com.swtug.anticovid.repositories.FirebaseListener
+import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.view.BaseFragment
 import java.util.*
@@ -91,7 +94,7 @@ class ProfileFragment : BaseFragment() {
     }
     private fun assignValues(){
         val user = PreferencesRepo.getUser(requireContext())
-        if(user != null){
+        if (user != null) {
             editTextName.setText(user.name)
             editTextSurname.setText(user.surname)
             editTextEMail.setText(user.email)
@@ -111,22 +114,39 @@ class ProfileFragment : BaseFragment() {
         }
 
         btnedit.setOnClickListener {
-            val old_user = PreferencesRepo.getUser(requireContext())
-            if(old_user!=null)
-            {
+            val oldUser = PreferencesRepo.getUser(requireContext())
+            if (oldUser != null) {
                 val user = User(
-                    old_user.id,
+                    oldUser.id,
                     editTextName.text.toString(),
                     editTextSurname.text.toString(),
-                    editTextEMail.text.toString(),
+                    oldUser.email,
                     editTextAddress.text.toString(),
                     editTextSocialSecurityID.text.toString(),
                     editTextPhoneNumber.text.toString(),
-                    old_user.password
+                    oldUser.password
                 )
-                PreferencesRepo.saveUser(requireContext(),user)
-            }
+                PreferencesRepo.saveUser(requireContext(), user)
 
+                FirebaseRepo.updateUser(user, object : FirebaseListener {
+                    override fun onSuccess(user: User?) {
+                        btnedit.isEnabled = true
+                    }
+
+                    override fun onStart() {
+                        btnedit.isEnabled = false
+                    }
+
+                    override fun onFailure() {
+                        btnedit.isEnabled = true
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.error_firebase_communication),
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                })
+            }
 
 
         }

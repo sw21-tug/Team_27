@@ -35,3 +35,17 @@ This app also provides users with official institutions rules and changes about 
 | User Story | Feature |
 | ---- | ---- |
 | [ANTIC-001](https://github.com/sw21-tug/Team_27/issues/1) | User registration |
+| [ANTIC-003](https://github.com/sw21-tug/Team_27/issues/3) | Login |
+| [ANTIC-004](https://github.com/sw21-tug/Team_27/issues/4) | Logout |
+| [ANTIC-006](https://github.com/sw21-tug/Team_27/issues/6) | Notification case negative |
+| [ANTIC-007](https://github.com/sw21-tug/Team_27/issues/7) | Vaccine ID |
+| [ANTIC-008](https://github.com/sw21-tug/Team_27/issues/8) | Terms of use |
+| [ANTIC-009](https://github.com/sw21-tug/Team_27/issues/9) | Editing account infos |
+| [ANTIC-010](https://github.com/sw21-tug/Team_27/issues/10) | Switching between screens / Home Screen |
+| [ANTIC-011](https://github.com/sw21-tug/Team_27/issues/11) | Basic App Setup |
+| [ANTIC-012](https://github.com/sw21-tug/Team_27/issues/12) | Basic Git Setup |
+| [ANTIC-013](https://github.com/sw21-tug/Team_27/issues/13) | Firebase SDK |
+| [ANTIC-014](https://github.com/sw21-tug/Team_27/issues/14) | Create QR Code |
+| [ANTIC-023](https://github.com/sw21-tug/Team_27/issues/41) | Refactor Registration  |
+| [ANTIC-025](https://github.com/sw21-tug/Team_27/issues/43) | Research for User Statistics |
+| []() |  |

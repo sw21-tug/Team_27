@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -14,5 +15,198 @@
         android:background="?colorPrimary"
         app:title="@string/add_test_report"
         app:titleTextColor="@color/white"/>
+
+    <LinearLayout
+        android:id="@+id/current_user_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/edittext_border"
+        android:backgroundTint="@color/light_purple"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:paddingTop="32dp"
+        android:paddingBottom="32dp"
+        android:weightSum="2"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:src="@drawable/ic_account"
+            app:tint="@color/black"
+            android:scaleType="fitCenter"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text_email_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/e_mail"
+                android:textSize="10pt"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/text_user_name_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/name_hint"
+                android:textSize="10pt"
+                app:layout_constraintTop_toBottomOf="@id/text_email_info"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/test_date_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:paddingTop="32dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:weightSum="3"
+        app:layout_constraintBottom_toTopOf="@id/valid_date_layout"
+        app:layout_constraintTop_toBottomOf="@id/current_user_layout">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/test_date"
+            android:textSize="10pt" />
+
+        <EditText
+            android:id="@+id/text_test_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.6"
+            android:backgroundTint="@color/purple_500"
+            android:enabled="false"
+            android:textColor="@color/dark_grey"
+            android:textCursorDrawable="@drawable/purple_cursor"
+            android:textSize="10pt" />
+
+        <ImageButton
+            android:id="@+id/button_enter_test_date"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_weight="0.4"
+            android:background="@color/white"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_calendar"
+            android:tint="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/valid_date_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="32dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:weightSum="3"
+        app:layout_constraintTop_toBottomOf="@id/test_date_layout">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/valid_date"
+            android:textSize="10pt" />
+
+        <EditText
+            android:id="@+id/text_valid_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.6"
+            android:backgroundTint="@color/purple_500"
+            android:enabled="false"
+            android:textColor="@color/dark_grey"
+            android:textCursorDrawable="@drawable/purple_cursor"
+            android:textSize="10pt" />
+
+        <ImageButton
+            android:id="@+id/button_enter_valid_date"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_weight="0.4"
+            android:background="@color/white"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_calendar"
+            android:tint="@color/black" />
+    </LinearLayout>
+
+
+    <RadioGroup
+        android:id="@+id/test_result_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_border"
+        android:backgroundTint="@color/light_purple"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/valid_date_layout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <!--<LinearLayout
+            android:id="@+id/radio_group_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:weightSum="2">-->
+
+            <RadioButton
+                android:id="@+id/radio_test_positive"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="32dp"
+                android:text="@string/positive"
+                android:textSize="10pt" />
+
+            <RadioButton
+                android:id="@+id/radio_test_negative"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="@string/negative"
+                android:textSize="10pt" />
+        <!--</LinearLayout>-->
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_add_test_report_to_firebase"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_border_radius"
+        android:backgroundTint="@color/purple_500"
+        android:color="@color/white"
+        android:elevation="2dp"
+        android:text="@string/add_test_report"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

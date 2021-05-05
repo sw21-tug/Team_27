@@ -12,7 +12,10 @@
     <color name="transparent">#00000000</color>
     <color name="primary">#10536d</color>
     <color name="grey">#817D7D</color>
+    <color name="dark_grey">#606060</color>
     <color name="errorRed" >#ED8C8C</color>
+
+    <color name="light_purple">#CBC3E3</color>
 
 
 </resources>

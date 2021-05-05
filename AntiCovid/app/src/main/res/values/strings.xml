@@ -68,9 +68,9 @@
     <string name="english">English</string>
     <string name="edit">Edit</string>
     <string name="e_mail">E-Mail</string>
-    <string name="log_out">Log out</string>
     <string name="social_security_id">Social security ID</string>
     <string name="change_password">Change Password</string>
+    <string name="log_out">Log out</string>
     <string name="register_button_text"><u>Register</u></string>
     <string name="phone_number_hint">Phone Number</string>
     <string name="social_security_id_hint">Social security id</string>

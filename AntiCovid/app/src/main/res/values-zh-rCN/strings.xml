@@ -71,4 +71,21 @@
     <string name="e_mail">电子邮件</string>
     <string name="social_security_id">身分证字号</string>
 
+    <string name="log_out">登出</string>
+    <string name="register_button_text"><u>登記</u></string>
+    <string name="phone_number_hint">電話號碼</string>
+    <string name="social_security_id_hint">社會保障號</string>
+    <string name="address_hint">地址</string>
+    <string name="surename_hint">蘇里南</string>
+    <string name="name_hint">名稱</string>
+    <string name="email_hint">電子郵件</string>
+    <string name="password">密碼</string>
+    <string name="error_empty_fields">至少一個字段為空</string>
+    <string name="error_pwd_too_short">密碼長度必須至少為8個字符！</string>
+    <string name="error_user_exists">具有相同電子郵件的用戶已經存在！</string>
+    <string name="error_firebase_communication">與Firebase通訊時發生錯誤！</string>
+    <string name="action_cancel_register">取消</string>
+    <string name="error_no_email">沒有輸入電子郵件</string>
+    <string name="error_wrong_password">用戶名和密碼的組合不存在！</string>
+
 </resources>

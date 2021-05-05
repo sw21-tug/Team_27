@@ -12,13 +12,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.swtug.anticovid.R
 import com.swtug.anticovid.repositories.PreferencesRepo
-import java.io.File
-import java.io.FileReader
 import java.io.InputStreamReader
-import java.lang.Exception
+import java.util.*
 
 class TermsOfUseFragment: Fragment() {
-    private final val TERMS_OF_USE_FILE_DIR = "app/src/main/java/com/swtug/anticovid/view/termsOfUse/AntiCovidTermsOfUse.txt"
     private lateinit var switchAccepted: SwitchCompat
     private lateinit var btnAccept: Button
     private lateinit var textTermsOfUse: TextView
@@ -60,8 +57,14 @@ class TermsOfUseFragment: Fragment() {
 
     private fun readTermsOfUseFile() {
         try {
+            val language =
+                if (requireActivity().resources.configuration.locale == Locale.SIMPLIFIED_CHINESE) {
+                    "_CN"
+                } else {
+                    ""
+                }
 
-            val inputStream = requireContext().assets.open("AntiCovidTermsOfUse.txt")
+            val inputStream = requireContext().assets.open("AntiCovidTermsOfUse$language.txt")
             InputStreamReader(inputStream).forEachLine {
                 textTermsOfUse.append(it);
                 textTermsOfUse.append("\n");

@@ -12,10 +12,12 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.R
+import com.swtug.anticovid.TestUtils
 import com.swtug.anticovid.repositories.IPreferencesRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.view.profile.ProfileFragment
 import junit.framework.TestCase
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -43,9 +45,9 @@ class LanguageTest {
         }
     }
 
-
+    @After
     fun tearDown(){
-
+        TestUtils.clearSharedPreferences(ApplicationProvider.getApplicationContext())
     }
 
     @Test

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
@@ -19,6 +20,12 @@ class ProfileFragment : BaseFragment() {
     private lateinit var btnEnglish: MaterialButton
     private lateinit var toggleGroupLanguage: MaterialButtonToggleGroup
     private lateinit var btnlogout: Button
+    private lateinit var editTextName: EditText
+    private lateinit var editTextSurname: EditText
+    private lateinit var editTextEMail: EditText
+    private lateinit var editTextAddress: EditText
+    private lateinit var editTextSocialSecurityID: EditText
+    private lateinit var editTextPhoneNumber: EditText
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,8 +39,9 @@ class ProfileFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initFields(view)
+        initListeners()
         initView()
-        initListener()
+        assignValues()
     }
 
     private fun initView() {
@@ -49,9 +57,22 @@ class ProfileFragment : BaseFragment() {
         btnEnglish = view.findViewById(R.id.btn_english)
         btnlogout = view.findViewById(R.id.logoutbutton)
         toggleGroupLanguage = view.findViewById(R.id.toggle_group_language)
+
+        editTextName = view.findViewById(R.id.editTextProfileName)
+        editTextSurname = view.findViewById(R.id.editTextProfileSurname)
+        editTextEMail = view.findViewById(R.id.editTextProfileEmail)
+        editTextAddress = view.findViewById(R.id.editTextProfileAddress)
+        editTextSocialSecurityID = view.findViewById(R.id.editTextProfileSocialSecurityID)
+        editTextPhoneNumber = view.findViewById(R.id.editTextProfilePhoneNumber)
     }
 
-    private fun initListener() {
+    private fun initListeners() {
+
+        btnlogout.setOnClickListener {
+            PreferencesRepo.deleteUser(requireContext())
+            PreferencesRepo.deleteVaccination(requireContext())
+            findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
+        }
         toggleGroupLanguage.addOnButtonCheckedListener { _, checkedId, isChecked ->
             when (checkedId) {
                 R.id.btn_chinese -> {
@@ -65,10 +86,19 @@ class ProfileFragment : BaseFragment() {
             }
         }
 
-        btnlogout.setOnClickListener {
-            PreferencesRepo.deleteUser(requireContext())
-            PreferencesRepo.deleteVaccination(requireContext())
-            findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
-        }
     }
+    private fun assignValues(){
+        val user = PreferencesRepo.getUser(requireContext())
+        if(user != null){
+            editTextName.setText(user.name)
+            editTextSurname.setText(user.surname)
+            editTextEMail.setText(user.email)
+            editTextAddress.setText(user.address)
+            editTextSocialSecurityID.setText(user.secid)
+            editTextPhoneNumber.setText(user.phonenumber)
+        }
+
+    }
+
+
 }

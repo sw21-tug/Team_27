@@ -19,6 +19,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.R
+import com.swtug.anticovid.TestUtils
 import com.swtug.anticovid.models.Vaccination
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.view.vaccineInfo.VaccinatedFragment
@@ -58,7 +59,7 @@ class VaccinatedTest {
 
     @After
     fun tearDown() {
-        clearSharedPreferences()
+        TestUtils.clearSharedPreferences(InstrumentationRegistry.getInstrumentation().targetContext)
     }
 
     @Test
@@ -79,14 +80,6 @@ class VaccinatedTest {
     fun testClickAddVaccine() {
         onView(withId(R.id.btn_show_qr_code)).perform(click())
         verify(navController).navigate(R.id.action_vaccinatedFragment_to_QRCodeFragment)
-    }
-
-    private fun clearSharedPreferences() {
-        val context = InstrumentationRegistry.getInstrumentation().targetContext
-        val preferences = context.getSharedPreferences("ANTI_COVID_APP", Context.MODE_PRIVATE)
-        preferences.edit()
-            .clear()
-            .commit()
     }
 }
 

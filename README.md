@@ -15,7 +15,7 @@ In case of a positive test, users will be notified with further informations abo
 This app also provides users with official institutions rules and changes about current situation ( overall corona situation in the country, statistics, new infections, number of tests, travelling information, general information about the things you can do and the things which are prohibited by the government). No fake news, just official!
 
 
-
+hallo
 ## Team
 | Role | Name |
 | ---- | ---- |

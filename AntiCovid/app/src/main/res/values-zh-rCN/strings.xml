@@ -1,39 +1,39 @@
 <resources>
-    <string name="app_name">Anti Covid</string>
-    <string name="profile">Profile</string>
-    <string name="add_test_report">Add Test Report</string>
-    <string name="my_vaccine_information">My vaccine Information</string>
-    <string name="valid_qr_code">Valid QR Code</string>
-    <string name="my_previous_test_reports">My previous Test Reports</string>
+    <string name="app_name">反Covid</string>
+    <string name="profile">轮廓</string>
+    <string name="add_test_report">添加测试报告t</string>
+    <string name="my_vaccine_information">我的疫苗信息</string>
+    <string name="valid_qr_code">有效的QR码</string>
+    <string name="my_previous_test_reports">我以前的测试报告</string>
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_back">Back</string>
-    <string name="action_sign_in">Sign up</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome!"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <string name="create_acc">Create account</string>
-    <string name="address">Address</string>
-    <string name="social_sec_id">Social security ID</string>
-    <string name="phone_number">Phone number</string>
-    <string name="name">Name</string>
-    <string name="surname">Surname</string>
-    <string name="register_title">Create Account</string>
-    <string name="no_vaccine_info">We have no information about your vaccination.</string>
-    <string name="recently_vaccined_question">Have you recently vaccinated?</string>
-    <string name="insert_id_for_vaccine_qr_code">If so please add your vaccine ID in order to generate a permanent QR Code</string>
-    <string name="qr_code_created_after_second_dose">Please have in mind that the permanent QR Code is generated when you get the second dosis</string>
-    <string name="add_vaccine_id">Add Vaccine ID</string>
-    <string name="add_vaccine">Add Vaccine</string>
-    <string name="manufacturer">Manufacturer</string>
-    <string name="first_dose_date">First dose date</string>
-    <string name="second_dose_date">Second dose date</string>
-    <string name="institution">Institution</string>
-    <string name="accept">Accept</string>
-    <string name="accept_terms_of_use">Accept Terms Of Use</string>
+    <string name="prompt_email">电子邮件</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_back">后退</string>
+    <string name="action_sign_in">注册</string>
+    <string name="action_sign_in_short">登入</string>
+    <string name="welcome">"欢迎!"</string>
+    <string name="invalid_username">无效的用户名</string>
+    <string name="invalid_password">密码必须大于5个字符</string>
+    <string name="login_failed">登录失败</string>
+    <string name="create_acc">创建帐号</string>
+    <string name="address">地址</string>
+    <string name="social_sec_id">身分证字号</string>
+    <string name="phone_number">电话号码</string>
+    <string name="name">名称</string>
+    <string name="surname">姓</string>
+    <string name="register_title">创建帐号</string>
+    <string name="no_vaccine_info">我们没有有关您的疫苗接种的信息。</string>
+    <string name="recently_vaccined_question">您最近接种过疫苗吗？</string>
+    <string name="insert_id_for_vaccine_qr_code">如果是这样，请添加您的疫苗ID以生成永久的QR码</string>
+    <string name="qr_code_created_after_second_dose">请记住，当您获得第二份文件时，将生成永久QR码</string>
+    <string name="add_vaccine_id">添加疫苗ID</string>
+    <string name="add_vaccine">添加疫苗</string>
+    <string name="manufacturer">制造商</string>
+    <string name="first_dose_date">首次服药日期</string>
+    <string name="second_dose_date">第二次服药日期</string>
+    <string name="institution">机构</string>
+    <string name="accept">接受</string>
+    <string name="accept_terms_of_use">接受使用条款</string>
 
     <string name="terms_of_use_full_text">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -63,29 +63,29 @@
         takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
         justo duo dolores et ea rebum. Stet clita\n
     </string>
-    <string name="terms_of_use_header">Terms Of Use</string>
-    <string name="chinese">Chinese</string>
+    <string name="terms_of_use_header">使用条款</string>
+    <string name="chinese">中国人</string>
     <string name="english">English</string>
-    <string name="edit">Edit</string>
-    <string name="e_mail">E-Mail</string>
-    <string name="social_security_id">Social security ID</string>
-    <string name="change_password">Change Password</string>
-    <string name="log_out">Log out</string>
-    <string name="register_button_text"><u>Register</u></string>
-    <string name="phone_number_hint">Phone Number</string>
-    <string name="social_security_id_hint">Social security id</string>
-    <string name="address_hint">Address</string>
-    <string name="surename_hint">Surename</string>
-    <string name="name_hint">Name</string>
-    <string name="email_hint">E-mail</string>
-    <string name="password">Password</string>
-    <string name="error_empty_fields">At least one field is empty!</string>
-    <string name="error_pwd_too_short">Password length has to be at least 8 characters long!</string>
-    <string name="error_user_exists">A user with the same E-mail already exists!</string>
-    <string name="error_firebase_communication">An error occurred communicating with Firebase!</string>
-    <string name="action_cancel_register">Cancel</string>
-    <string name="error_no_email" >No email entered!</string>
-    <string name="error_wrong_password">The combination of user and password does not exist!</string>
+    <string name="change_password">更改密码</string>
+    <string name="edit">编辑</string>
+    <string name="e_mail">电子邮件</string>
+    <string name="social_security_id">身分证字号</string>
 
+    <string name="log_out">登出</string>
+    <string name="register_button_text"><u>登記</u></string>
+    <string name="phone_number_hint">電話號碼</string>
+    <string name="social_security_id_hint">社會保障號</string>
+    <string name="address_hint">地址</string>
+    <string name="surename_hint">蘇里南</string>
+    <string name="name_hint">名稱</string>
+    <string name="email_hint">電子郵件</string>
+    <string name="password">密碼</string>
+    <string name="error_empty_fields">至少一個字段為空</string>
+    <string name="error_pwd_too_short">密碼長度必須至少為8個字符！</string>
+    <string name="error_user_exists">具有相同電子郵件的用戶已經存在！</string>
+    <string name="error_firebase_communication">與Firebase通訊時發生錯誤！</string>
+    <string name="action_cancel_register">取消</string>
+    <string name="error_no_email">沒有輸入電子郵件</string>
+    <string name="error_wrong_password">用戶名和密碼的組合不存在！</string>
 
 </resources>

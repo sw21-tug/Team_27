@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -146,8 +145,19 @@
             android:background="@color/white"
             android:scaleType="fitXY"
             android:src="@drawable/ic_calendar"
-            android:tint="@color/black" />
+            android:tint="@color/black"
+            android:visibility="invisible"/>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/validity_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/negative_test_valid_info"
+        android:textColor="@color/dark_grey"
+        app:layout_constraintLeft_toLeftOf="@id/valid_date_layout"
+        app:layout_constraintTop_toBottomOf="@id/valid_date_layout" />
 
 
     <RadioGroup
@@ -161,16 +171,10 @@
         android:layout_marginRight="16dp"
         android:weightSum="2"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/valid_date_layout"
+        app:layout_constraintTop_toBottomOf="@id/validity_info"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-        <!--<LinearLayout
-            android:id="@+id/radio_group_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:weightSum="2">-->
 
             <RadioButton
                 android:id="@+id/radio_test_positive"
@@ -189,7 +193,6 @@
                 android:checked="true"
                 android:text="@string/negative"
                 android:textSize="10pt" />
-        <!--</LinearLayout>-->
     </RadioGroup>
 
     <Button

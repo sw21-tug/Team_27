@@ -15,25 +15,23 @@ In case of a positive test, users will be notified with further informations abo
 This app also provides users with official institutions rules and changes about current situation ( overall corona situation in the country, statistics, new infections, number of tests, travelling information, general information about the things you can do and the things which are prohibited by the government). No fake news, just official!
 
 
-hallo
 ## Team
 | Role | Name |
 | ---- | ---- |
-| **Product Owner** | Alesevic, Muharem |
+| **Product Owner** | Kohl, Andreas |
 | **Scrum Master** | Tögl, Christina |
 | **Developer** | Brugger, Lukas |
 | **Developer** | Csordás, Bálint |
-| **Developer** | Ghiriti, Alex-Ioan |
-| **Developer** | Kohl, Andreas |
 | **Developer** | Lemle, Béla |
 | **Developer** | Nagler, Gabriel |
 | **Developer** | Scheiber, Dominik |
 | **Developer** | Schrimpf, Simon Wolfgang |
 | **Developer** | Stangl, Tobias |
-| **Developer** | Tarkhanova, Elizaveta |
-
-
+| **Developer** | ~~Tarkhanova, Elizaveta~~ |
+| **Product Owner** | ~~Alesevic, Muharem~~ |
+| **Developer** | ~~Ghiriti, Alex-Ioan~~ |
 
 ## Implemented Features
 
-**TODO** 
+| User Story | Feature |
+| 1 | 2 |

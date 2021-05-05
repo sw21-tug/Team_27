@@ -5,20 +5,14 @@ import androidx.fragment.app.testing.withFragment
 import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.swtug.anticovid.R
 import com.swtug.anticovid.view.profile.ProfileFragment
-import junit.framework.TestCase
 import org.junit.Before
-import org.junit.Test
 import org.junit.runner.RunWith
 
-
 @RunWith(AndroidJUnit4::class)
-class LogoutNavigationTest {
+class LanguageTest {
     private lateinit var navController: TestNavHostController
 
     @Before
@@ -35,15 +29,4 @@ class LogoutNavigationTest {
             Navigation.setViewNavController(requireView(), navController)
         }
     }
-
-
-    @Test
-    fun testLogout() {
-
-        onView(withId(R.id.logoutbutton)).perform(click())
-        TestCase.assertEquals(navController.currentDestination?.id, R.id.loginFragment)
-    }
-
-
 }
-

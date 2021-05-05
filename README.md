@@ -34,4 +34,4 @@ This app also provides users with official institutions rules and changes about 
 ## Implemented Features
 
 | User Story | Feature |
-| 1 | 2 |
+| [ANTIC-001](https://github.com/sw21-tug/Team_27/issues/1) | User registration |

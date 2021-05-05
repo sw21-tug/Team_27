@@ -17,6 +17,7 @@ class MainFragment : Fragment() {
     private lateinit var btnVaccineInfo: Button
     private lateinit var btnPreviousTestReports: Button
     private lateinit var btnQRCode: Button
+    private lateinit var btnAdvFeatures: Button
     private lateinit var navController: NavController
 
     override fun onCreateView(
@@ -61,6 +62,10 @@ class MainFragment : Fragment() {
         btnQRCode.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_QRCodeFragment)
         }
+
+        btnAdvFeatures.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_advancedFeatureFragment)
+        }
     }
 
     private fun initFields(view: View) {
@@ -69,5 +74,6 @@ class MainFragment : Fragment() {
         btnVaccineInfo = view.findViewById(R.id.button_vaccine_info)
         btnPreviousTestReports = view.findViewById(R.id.button_previous_test_reports)
         btnQRCode = view.findViewById(R.id.button_valid_qr_code)
+        btnAdvFeatures = view.findViewById(R.id.button_advaced_features)
     }
 }

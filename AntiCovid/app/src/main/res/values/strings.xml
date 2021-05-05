@@ -34,6 +34,7 @@
     <string name="institution">Institution</string>
     <string name="accept">Accept</string>
     <string name="accept_terms_of_use">Accept Terms Of Use</string>
+    <string name="advanced_features">Advanced Features</string>
 
     <string name="terms_of_use_full_text">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -84,8 +85,10 @@
     <string name="error_user_exists">A user with the same E-mail already exists!</string>
     <string name="error_firebase_communication">An error occurred communicating with Firebase!</string>
     <string name="action_cancel_register">Cancel</string>
-    <string name="error_no_email" >No email entered!</string>
+    <string name="error_no_email">No email entered!</string>
     <string name="error_wrong_password">The combination of user and password does not exist!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

@@ -32,6 +32,6 @@ This app also provides users with official institutions rules and changes about 
 | **Developer** | ~~Ghiriti, Alex-Ioan~~ |
 
 ## Implemented Features
-
 | User Story | Feature |
+| ---- | ---- |
 | [ANTIC-001](https://github.com/sw21-tug/Team_27/issues/1) | User registration |

@@ -24,6 +24,7 @@ class ProfileFragment: BaseFragment() {
 
         btnlogout.setOnClickListener {
             PreferencesRepo.deleteUser(requireContext())
+            PreferencesRepo.deleteVaccination(requireContext())
             findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
         }
     }

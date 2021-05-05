@@ -37,6 +37,10 @@ object PreferencesRepo {
             .apply()
     }
 
+    fun deleteVaccination(context: Context){
+        getPreferences(context).edit().remove(VACCINATION).apply()
+    }
+
     fun getVaccination(context: Context): Vaccination? {
         val json =  getPreferences(context)
             .getString(VACCINATION, null)

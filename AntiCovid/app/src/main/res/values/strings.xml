@@ -87,6 +87,7 @@
     <string name="action_cancel_register">Cancel</string>
     <string name="error_no_email">No email entered!</string>
     <string name="error_wrong_password">The combination of user and password does not exist!</string>
+    <string name="error_secID_lenth">The Social security ID has to be 10 characters long!</string>
     <string name="positive">Positive</string>
     <string name="negative">Negative</string>
     <string name="test_date">Test Date:</string>

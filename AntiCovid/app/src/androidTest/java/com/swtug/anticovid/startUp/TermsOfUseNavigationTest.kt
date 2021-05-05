@@ -9,6 +9,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.R
+import com.swtug.anticovid.TestUtils
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.view.splashScreen.SplashScreenFragment
 import junit.framework.TestCase
@@ -23,7 +24,7 @@ class TermsOfUseNavigationTest {
 
     @Before
     fun setup() {
-        clearSharedPreferences()
+        TestUtils.clearSharedPreferences(InstrumentationRegistry.getInstrumentation().targetContext)
 
         navController = TestNavHostController(ApplicationProvider.getApplicationContext())
 
@@ -48,14 +49,6 @@ class TermsOfUseNavigationTest {
         PreferencesRepo.saveAcceptTermsOfUse(InstrumentationRegistry.getInstrumentation().targetContext, true)
         Thread.sleep(3500);
         TestCase.assertEquals(navController.currentDestination?.id, R.id.loginFragment)
-    }
-
-    private fun clearSharedPreferences() {
-        val context = InstrumentationRegistry.getInstrumentation().targetContext
-        val preferences = context.getSharedPreferences("ANTI_COVID_APP", Context.MODE_PRIVATE)
-        preferences.edit()
-            .clear()
-            .commit()
     }
 }
 

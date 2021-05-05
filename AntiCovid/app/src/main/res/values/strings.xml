@@ -9,7 +9,7 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_back">Back</string>
-    <string name="action_sign_in">Sign up -></string>
+    <string name="action_sign_in">Sign up</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome!"</string>
     <string name="invalid_username">Not a valid username</string>
@@ -69,5 +69,21 @@
     <string name="social_security_id">Social security ID</string>
     <string name="change_password">Change Password</string>
     <string name="edit"><![CDATA[Edit ->]]></string>
+    <string name="register_button_text"><u>Register</u></string>
+    <string name="phone_number_hint">Phone Number</string>
+    <string name="social_security_id_hint">Social security id</string>
+    <string name="address_hint">Address</string>
+    <string name="surename_hint">Surename</string>
+    <string name="name_hint">Name</string>
+    <string name="email_hint">E-mail</string>
+    <string name="password">Password</string>
+    <string name="error_empty_fields">At least one field is empty!</string>
+    <string name="error_pwd_too_short">Password length has to be at least 8 characters long!</string>
+    <string name="error_user_exists">A user with the same E-mail already exists!</string>
+    <string name="error_firebase_communication">An error occurred communicating with Firebase!</string>
+    <string name="action_cancel_register">Cancel</string>
+    <string name="error_no_email" >No email entered!</string>
+    <string name="error_wrong_password">The combination of user and password does not exist!</string>
+
 
 </resources>

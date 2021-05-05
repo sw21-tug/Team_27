@@ -115,7 +115,17 @@ class ProfileFragment : BaseFragment() {
 
         btnedit.setOnClickListener {
             val oldUser = PreferencesRepo.getUser(requireContext())
-            if (oldUser != null) {
+            val validValues = checkEditTextInputs()
+            if (validValues != null) {
+
+                Toast.makeText(
+                    requireContext(),
+                    validValues,
+                    Toast.LENGTH_LONG
+                ).show()
+
+            } else if (oldUser != null) {
+
                 val user = User(
                     oldUser.id,
                     editTextName.text.toString(),
@@ -131,6 +141,11 @@ class ProfileFragment : BaseFragment() {
                 FirebaseRepo.updateUser(user, object : FirebaseListener {
                     override fun onSuccess(user: User?) {
                         btnedit.isEnabled = true
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.changes_saved),
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
 
                     override fun onStart() {
@@ -150,6 +165,29 @@ class ProfileFragment : BaseFragment() {
 
 
         }
+    }
+
+    private fun checkEditTextInputs(): String? {
+
+        if (editTextEMail.text.isEmpty() ||
+            editTextName.text.isEmpty() ||
+            editTextSurname.text.isEmpty() ||
+            editTextPhoneNumber.text.isEmpty() ||
+            editTextAddress.text.isEmpty() ||
+            editTextSocialSecurityID.text.isEmpty()
+        ) {
+            return getString(R.string.error_empty_fields)
+
+        }
+
+        if (editTextSocialSecurityID.text.length != 10) {
+            return getString(R.string.error_secID_lenth)
+
+        }
+
+
+
+        return null;
     }
 
     private fun initFields(view: View) {

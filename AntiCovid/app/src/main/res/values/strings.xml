@@ -92,6 +92,7 @@
     <string name="negative">Negative</string>
     <string name="test_date">Test Date:</string>
     <string name="valid_date">Valid Date:</string>
+    <string name="changes_saved">Changes have been saved successfully</string>
     <string name="error_secID_lenth">The Social security ID has to be 10 characters long!</string>
 
     <string name="negative_test_valid_info">A negative test is valid for 48 hours!</string>

@@ -91,7 +91,7 @@ class ContentTest {
         onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
         onView(ViewMatchers.withId(R.id.editTextProfileSocialSecurityID)).perform(
             ViewActions.replaceText(
-                "712384732"
+                "0123456789"
             )
         )
         onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())

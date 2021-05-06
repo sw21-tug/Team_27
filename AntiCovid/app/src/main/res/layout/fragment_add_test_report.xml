@@ -129,24 +129,13 @@
             android:id="@+id/text_valid_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.6"
+            android:layout_weight="2"
             android:backgroundTint="@color/purple_500"
             android:enabled="false"
             android:textColor="@color/dark_grey"
             android:textCursorDrawable="@drawable/purple_cursor"
             android:textSize="10pt" />
 
-        <ImageButton
-            android:id="@+id/button_enter_valid_date"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_weight="0.4"
-            android:background="@color/white"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_calendar"
-            android:tint="@color/black"
-            android:visibility="invisible"/>
     </LinearLayout>
 
     <TextView

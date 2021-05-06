@@ -1,13 +1,22 @@
 package com.swtug.anticovid.repositories
 
-import android.content.Context
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QueryDocumentSnapshot
+import com.swtug.anticovid.models.TestReport
 import com.swtug.anticovid.models.User
 
 object FirebaseRepo {
 
     private const val COLLECTION_USER = "User"
+    private const val COLLECTION_TEST_REPORTS = "TestReports"
+
+    private const val USER_ID = "id"
+    private const val USER_NAME = "name"
+    private const val USER_SURNAME = "surname"
+    private const val USER_EMAIL = "email"
+    private const val USER_ADDRESS = "address"
+    private const val USER_SECID = "secid"
+    private const val USER_PHONENUMBER = "phonenumber"
+    private const val USER_PASSWORD = "password"
 
 
     fun saveUser(user: User, firebaseListener: FirebaseListener) {
@@ -42,18 +51,31 @@ object FirebaseRepo {
 
                 if(document != null && document.exists()) {
                     user = User(
-                        document["id"] as Long,
-                        document["name"] as String,
-                        document["surname"] as String,
-                        document["email"] as String,
-                        document["address"] as String,
-                        document["secid"] as String,
-                        document["phonenumber"] as String,
-                        document["password"] as String
+                        document[USER_ID] as Long,
+                        document[USER_NAME] as String,
+                        document[USER_SURNAME] as String,
+                        document[USER_EMAIL] as String,
+                        document[USER_ADDRESS] as String,
+                        document[USER_SECID] as String,
+                        document[USER_PHONENUMBER] as String,
+                        document[USER_PASSWORD] as String
                     )
                 }
 
                 firebaseListener.onSuccess(user)
+            }
+            .addOnFailureListener {
+                firebaseListener.onFailure()
+            }
+    }
+
+    fun addTestReport(testReport: TestReport, firebaseListener: FirebaseListener) {
+        firebaseListener.onStart()
+        val firebaseStore = FirebaseFirestore.getInstance()
+
+        firebaseStore.collection(COLLECTION_TEST_REPORTS).add(testReport)
+            .addOnSuccessListener {
+                firebaseListener.onSuccess(null)
             }
             .addOnFailureListener {
                 firebaseListener.onFailure()

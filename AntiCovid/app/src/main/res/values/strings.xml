@@ -87,6 +87,15 @@
     <string name="action_cancel_register">Cancel</string>
     <string name="error_no_email">No email entered!</string>
     <string name="error_wrong_password">The combination of user and password does not exist!</string>
+    <string name="positive">Positive</string>
+    <string name="negative">Negative</string>
+    <string name="test_date">Test Date:</string>
+    <string name="valid_date">Valid Date:</string>
+
+    <string name="negative_test_valid_info">A negative test is valid for 48 hours!</string>
+    <string name="positive_test_valid_info">A positive test is valid for 14 days! Please remain in quarantine!</string>
+    <string name="error_no_user_logged_in">No user logged in!</string>
+    <string name="report_added_success">Test report added successfully!</string>
 
 
 

@@ -18,6 +18,7 @@ import com.swtug.anticovid.view.profile.ProfileFragment
 import junit.framework.TestCase
 import org.junit.After
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.any
@@ -49,6 +50,7 @@ class SetLanguageTest {
         TestUtils.clearSharedPreferences(ApplicationProvider.getApplicationContext())
     }
 
+    @Ignore
     @Test
     fun testLanguageChange() {
         Espresso.onView(ViewMatchers.withId(R.id.btn_chinese)).perform(ViewActions.click())

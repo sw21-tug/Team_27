@@ -123,12 +123,12 @@ class ProfileFragment : BaseFragment() {
             editTextAddress.text.isEmpty() ||
             editTextSocialSecurityID.text.isEmpty()
         ) {
-            return getString(R.string.error_empty_fields)
+            return requireContext().getString(R.string.error_empty_fields)
 
         }
 
         if (editTextSocialSecurityID.text.length != 10) {
-            return getString(R.string.error_secID_lenth)
+            return requireContext().getString(R.string.error_secID_lenth)
 
         }
 
@@ -143,7 +143,7 @@ class ProfileFragment : BaseFragment() {
         if (validValues != null) {
 
             Toast.makeText(
-                requireContext(),
+                requireActivity(),
                 validValues,
                 Toast.LENGTH_LONG
             ).show()
@@ -166,8 +166,8 @@ class ProfileFragment : BaseFragment() {
                 override fun onSuccess(user: User?) {
                     btnedit.isEnabled = true
                     Toast.makeText(
-                        requireContext(),
-                        getString(R.string.changes_saved),
+                        requireActivity(),
+                        requireContext().getString(R.string.changes_saved),
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -179,8 +179,8 @@ class ProfileFragment : BaseFragment() {
                 override fun onFailure() {
                     btnedit.isEnabled = true
                     Toast.makeText(
-                        requireContext(),
-                        getString(R.string.error_firebase_communication),
+                        requireActivity(),
+                        requireContext().getString(R.string.error_firebase_communication),
                         Toast.LENGTH_LONG
                     ).show()
                 }

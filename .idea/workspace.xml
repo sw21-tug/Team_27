@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:upstream" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e33bcd78-cac5-4efa-bb25-aadbb683e3eb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1r9zS5H06weviX6caUX4XDAYKsD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e33bcd78-cac5-4efa-bb25-aadbb683e3eb" name="Default Changelist" comment="" />
+      <created>1618403089837</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618403089837</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2165" y="-303" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1620219715869">
+      <screen x="1920" y="-406" width="1920" height="1200" />
+    </state>
+    <state x="2165" y="-303" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864/1920.-406.1920.1200@1920.-406.1920.1200" timestamp="1620219715869" />
+    <state x="184" y="96" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1440.824@0.25.1440.824" timestamp="1618403343200" />
+    <state x="457" y="231" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1618403153051">
+      <screen x="0" y="25" width="1440" height="824" />
+    </state>
+    <state x="457" y="231" key="#com.intellij.ide.util.TreeClassChooserDialog/0.25.1440.824@0.25.1440.824" timestamp="1618403153051" />
+    <state x="2012" y="-314" width="1736" height="1016" key="AVDManager" timestamp="1620220092202">
+      <screen x="1920" y="-406" width="1920" height="1200" />
+    </state>
+    <state x="2012" y="-314" width="1736" height="1016" key="AVDManager/0.0.1536.864/1920.-406.1920.1200@1920.-406.1920.1200" timestamp="1620220092202" />
+  </component>
+</project>

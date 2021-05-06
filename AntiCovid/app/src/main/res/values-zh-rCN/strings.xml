@@ -1,0 +1,115 @@
+<resources>
+    <string name="app_name">反Covid</string>
+    <string name="profile">轮廓</string>
+    <string name="add_test_report">添加测试报告t</string>
+    <string name="my_vaccine_information">我的疫苗信息</string>
+    <string name="valid_qr_code">有效的QR码</string>
+    <string name="my_previous_test_reports">我以前的测试报告</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">电子邮件</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_back">后退</string>
+    <string name="action_sign_in">注册</string>
+    <string name="action_sign_in_short">登入</string>
+    <string name="welcome">"欢迎!"</string>
+    <string name="invalid_username">无效的用户名</string>
+    <string name="invalid_password">密码必须大于5个字符</string>
+    <string name="login_failed">登录失败</string>
+    <string name="create_acc">创建帐号</string>
+    <string name="address">地址</string>
+    <string name="social_sec_id">身分证字号</string>
+    <string name="phone_number">电话号码</string>
+    <string name="name">名称</string>
+    <string name="surname">姓</string>
+    <string name="register_title">创建帐号</string>
+    <string name="no_vaccine_info">我们没有有关您的疫苗接种的信息。</string>
+    <string name="recently_vaccined_question">您最近接种过疫苗吗？</string>
+    <string name="insert_id_for_vaccine_qr_code">如果是这样，请添加您的疫苗ID以生成永久的QR码</string>
+    <string name="qr_code_created_after_second_dose">请记住，当您获得第二份文件时，将生成永久QR码</string>
+    <string name="add_vaccine_id">添加疫苗ID</string>
+    <string name="add_vaccine">添加疫苗</string>
+    <string name="manufacturer">制造商</string>
+    <string name="first_dose_date">首次服药日期</string>
+    <string name="second_dose_date">第二次服药日期</string>
+    <string name="institution">机构</string>
+    <string name="accept">接受</string>
+    <string name="accept_terms_of_use">接受使用条款</string>
+    <string name="advanced_features">高级功能</string>
+
+    <string name="terms_of_use_full_text">
+
+         多年来从事临时工作，这是个好主意，但您应该每月工作一次，以激发项目的但是，实际上，只有两分钟，只是感觉，还有预览它们的事情。
+         上， 。 多年以来，r坐立不安，进行临时劳动，但在劳动和痛苦中，最令人兴奋的直径是每月Eirmod临时运行平稳，
+         多年来从事临时工作，这是个好主意，但您应该每月工作一次，以激发项目的但是，实际上，只有两分钟，只是感觉，还有预览它们的事情。
+         上， 。 多年以来，r坐立不安，进行临时劳动，但在劳动和痛苦中，最令人兴奋的直径是每月Eirmod临时运行平稳，
+         萝卜。 \n
+        \n
+        多年来从事临时工作，这是个好主意，但您应该每月工作一次，以激发项目的但是，实际上，只有两分钟，只是感觉，还有预览它们的事情。
+         上， 。 多年以来，r坐立不安，进行临时劳动，但在劳动和痛苦中，最令人兴奋的直径是每月Eirmod临时运行平稳，
+         多年来从事临时工作，这是个好主意，但您应该每月工作一次，以激发项目的但是，实际上，只有两分钟，只是感觉，还有预览它们的事情。
+         上， 。 多年以来，r坐立不安，进行临时劳动，但在劳动和痛苦中，最令人兴奋的直径是每月Eirmod临时运行平稳，
+         萝卜。 \n
+        \n
+        多年来从事临时工作，这是个好主意，但您应该每月工作一次，以激发项目的但是，实际上，只有两分钟，只是感觉，还有预览它们的事情。
+         上， 。 多年以来，r坐立不安，进行临时劳动，但在劳动和痛苦中，最令人兴奋的直径是每月Eirmod临时运行平稳，
+         多年来从事临时工作，这是个好主意，但您应该每月工作一次，以激发项目的但是，实际上，只有两分钟，只是感觉，还有预览它们的事情。
+         上， 。 多年以来，r坐立不安，进行临时劳动，但在劳动和痛苦中，最令人兴奋的直径是每月Eirmod临时运行平稳，
+         萝卜。 \n.\n
+        \n
+        多年来从事临时工作，这是个好主意，但您应该每月工作一次，以激发项目的但是，实际上，只有两分钟，只是感觉，还有预览它们的事情。
+         上， 。 多年以来，r坐立不安，进行临时劳动，但在劳动和痛苦中，最令人兴奋的直径是每月Eirmod临时运行平稳，
+         多年来从事临时工作，这是个好主意，但您应该每月工作一次，以激发项目的但是，实际上，只有两分钟，只是感觉，还有预览它们的事情。
+         上， 。 多年以来，r坐立不安，进行临时劳动，但在劳动和痛苦中，最令人兴奋的直径是每月Eirmod临时运行平稳，
+         萝卜。 \n
+        多年来从事临时工作，这是个好主意，但您应该每月工作一次，以激发项目的但是，实际上，只有两分钟，只是感觉，还有预览它们的事情。
+         上， 。 多年以来，r坐立不安，进行临时劳动，但在劳动和痛苦中，最令人兴奋的直径是每月Eirmod临时运行平稳，
+         多年来从事临时工作，这是个好主意，但您应该每月工作一次，以激发项目的但是，实际上，只有两分钟，只是感觉，还有预览它们的事情。
+         上， 。 多年以来，r坐立不安，进行临时劳动，但在劳动和痛苦中，最令人兴奋的直径是每月Eirmod临时运行平稳，
+         萝卜。 \n
+        多年来从事临时工作，这是个好主意，但您应该每月工作一次，以激发项目的但是，实际上，只有两分钟，只是感觉，还有预览它们的事情。
+         上， 。 多年以来，r坐立不安，进行临时劳动，但在劳动和痛苦中，最令人兴奋的直径是每月Eirmod临时运行平稳，
+         多年来从事临时工作，这是个好主意，但您应该每月工作一次，以激发项目的但是，实际上，只有两分钟，只是感觉，还有预览它们的事情。
+         上， 。 多年以来，r坐立不安，进行临时劳动，但在劳动和痛苦中，最令人兴奋的直径是每月Eirmod临时运行平稳，
+         萝卜。 \n
+        多年来从事临时工作，这是个好主意，但您应该每月工作一次，以激发项目的但是，实际上，只有两分钟，只是感觉，还有预览它们的事情。
+         上， 。 多年以来，r坐立不安，进行临时劳动，但在劳动和痛苦中，最令人兴奋的直径是每月Eirmod临时运行平稳，
+         多年来从事临时工作，这是个好主意，但您应该每月工作一次，以激发项目的但是，实际上，只有两分钟，只是感觉，还有预览它们的事情。
+         上， 。 多年以来，r坐立不安，进行临时劳动，但在劳动和痛苦中，最令人兴奋的直径是每月Eirmod临时运行平稳，
+         萝卜。 \n
+    </string>
+    <string name="terms_of_use_header">使用条款</string>
+    <string name="chinese">中国人</string>
+    <string name="english">English</string>
+    <string name="change_password">更改密码</string>
+    <string name="edit">编辑</string>
+    <string name="e_mail">电子邮件</string>
+    <string name="social_security_id">身分证字号</string>
+
+    <string name="log_out">登出</string>
+    <string name="register_button_text"><u>登記</u></string>
+    <string name="phone_number_hint">電話號碼</string>
+    <string name="social_security_id_hint">社會保障號</string>
+    <string name="address_hint">地址</string>
+    <string name="surename_hint">蘇里南</string>
+    <string name="name_hint">名稱</string>
+    <string name="email_hint">電子郵件</string>
+    <string name="password">密碼</string>
+    <string name="error_empty_fields">至少一個字段為空</string>
+    <string name="error_pwd_too_short">密碼長度必須至少為8個字符！</string>
+    <string name="error_user_exists">具有相同電子郵件的用戶已經存在！</string>
+    <string name="error_firebase_communication">與Firebase通訊時發生錯誤！</string>
+    <string name="action_cancel_register">取消</string>
+    <string name="error_no_email">沒有輸入電子郵件</string>
+    <string name="error_wrong_password">用戶名和密碼的組合不存在！</string>
+
+    <string name="positive">积极的 </string>
+    <string name="negative">消极的 </string>
+    <string name="test_date">考试日期：</string>
+    <string name="valid_date">有效日期:</string>
+
+    <string name="negative_test_valid_info">阴性测试有效期为48小时！</string>
+    <string name="positive_test_valid_info">阳性测试有效期为14天！ 请保持隔离状态！</string>
+    <string name="error_no_user_logged_in">没有用户登录！ </string>
+    <string name="report_added_success">测试报告添加成功！</string>
+
+</resources>

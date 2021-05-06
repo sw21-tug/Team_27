@@ -51,7 +51,7 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun initView() {
-        when (PreferencesRepo.getLocale(requireContext())) {
+        when (PreferencesRepo.getLocale(requireActivity())) {
             Locale.SIMPLIFIED_CHINESE -> toggleGroupLanguage.check(R.id.btn_chinese)
             Locale.ENGLISH -> toggleGroupLanguage.check(R.id.btn_english)
             else -> toggleGroupLanguage.check(R.id.btn_english)
@@ -116,23 +116,18 @@ class ProfileFragment : BaseFragment() {
 
     private fun checkEditTextInputs(): String? {
 
-        if (editTextEMail.text.isEmpty() ||
-            editTextName.text.isEmpty() ||
+        if (editTextName.text.isEmpty() ||
             editTextSurname.text.isEmpty() ||
             editTextPhoneNumber.text.isEmpty() ||
             editTextAddress.text.isEmpty() ||
             editTextSocialSecurityID.text.isEmpty()
         ) {
-            return requireContext().getString(R.string.error_empty_fields)
-
+            return requireActivity().getString(R.string.error_empty_fields)
         }
 
         if (editTextSocialSecurityID.text.length != 10) {
-            return requireContext().getString(R.string.error_secID_lenth)
-
+            return requireActivity().getString(R.string.error_secID_lenth)
         }
-
-
 
         return null;
     }
@@ -167,7 +162,7 @@ class ProfileFragment : BaseFragment() {
                     btnedit.isEnabled = true
                     Toast.makeText(
                         requireActivity(),
-                        requireContext().getString(R.string.changes_saved),
+                        requireActivity().getString(R.string.changes_saved),
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -180,7 +175,7 @@ class ProfileFragment : BaseFragment() {
                     btnedit.isEnabled = true
                     Toast.makeText(
                         requireActivity(),
-                        requireContext().getString(R.string.error_firebase_communication),
+                        requireActivity().getString(R.string.error_firebase_communication),
                         Toast.LENGTH_LONG
                     ).show()
                 }

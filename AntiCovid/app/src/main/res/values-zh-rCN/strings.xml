@@ -101,6 +101,7 @@
     <string name="action_cancel_register">取消</string>
     <string name="error_no_email">沒有輸入電子郵件</string>
     <string name="error_wrong_password">用戶名和密碼的組合不存在！</string>
+    <string name="error_secID_lenth">社会保险号必须为10个字符长！</string>
 
     <string name="positive">积极的 </string>
     <string name="negative">消极的 </string>

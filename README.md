@@ -47,5 +47,6 @@ This app also provides users with official institution rules and changes about c
 | [ANTIC-013](https://github.com/sw21-tug/Team_27/issues/13) | Firebase SDK |
 | [ANTIC-014](https://github.com/sw21-tug/Team_27/issues/14) | Create QR Code |
 | [ANTIC-023](https://github.com/sw21-tug/Team_27/issues/41) | Refactor Registration  |
+| [ANTIC-024](https://github.com/sw21-tug/Team_27/issues/42) | Change language to Chinese |
 | [ANTIC-025](https://github.com/sw21-tug/Team_27/issues/43) | Research for User Statistics |
-| []() |  |
+| [ANTIC-027](https://github.com/sw21-tug/Team_27/issues/46) | Add Test Report |

@@ -27,7 +27,6 @@ class RegisterTest {
     private lateinit var navController: TestNavHostController
     private val TEST_USER_MAIL: String = "test@test.com"
     private val TEST_USER_PWD: String = "testtest"
-    private val TEST_USER_SECID: String = "TestingAcc"
 
     @Before
     fun setup() {
@@ -45,7 +44,7 @@ class RegisterTest {
         }
     }
 
-    private fun fillOutRegisterForm(email: String, pwd: String, secID: String) {
+    private fun fillOutRegisterForm(email: String, pwd: String) {
         onView(withId(R.id.editTextEmail)).perform(ViewActions.typeText(email))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.editTextPassword)).perform(ViewActions.typeText(pwd))
@@ -58,11 +57,11 @@ class RegisterTest {
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.editTextPhoneNumber)).perform(ViewActions.typeText("+3030303030303030"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.editTextSecurityID)).perform(ViewActions.typeText(secID))
+        onView(withId(R.id.editTextSecurityID)).perform(ViewActions.typeText("Testing Account"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
     }
 
-    private fun getContext(): Context {
+    private fun getContext() : Context {
         return InstrumentationRegistry.getInstrumentation().targetContext
     }
 
@@ -76,7 +75,7 @@ class RegisterTest {
 
     @Test
     fun testRegisterWithoutPwd() {
-        fillOutRegisterForm(TEST_USER_MAIL, "", TEST_USER_SECID)
+        fillOutRegisterForm(TEST_USER_MAIL, "")
         Thread.sleep(1000)
 
         onView(withId(R.id.buttonSignUp)).perform(click())
@@ -87,7 +86,7 @@ class RegisterTest {
 
     @Test
     fun testRegisterWithTooShortPwd() {
-        fillOutRegisterForm(TEST_USER_MAIL, "testtes", TEST_USER_SECID)
+        fillOutRegisterForm(TEST_USER_MAIL, "testtes")
         Thread.sleep(1000)
 
         onView(withId(R.id.buttonSignUp)).perform(click())
@@ -97,30 +96,8 @@ class RegisterTest {
     }
 
     @Test
-    fun testRegisterWithTooShortSecID() {
-        fillOutRegisterForm(TEST_USER_MAIL, TEST_USER_PWD, "123456789")
-        Thread.sleep(1000)
-
-        onView(withId(R.id.buttonSignUp)).perform(click())
-
-        val compareString = TestUtils.getResoureceString(getContext(), R.string.error_secID_lenth)
-        onView(withId(R.id.editTextInputError)).check(matches(withText(compareString)))
-    }
-
-    @Test
-    fun testRegisterWithTooLongSecID() {
-        fillOutRegisterForm(TEST_USER_MAIL, TEST_USER_PWD, "12345678910")
-        Thread.sleep(1000)
-
-        onView(withId(R.id.buttonSignUp)).perform(click())
-
-        val compareString = TestUtils.getResoureceString(getContext(), R.string.error_secID_lenth)
-        onView(withId(R.id.editTextInputError)).check(matches(withText(compareString)))
-    }
-
-    @Test
     fun testRegisterWithExistingUser() {
-        fillOutRegisterForm(TEST_USER_MAIL, TEST_USER_PWD, TEST_USER_SECID)
+        fillOutRegisterForm(TEST_USER_MAIL, TEST_USER_PWD)
         Thread.sleep(1000)
 
         onView(withId(R.id.buttonSignUp)).perform(click())

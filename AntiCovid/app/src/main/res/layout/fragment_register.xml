@@ -11,6 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:background="?colorPrimary"
         android:backgroundTint="@color/purple_500"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,189 +20,120 @@
         app:title="@string/register_title"
         app:titleTextColor="@color/white" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <EditText
+        android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        android:ems="10"
+        android:hint="@string/email_hint"
+        android:inputType="textEmailAddress"
+        android:textCursorDrawable="@drawable/purple_cursor"
+        android:backgroundTint="@color/purple_500"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-        <TextView
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/email_hint" />
-
-        <EditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_500"
-            android:ems="10"
-            android:hint="@string/email_hint"
-            android:inputType="textEmailAddress" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <EditText
+        android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout">
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textCursorDrawable="@drawable/purple_cursor"
+        android:backgroundTint="@color/purple_500"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
-        <TextView
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/password" />
-
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_500"
-            android:ems="10"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:textCursorDrawable="@drawable/purple_cursor" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
+    <EditText
+        android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout2">
+        android:ems="10"
+        android:hint="@string/name_hint"
+        android:inputType="textPersonName"
+        android:textCursorDrawable="@drawable/purple_cursor"
+        android:backgroundTint="@color/purple_500"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@id/editTextPassword" />
 
-        <TextView
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/name_hint" />
-
-        <EditText
-            android:id="@+id/editTextName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_500"
-            android:ems="10"
-            android:hint="@string/name_hint"
-            android:inputType="textPersonName"
-            android:textCursorDrawable="@drawable/purple_cursor" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout4"
+    <EditText
+        android:id="@+id/editTextSureName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout3">
+        android:ems="10"
+        android:hint="@string/surename_hint"
+        android:inputType="textPersonName"
+        android:textCursorDrawable="@drawable/purple_cursor"
+        android:backgroundTint="@color/purple_500"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
 
-        <TextView
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/surename_hint" />
 
-        <EditText
-            android:id="@+id/editTextSureName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_500"
-            android:ems="10"
-            android:hint="@string/surename_hint"
-            android:inputType="textPersonName"
-            android:textCursorDrawable="@drawable/purple_cursor" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout5"
+    <EditText
+        android:id="@+id/editTextAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout4">
+        android:ems="10"
+        android:hint="@string/address_hint"
+        android:inputType="textPersonName"
+        android:textCursorDrawable="@drawable/purple_cursor"
+        android:backgroundTint="@color/purple_500"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSureName" />
 
-        <TextView
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/address_hint" />
-
-        <EditText
-            android:id="@+id/editTextAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_500"
-            android:ems="10"
-            android:hint="@string/address_hint"
-            android:inputType="textPersonName"
-            android:textCursorDrawable="@drawable/purple_cursor" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout6"
+    <EditText
+        android:id="@+id/editTextSecurityID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout5">
+        android:ems="10"
+        android:hint="@string/social_security_id_hint"
+        android:inputType="textPersonName"
+        android:textCursorDrawable="@drawable/purple_cursor"
+        android:backgroundTint="@color/purple_500"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddress" />
 
-        <TextView
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/social_security_id_hint" />
-
-        <EditText
-            android:id="@+id/editTextSecurityID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_500"
-            android:ems="10"
-            android:hint="@string/social_security_id_hint"
-
-            android:inputType="textPersonName"
-            android:textCursorDrawable="@drawable/purple_cursor" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout7"
+    <EditText
+        android:id="@+id/editTextPhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout6">
-
-        <TextView
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/phone_number_hint" />
-
-        <EditText
-            android:id="@+id/editTextPhoneNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_500"
-            android:ems="10"
-            android:hint="@string/phone_number_hint"
-            android:inputType="phone"
-            android:textCursorDrawable="@drawable/purple_cursor" />
-    </LinearLayout>
-
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/purple_500"
+        android:ems="10"
+        android:hint="@string/phone_number_hint"
+        android:inputType="phone"
+        android:textCursorDrawable="@drawable/purple_cursor"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSecurityID" />
 
     <TextView
         android:id="@+id/editTextInputError"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center"
-        android:textAlignment="center"
+        android:layout_marginTop="16dp"
         android:textColor="@color/errorRed"
         android:textSize="8pt"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhoneNumber"/>
 
     <LinearLayout
         android:id="@+id/buttonLayout"
@@ -211,13 +143,15 @@
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextInputError">
+        app:layout_constraintTop_toBottomOf="@+id/editTextInputError"
+        app:layout_constraintVertical_bias="0.973"
+        tools:layout_editor_absoluteX="0dp">
 
         <Button
             android:id="@+id/buttonSignUp"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_width="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
@@ -231,8 +165,8 @@
         <Button
             android:id="@+id/buttonCancelSignUp"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_width="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"

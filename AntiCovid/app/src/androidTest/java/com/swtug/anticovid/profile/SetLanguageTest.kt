@@ -50,7 +50,6 @@ class SetLanguageTest {
         TestUtils.clearSharedPreferences(ApplicationProvider.getApplicationContext())
     }
 
-    @Ignore
     @Test
     fun testLanguageChange() {
         Espresso.onView(ViewMatchers.withId(R.id.btn_chinese)).perform(ViewActions.click())

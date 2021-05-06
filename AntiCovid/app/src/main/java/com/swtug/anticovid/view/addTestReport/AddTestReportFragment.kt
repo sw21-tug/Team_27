@@ -61,7 +61,7 @@ class AddTestReportFragment: BaseFragment() {
                 setButtonsEnabled(true)
                 Toast.makeText(requireContext(), getString(R.string.report_added_success),
                     Toast.LENGTH_LONG).show()
-                //findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+                findNavController().navigate(R.id.action_addTestFragment_toMainFragment)
             }
 
             override fun onStart() {

@@ -37,7 +37,7 @@ class ProfileFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return layoutInflater.inflate(R.layout.fragment_profile, container, false)
+        return layoutInflater.inflate(R.layout.fragment_profile, null )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

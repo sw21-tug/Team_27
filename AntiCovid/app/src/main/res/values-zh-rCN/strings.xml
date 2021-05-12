@@ -81,7 +81,7 @@
     <string name="chinese">中国人</string>
     <string name="english">English</string>
     <string name="change_password">更改密码</string>
-    <string name="edit">编辑</string>
+    <string name="save_user">编辑</string>
     <string name="e_mail">电子邮件</string>
     <string name="social_security_id">身分证字号</string>
 
@@ -112,5 +112,8 @@
     <string name="positive_test_valid_info">阳性测试有效期为14天！ 请保持隔离状态！</string>
     <string name="error_no_user_logged_in">没有用户登录！ </string>
     <string name="report_added_success">测试报告添加成功！</string>
+
+    <string name="changes_saved">"更改已成功保存 "</string>
+
 
 </resources>

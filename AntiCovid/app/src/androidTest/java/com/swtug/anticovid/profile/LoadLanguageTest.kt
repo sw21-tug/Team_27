@@ -1,6 +1,5 @@
 package com.swtug.anticovid.profile
 
-import android.content.Context
 import android.content.Intent
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso
@@ -12,7 +11,6 @@ import com.swtug.anticovid.TestUtils
 import com.swtug.anticovid.repositories.PreferencesRepo
 import org.junit.*
 import org.junit.runner.RunWith
-import java.lang.System.exit
 import java.util.*
 
 

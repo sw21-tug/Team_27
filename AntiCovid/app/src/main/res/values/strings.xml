@@ -67,7 +67,7 @@
     <string name="terms_of_use_header">Terms Of Use</string>
     <string name="chinese">Chinese</string>
     <string name="english">English</string>
-    <string name="edit">Edit</string>
+    <string name="save_user">Save user</string>
     <string name="e_mail">E-Mail</string>
     <string name="social_security_id">Social security ID</string>
     <string name="change_password">Change Password</string>
@@ -98,6 +98,7 @@
     <string name="error_no_user_logged_in">No user logged in!</string>
     <string name="report_added_success">Test report added successfully!</string>
 
+    <string name="changes_saved">Changes have been saved successfully</string>
 
 
 </resources>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -13,5 +14,107 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/statistics"
         app:titleTextColor="@color/white" />
+
+
+
+    <ImageView
+        android:id="@+id/imv_Showflag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher_foreground"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+
+    <TextView
+        android:id="@+id/land"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/land"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="100dp"
+        app:layout_constraintLeft_toRightOf="@id/imv_Showflag"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+
+    <TextView
+        android:id="@+id/casestoday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cases_today"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imv_Showflag" />
+
+    <TextView
+        android:id="@+id/deathtoday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/death_today"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/casestoday" />
+
+    <TextView
+        android:id="@+id/recoveredtoday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/recovered_today"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deathtoday" />
+
+    <TextView
+        android:id="@+id/totalcases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_cases"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recoveredtoday" />
+
+    <TextView
+        android:id="@+id/totaltest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_tests"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalcases" />
+
+    <TextView
+        android:id="@+id/totalrecovered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_recovered"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totaltest" />
+
+    <TextView
+        android:id="@+id/totaltested"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_tested"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalrecovered" />
+
+    <TextView
+        android:id="@+id/population"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/population"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totaltested" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

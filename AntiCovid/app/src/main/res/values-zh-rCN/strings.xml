@@ -36,6 +36,16 @@
     <string name="accept_terms_of_use">接受使用条款</string>
     <string name="advanced_features">高级功能</string>
     <string name="statistics">统计数据</string>
+    <string name="land">奥地利</string>
+    <string name="cases_today">今天的案例</string>
+    <string name="death_today">今天死亡</string>
+    <string name="recovered_today">今天恢复</string>
+    <string name="total_cases">案件总数</string>
+    <string name="total_tests">死亡总数</string>
+    <string name="total_recovered">总回收</string>
+    <string name="total_tested">总测试</string>
+    <string name="population">人口</string>
+
     <string name="terms_of_use_full_text">
 
          多年来从事临时工作，这是个好主意，但您应该每月工作一次，以激发项目的但是，实际上，只有两分钟，只是感觉，还有预览它们的事情。

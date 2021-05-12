@@ -93,7 +93,15 @@
     <string name="negative">Negative</string>
     <string name="test_date">Test Date:</string>
     <string name="valid_date">Valid Date:</string>
-
+    <string name="land">Österreich</string>
+    <string name="cases_today">Cases today</string>
+    <string name="death_today">Death today</string>
+    <string name="recovered_today">Recovered today</string>
+    <string name="total_cases">Total cases</string>
+    <string name="total_recovered">Total recovered</string>
+    <string name="total_tested">Total tested</string>
+    <string name="population">Population</string>
+    <string name="total_tests">Total tests</string>
     <string name="negative_test_valid_info">A negative test is valid for 48 hours!</string>
     <string name="positive_test_valid_info">A positive test is valid for 14 days! Please remain in quarantine!</string>
     <string name="error_no_user_logged_in">No user logged in!</string>

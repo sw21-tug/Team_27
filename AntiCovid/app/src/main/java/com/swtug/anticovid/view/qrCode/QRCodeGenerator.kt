@@ -5,6 +5,7 @@ import android.graphics.Color
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
+import kotlin.jvm.Throws
 
 class QRCodeGenerator {
 

@@ -35,6 +35,7 @@
     <string name="accept">Accept</string>
     <string name="accept_terms_of_use">Accept Terms Of Use</string>
     <string name="advanced_features">Advanced Features</string>
+    <string name="statistics">Statistics</string>
 
     <string name="terms_of_use_full_text">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -99,6 +100,7 @@
     <string name="report_added_success">Test report added successfully!</string>
 
     <string name="changes_saved">Changes have been saved successfully</string>
+
 
 
 </resources>

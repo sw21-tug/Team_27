@@ -41,7 +41,7 @@
     <string name="death_today">今天死亡</string>
     <string name="recovered_today">今天恢复</string>
     <string name="total_cases">案件总数</string>
-    <string name="total_tests">死亡总数</string>
+    <string name="total_death">死亡总数</string>
     <string name="total_recovered">总回收</string>
     <string name="total_tested">总测试</string>
     <string name="population">人口</string>

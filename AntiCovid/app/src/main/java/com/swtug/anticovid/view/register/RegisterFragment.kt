@@ -113,6 +113,11 @@ class RegisterFragment : Fragment() {
             return false;
         }
 
+        if (editTxtSocialSecurityId.text.length != 10) {
+            txtErrorLabel.text = getString(R.string.error_secID_lenth)
+            return false;
+        }
+
         return true;
     }
 

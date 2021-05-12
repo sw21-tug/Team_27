@@ -3,9 +3,9 @@ package com.swtug.anticovid.models
 import java.io.Serializable
 import java.time.LocalDateTime
 
-data class TestReport(
+data class FirebaseTestReport(
     var email: String,
-    var testdate: LocalDateTime,
+    var testdate: String,
     var testresult: Boolean,
-    val validdate: LocalDateTime
+    val validdate: String
 ) : Serializable

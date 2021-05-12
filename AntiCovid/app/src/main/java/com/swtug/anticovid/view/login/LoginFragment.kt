@@ -7,12 +7,16 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.swtug.anticovid.R
+import com.swtug.anticovid.TestReportProvider
+import com.swtug.anticovid.models.TestReport
 import com.swtug.anticovid.models.User
-import com.swtug.anticovid.repositories.FirebaseListener
+import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.FirebaseRepo
+import com.swtug.anticovid.repositories.FirebaseTestReportListener
 import com.swtug.anticovid.repositories.PreferencesRepo
 import java.util.*
 
@@ -40,12 +44,14 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initFields(view)
-        initListeners(object : FirebaseListener {
+        initListeners(object : FirebaseUserListener {
             override fun onSuccess(user: User?) {
                 setButtonsEnabled(true)
 
                 if(user != null && editTextPassword.text.toString() == user.password) {
                     PreferencesRepo.saveUser(requireContext(), user)
+                    fetchTestReports(user.email)
+
                     findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                 } else {
                     txtLoginError.text = getString(R.string.error_wrong_password)
@@ -64,11 +70,29 @@ class LoginFragment : Fragment() {
 
     }
 
+    private fun fetchTestReports(userEmail: String) {
+        FirebaseRepo.getAllTestReportsFrom(userEmail, object : FirebaseTestReportListener {
+            override fun onSuccess(testReports: ArrayList<TestReport>) {
+                TestReportProvider.setTestReports(testReports)
+            }
 
-    private fun initListeners(firebaseListener: FirebaseListener) {
+            override fun onStart() { }
+
+            override fun onFailure() {
+                Toast.makeText(
+                    requireContext(),
+                    requireContext().getString(R.string.error_firebase_communication),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        })
+    }
+
+
+    private fun initListeners(firebaseUserListener: FirebaseUserListener) {
 
         btnLogin.setOnClickListener {
-            checkUserCredentials(firebaseListener)
+            checkUserCredentials(firebaseUserListener)
         }
 
         btnRegister.setOnClickListener {
@@ -88,14 +112,14 @@ class LoginFragment : Fragment() {
 
     }
 
-    private fun checkUserCredentials(firebaseListener: FirebaseListener) {
+    private fun checkUserCredentials(firebaseUserListener: FirebaseUserListener) {
         clearErrorLabels()
         val email = editTextEmail.text.toString().toLowerCase(Locale.ROOT).trim()
 
         if(email.isEmpty()) {
             txtEmailError.text = getString(R.string.error_no_email)
         } else {
-            FirebaseRepo.getUser(email, firebaseListener)
+            FirebaseRepo.getUser(email, firebaseUserListener)
         }
     }
 

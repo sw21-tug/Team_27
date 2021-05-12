@@ -10,7 +10,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.swtug.anticovid.R
 import com.swtug.anticovid.models.User
-import com.swtug.anticovid.repositories.FirebaseListener
+import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
 import java.util.*
@@ -160,7 +160,7 @@ class ProfileFragment : Fragment() {
 
         val newUser = getUserFromEditText() ?: return
 
-        FirebaseRepo.updateUser(newUser, object : FirebaseListener {
+        FirebaseRepo.updateUser(newUser, object : FirebaseUserListener {
             override fun onSuccess(user: User?) {
                 btnedit.isEnabled = true
 

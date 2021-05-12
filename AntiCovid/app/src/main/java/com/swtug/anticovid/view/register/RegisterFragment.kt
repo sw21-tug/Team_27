@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.swtug.anticovid.R
 import com.swtug.anticovid.models.User
-import com.swtug.anticovid.repositories.FirebaseListener
+import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
 
@@ -39,7 +39,7 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initFields(view)
-        initListeners(object : FirebaseListener {
+        initListeners(object : FirebaseUserListener {
             override fun onSuccess(user: User?) {
                 setButtonsEnabled(true)
 
@@ -62,14 +62,14 @@ class RegisterFragment : Fragment() {
         })
     }
 
-    private fun trySignUpNewUser(user: User, firebaseListener: FirebaseListener) {
-        FirebaseRepo.saveUser(user, firebaseListener)
+    private fun trySignUpNewUser(user: User, firebaseUserListener: FirebaseUserListener) {
+        FirebaseRepo.saveUser(user, firebaseUserListener)
     }
 
-    private fun initListeners(firebaseListener: FirebaseListener) {
+    private fun initListeners(firebaseUserListener: FirebaseUserListener) {
         btnSignUp.setOnClickListener {
             if (checkEditTextInputs()) {
-                trySignUpNewUser(getUserObjectFromInputs(), firebaseListener)
+                trySignUpNewUser(getUserObjectFromInputs(), firebaseUserListener)
             }
         }
 

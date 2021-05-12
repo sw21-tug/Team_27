@@ -16,26 +16,26 @@
         app:titleTextColor="@color/white" />
 
 
-
     <ImageView
         android:id="@+id/imv_Showflag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_foreground"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:src="@drawable/austriaflag"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
         android:id="@+id/land"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/land"
-        android:layout_marginTop="60dp"
-        android:layout_marginStart="100dp"
+        android:textSize="30sp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintLeft_toRightOf="@id/imv_Showflag"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
         android:id="@+id/casestoday"

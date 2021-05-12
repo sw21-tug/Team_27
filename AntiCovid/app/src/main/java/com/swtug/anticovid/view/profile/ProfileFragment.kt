@@ -161,8 +161,8 @@ class ProfileFragment : BaseFragment() {
                 override fun onSuccess(user: User?) {
                     btnedit.isEnabled = true
                     Toast.makeText(
-                        requireActivity(),
-                        requireActivity().getString(R.string.changes_saved),
+                        requireContext(),
+                        requireContext().getString(R.string.changes_saved),
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -174,8 +174,8 @@ class ProfileFragment : BaseFragment() {
                 override fun onFailure() {
                     btnedit.isEnabled = true
                     Toast.makeText(
-                        requireActivity(),
-                        requireActivity().getString(R.string.error_firebase_communication),
+                        requireContext(),
+                        requireContext().getString(R.string.error_firebase_communication),
                         Toast.LENGTH_LONG
                     ).show()
                 }

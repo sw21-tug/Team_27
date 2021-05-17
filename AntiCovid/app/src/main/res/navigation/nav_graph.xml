@@ -168,7 +168,7 @@
     </fragment>
     <fragment
         android:id="@+id/advancedFeatureFragment"
-        android:name="com.swtug.anticovid.view.qrCode.AdvancedFeatureFragment"
+        android:name="com.swtug.anticovid.view.advancedFeatures.AdvancedFeatureFragment"
         android:label="AdvancedFeatureFragment" >
         <action
             android:id="@+id/action_advancedFeatureFragment_to_statisticFragment"

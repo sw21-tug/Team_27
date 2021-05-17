@@ -1,4 +1,4 @@
-package com.swtug.anticovid.view.qrCode
+package com.swtug.anticovid.view.advancedFeatures
 
 import android.os.Bundle
 import android.view.LayoutInflater

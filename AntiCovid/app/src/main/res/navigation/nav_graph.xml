@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashScreenFragment">
 
@@ -167,7 +168,16 @@
     </fragment>
     <fragment
         android:id="@+id/advancedFeatureFragment"
-        android:name="com.swtug.anticovid.view.qrCode.AdvancedFeatureFragment"
-        android:label="AdvancedFeatureFragment" />
+        android:name="com.swtug.anticovid.view.advancedFeatures.AdvancedFeatureFragment"
+        android:label="AdvancedFeatureFragment" >
+        <action
+            android:id="@+id/action_advancedFeatureFragment_to_statisticFragment"
+            app:destination="@id/statisticFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/statisticFragment"
+        android:name="com.swtug.anticovid.view.qrCode.StatisticFragment"
+        android:label="fragment_statistic"
+        tools:layout="@layout/fragment_statistic" />
 
 </navigation>

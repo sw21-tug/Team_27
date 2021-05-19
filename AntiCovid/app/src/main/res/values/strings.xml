@@ -35,6 +35,7 @@
     <string name="accept">Accept</string>
     <string name="accept_terms_of_use">Accept Terms Of Use</string>
     <string name="advanced_features">Advanced Features</string>
+    <string name="statistics">Statistics</string>
 
     <string name="terms_of_use_full_text">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -92,13 +93,23 @@
     <string name="negative">Negative</string>
     <string name="test_date">Test Date:</string>
     <string name="valid_date">Valid Date:</string>
-
+    <string name="land">Austria</string>
+    <string name="cases_today">Cases today</string>
+    <string name="death_today">Death today</string>
+    <string name="recovered_today">Recovered today</string>
+    <string name="total_cases">Total cases</string>
+    <string name="total_recovered">Total recovered</string>
+    <string name="total_tested">Total tested</string>
+    <string name="population">Population</string>
+    <string name="last_update">Last update</string>
+    <string name="total_death">Total death</string>
     <string name="negative_test_valid_info">A negative test is valid for 48 hours!</string>
     <string name="positive_test_valid_info">A positive test is valid for 14 days! Please remain in quarantine!</string>
     <string name="error_no_user_logged_in">No user logged in!</string>
     <string name="report_added_success">Test report added successfully!</string>
 
     <string name="changes_saved">Changes have been saved successfully</string>
+
 
 
 </resources>

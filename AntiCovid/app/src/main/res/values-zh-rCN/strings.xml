@@ -35,6 +35,17 @@
     <string name="accept">接受</string>
     <string name="accept_terms_of_use">接受使用条款</string>
     <string name="advanced_features">高级功能</string>
+    <string name="statistics">统计数据</string>
+    <string name="land">奥地利</string>
+    <string name="cases_today">今天的案例</string>
+    <string name="death_today">今天死亡</string>
+    <string name="recovered_today">今天恢复</string>
+    <string name="total_cases">案件总数</string>
+    <string name="total_death">死亡总数</string>
+    <string name="total_recovered">总回收</string>
+    <string name="total_tested">总测试</string>
+    <string name="population">人口</string>
+    <string name="last_update">最后更新</string>
 
     <string name="terms_of_use_full_text">
 

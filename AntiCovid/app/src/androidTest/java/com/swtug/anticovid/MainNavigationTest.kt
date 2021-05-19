@@ -9,6 +9,7 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.swtug.anticovid.view.main.MainFragment
+import junit.framework.TestCase
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -70,5 +71,6 @@ class MainNavigationTest {
             R.id.action_mainFragment_to_advancedFeatureFragment
         )
     }
+
 }
 

@@ -31,6 +31,8 @@ class StatisticFragment : BaseFragment() , AdapterView.OnItemSelectedListener{
     private lateinit var population: TextView
     private lateinit var update: TextView
     private lateinit var imvFlag: ImageView
+    private lateinit var active: TextView
+
     val AUSTRIA: Int = 11
     var countryID: Int = AUSTRIA
     lateinit var CountryList: List<MyCountry>
@@ -103,10 +105,12 @@ class StatisticFragment : BaseFragment() , AdapterView.OnItemSelectedListener{
             population = view.findViewById<TextView>(R.id.populationvalue)
             update = view.findViewById<TextView>(R.id.lastupdatevalue)
             imvFlag = view.findViewById<ImageView>(R.id.imv_Showflag)
+            active = view.findViewById<TextView>(R.id.activevalue)
         }
     }
 
     private fun updateData(view: View?, _countryList: List<MyCountry>, _countryID: Int){
+        active.text = _countryList[_countryID].active.toString()
         totalCases.text = _countryList[_countryID].cases.toString()
         totalTest.text = _countryList[_countryID].tests.toString()
         totalDeath.text = _countryList[_countryID].deaths.toString()

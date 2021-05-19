@@ -26,14 +26,24 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
-        android:id="@+id/casestoday"
+        android:id="@+id/active"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/cases_today"
+        android:text="@string/active"
         android:layout_marginTop="32dp"
         android:layout_marginStart="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+    <TextView
+        android:id="@+id/casestoday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cases_today"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/active" />
 
     <TextView
         android:id="@+id/deathtoday"
@@ -124,7 +134,7 @@
         app:layout_constraintGuide_begin="206dp" />
 
     <TextView
-        android:id="@+id/casestodayvalue"
+        android:id="@+id/activevalue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
@@ -132,6 +142,16 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+    <TextView
+        android:id="@+id/casestodayvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activevalue" />
 
     <TextView
         android:id="@+id/deathtodayvalue"

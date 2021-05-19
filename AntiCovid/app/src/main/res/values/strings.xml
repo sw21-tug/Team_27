@@ -93,6 +93,7 @@
     <string name="negative">Negative</string>
     <string name="test_date">Test Date:</string>
     <string name="valid_date">Valid Date:</string>
+    <string name="active">Active</string>
     <string name="land">Austria</string>
     <string name="cases_today">Cases today</string>
     <string name="death_today">Death today</string>

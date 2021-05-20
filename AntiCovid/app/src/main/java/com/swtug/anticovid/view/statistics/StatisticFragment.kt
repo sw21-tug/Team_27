@@ -70,7 +70,8 @@ class StatisticFragment : BaseFragment() , AdapterView.OnItemSelectedListener{
                     initFields(view)
 
                 }else {
-                    //error message
+                    initFields(view)
+                    setErrorMessage()
                 }
             }
             override fun onFailure(call: Call<List<MyCountry>>, t: Throwable) {
@@ -124,6 +125,19 @@ class StatisticFragment : BaseFragment() , AdapterView.OnItemSelectedListener{
         update.text = format.format(date)
         Picasso.get().load(_countryList[_countryID].countryInfo.flag).into(imvFlag);
 
+    }
+
+    private fun setErrorMessage(){
+        active.text = R.string.statistic_error_message.toString()
+        totalCases.text = R.string.statistic_error_message.toString()
+        totalTest.text = R.string.statistic_error_message.toString()
+        totalDeath.text = R.string.statistic_error_message.toString()
+        todayCases.text = R.string.statistic_error_message.toString()
+        todayDeath.text = R.string.statistic_error_message.toString()
+        todayRecovered.text = R.string.statistic_error_message.toString()
+        totalRecovered.text = R.string.statistic_error_message.toString()
+        population.text = R.string.statistic_error_message.toString()
+        update.text = R.string.statistic_error_message.toString()
     }
 
     override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {

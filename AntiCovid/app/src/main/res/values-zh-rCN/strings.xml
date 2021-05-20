@@ -47,7 +47,8 @@
     <string name="total_tested">总测试</string>
     <string name="population">人口</string>
     <string name="last_update">最后更新</string>
-    <string name="error_statistics">无法加载统计信息</string>
+
+    <string name="statistic_error_message">没有收到任何数据!</string>
 
     <string name="terms_of_use_full_text">
 

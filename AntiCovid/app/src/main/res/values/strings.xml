@@ -36,7 +36,6 @@
     <string name="accept_terms_of_use">Accept Terms Of Use</string>
     <string name="advanced_features">Advanced Features</string>
     <string name="statistics">Statistics</string>
-    <string name="error_statistics">Could not load statistics</string>
 
     <string name="terms_of_use_full_text">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -105,6 +104,7 @@
     <string name="population">Population</string>
     <string name="last_update">Last update</string>
     <string name="total_death">Total death</string>
+    <string name="statistic_error_message">no Data received!</string>
     <string name="negative_test_valid_info">A negative test is valid for 48 hours!</string>
     <string name="positive_test_valid_info">A positive test is valid for 14 days! Please remain in quarantine!</string>
     <string name="error_no_user_logged_in">No user logged in!</string>

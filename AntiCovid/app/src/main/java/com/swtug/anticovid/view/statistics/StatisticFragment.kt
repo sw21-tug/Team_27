@@ -70,11 +70,12 @@ class StatisticFragment : Fragment() , AdapterView.OnItemSelectedListener{
                     initFields(view)
 
                 }else {
-                    Toast.makeText(context, getString(R.string.error_statistics), Toast.LENGTH_SHORT).show()
+                    initFields(view)
+                    setErrorMessage()
                 }
             }
             override fun onFailure(call: Call<List<MyCountry>>, t: Throwable) {
-                Toast.makeText(context, getString(R.string.error_statistics), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.statistic_error_message), Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -127,6 +128,19 @@ class StatisticFragment : Fragment() , AdapterView.OnItemSelectedListener{
             Picasso.get().load(country.countryInfo.flag).into(imvFlag);
         }
 
+    }
+
+    private fun setErrorMessage(){
+        active.text = getString(R.string.statistic_error_message)
+        totalCases.text = getString(R.string.statistic_error_message)
+        totalTest.text = getString(R.string.statistic_error_message)
+        totalDeath.text = getString(R.string.statistic_error_message)
+        todayCases.text = getString(R.string.statistic_error_message)
+        todayDeath.text = getString(R.string.statistic_error_message)
+        todayRecovered.text = getString(R.string.statistic_error_message)
+        totalRecovered.text = getString(R.string.statistic_error_message)
+        population.text = getString(R.string.statistic_error_message)
+        update.text = getString(R.string.statistic_error_message)
     }
 
     override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {

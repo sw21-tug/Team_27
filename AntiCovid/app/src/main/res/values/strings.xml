@@ -111,6 +111,12 @@
     <string name="report_added_success">Test report added successfully!</string>
 
     <string name="changes_saved">Changes have been saved successfully</string>
+    <string name="current_password">Current password</string>
+    <string name="new_password">New password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="wrong_password">Wrong Password</string>
+    <string name="password_does_not_match_criteria">Password does not meet the criteria</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
 
     <string-array name="countries_array">
         <item>Afghanistan</item>
@@ -336,7 +342,5 @@
         <item>Zambia</item>
         <item>Zimbabwe</item>
     </string-array>
-
-
 
 </resources>

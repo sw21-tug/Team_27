@@ -64,6 +64,8 @@
             app:popUpToInclusive="true"/>
     </fragment>
 
+
+
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.swtug.anticovid.view.register.RegisterFragment"

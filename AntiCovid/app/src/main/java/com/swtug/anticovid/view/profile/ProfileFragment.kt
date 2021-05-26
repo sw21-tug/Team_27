@@ -104,6 +104,7 @@ class ProfileFragment : Fragment() {
             storeNewUserData()
 
         }
+
     }
 
     private fun getUserFromEditText(): User {

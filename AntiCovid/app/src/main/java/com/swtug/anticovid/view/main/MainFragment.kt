@@ -12,6 +12,7 @@ import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.R
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.view.addTestReport.AddTestReportFragment
+import com.swtug.anticovid.view.changePassword.ChangePassword
 import com.swtug.anticovid.view.profile.ProfileFragment
 import com.swtug.anticovid.view.qrCode.QRCodeFragment
 import com.swtug.anticovid.view.statistics.StatisticFragment
@@ -67,7 +68,8 @@ class MainFragment : Fragment() {
             VaccinationFragment() to getString(R.string.my_vaccine_information),
             AddTestReportFragment() to getString(R.string.add_test_report),
             ProfileFragment() to getString(R.string.profile),
-            TestResultFragment() to getString(R.string.my_previous_test_reports)
+            TestResultFragment() to getString(R.string.my_previous_test_reports),
+            ChangePassword() to getString(R.string.change_password)
         )
 
         val adapter = ViewPagerAdapter(fragments, childFragmentManager, lifecycle)

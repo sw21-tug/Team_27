@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.google.zxing.WriterException
-import com.swtug.anticovid.view.BaseFragment
 import com.swtug.anticovid.R
 
 
-class QRCodeFragment : BaseFragment() {
+class QRCodeFragment : Fragment() {
 
     private val qrCodeGenerator = QRCodeGenerator()
 
@@ -24,7 +24,7 @@ class QRCodeFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return layoutInflater.inflate(R.layout.fragment_qr_code, null)
+        return layoutInflater.inflate(R.layout.fragment_qr_code, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

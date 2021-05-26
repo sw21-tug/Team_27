@@ -9,9 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.VisibleForTesting
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import com.swtug.anticovid.models.User
-import com.swtug.anticovid.view.BaseFragment
 import com.swtug.anticovid.R
 import com.swtug.anticovid.Utils
 import com.swtug.anticovid.models.TestReport
@@ -20,7 +19,7 @@ import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
 import java.time.LocalDateTime
 
-class AddTestReportFragment: BaseFragment() {
+class AddTestReportFragment: Fragment() {
 
     private lateinit var txtUserEmail: TextView
     private lateinit var txtUserName: TextView
@@ -61,7 +60,6 @@ class AddTestReportFragment: BaseFragment() {
                 setButtonsEnabled(true)
                 Toast.makeText(requireContext(), getString(R.string.report_added_success),
                     Toast.LENGTH_LONG).show()
-                findNavController().navigate(R.id.action_addTestFragment_toMainFragment)
             }
 
             override fun onStart() {

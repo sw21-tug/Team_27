@@ -1,23 +1,20 @@
-package com.swtug.anticovid.view.qrCode
+package com.swtug.anticovid.view.statistics
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.swtug.anticovid.view.BaseFragment
 import com.swtug.anticovid.R
-import com.swtug.anticovid.view.statistics.CountryService
-import com.swtug.anticovid.view.statistics.MyCountry
-import com.swtug.anticovid.view.statistics.ServiceBuilder
 import retrofit2.Callback
 import retrofit2.Call
 import retrofit2.Response
 import android.util.Log
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import java.text.SimpleDateFormat
 import java.util.*
 
-class StatisticFragment : BaseFragment() {
+class StatisticFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,

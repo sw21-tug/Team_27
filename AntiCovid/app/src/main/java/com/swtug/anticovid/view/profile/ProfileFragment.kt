@@ -1,13 +1,11 @@
 package com.swtug.anticovid.view.profile
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.swtug.anticovid.R
@@ -15,15 +13,13 @@ import com.swtug.anticovid.models.User
 import com.swtug.anticovid.repositories.FirebaseListener
 import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
-import com.swtug.anticovid.view.BaseFragment
 import java.util.*
 
 
-class ProfileFragment : BaseFragment() {
+class ProfileFragment : Fragment() {
     private lateinit var btnChinese: MaterialButton
     private lateinit var btnEnglish: MaterialButton
     private lateinit var toggleGroupLanguage: MaterialButtonToggleGroup
-    private lateinit var btnlogout: Button
     private lateinit var btnedit: Button
     private lateinit var editTextName: EditText
     private lateinit var editTextSurname: EditText
@@ -62,7 +58,6 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun initFields(view: View) {
-        btnlogout = view.findViewById(R.id.logoutbutton)
         btnedit = view.findViewById(R.id.button2)
 
         btnChinese = view.findViewById(R.id.btn_chinese)
@@ -92,11 +87,6 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun initListeners() {
-        btnlogout.setOnClickListener {
-            PreferencesRepo.deleteUser(requireContext())
-            PreferencesRepo.deleteVaccination(requireContext())
-            findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
-        }
         toggleGroupLanguage.addOnButtonCheckedListener { _, checkedId, isChecked ->
             when (checkedId) {
                 R.id.btn_chinese -> {
@@ -201,7 +191,4 @@ class ProfileFragment : BaseFragment() {
             }
         })
     }
-
 }
-
-

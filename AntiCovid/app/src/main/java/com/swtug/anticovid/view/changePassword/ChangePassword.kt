@@ -10,16 +10,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import com.swtug.anticovid.R
 import com.swtug.anticovid.models.User
 import com.swtug.anticovid.repositories.FirebaseListener
 import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
-import com.swtug.anticovid.view.BaseFragment
 
 
-class ChangePassword : BaseFragment() {
+class ChangePassword : Fragment() {
     private lateinit var btnChangePassword: Button
     private lateinit var editTextCurrentPassword: EditText
     private lateinit var editTextNewPassword: EditText
@@ -105,7 +104,6 @@ class ChangePassword : BaseFragment() {
                 btnChangePassword.isEnabled = true
 
                 user?.let { PreferencesRepo.saveUser(requireContext(), it) }
-                findNavController().navigate(R.id.action_changePasswordFragment_to_profileFragment)
 
                 Toast.makeText(
                     requireContext(),

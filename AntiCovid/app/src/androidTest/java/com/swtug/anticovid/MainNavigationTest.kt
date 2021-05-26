@@ -72,6 +72,17 @@ class MainNavigationTest {
     }
 
     @Test
+    fun testNavigateFromHomeToChangePassword() {
+        onView(withId(R.id.pager)).perform(swipeLeft())
+        onView(withId(R.id.pager)).perform(swipeLeft())
+        onView(withId(R.id.pager)).perform(swipeLeft())
+        onView(withId(R.id.pager)).perform(swipeLeft())
+        onView(withId(R.id.pager)).perform(swipeLeft())
+        onView(withId(R.id.pager)).perform(swipeLeft())
+        onView(withId(R.id.editTextNewPassword)).check(matches(isDisplayed()))
+    }
+
+    @Test
     fun testNavigateFromHomeToAddTest() {
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())

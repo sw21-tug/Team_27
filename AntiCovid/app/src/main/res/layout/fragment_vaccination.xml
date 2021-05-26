@@ -2,24 +2,93 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
+
+    <LinearLayout
+        android:id="@+id/layout_not_vaccinated"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible"
+        android:visibility="gone">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@string/no_vaccine_info" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@string/recently_vaccined_question" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@string/insert_id_for_vaccine_qr_code" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@string/qr_code_created_after_second_dose" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="16dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/add_vaccine_id">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInput_vaccine_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_add_vaccine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/add_vaccine"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_vaccinated"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="?colorPrimary"
-        app:title="@string/my_vaccine_information"
-        app:titleTextColor="@color/white"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
         android:orientation="vertical"
+        android:visibility="gone"
         android:padding="16dp">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -99,15 +168,5 @@
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_show_qr_code"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/valid_qr_code"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

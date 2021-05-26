@@ -17,9 +17,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.models.User
 import com.swtug.anticovid.R
-import com.swtug.anticovid.TestUtils
 import com.swtug.anticovid.Utils
 import com.swtug.anticovid.repositories.PreferencesRepo
+import com.swtug.anticovid.utils.TestUtils
 import com.swtug.anticovid.view.addTestReport.AddTestReportFragment
 import com.swtug.anticovid.view.addTestReport.AddTestReportFragment.Companion.VALID_DAYS_POSITIVE
 import com.swtug.anticovid.view.addTestReport.AddTestReportFragment.Companion.VALID_HOURS_NEGATIVE
@@ -60,7 +60,7 @@ class AddTestReportTest {
 
         mainScenario.withFragment {
             navController.setGraph(R.navigation.nav_graph)
-            navController.setCurrentDestination(R.id.addTestReportFragment)
+         //   navController.setCurrentDestination(R.id.addTestReportFragment)
             Navigation.setViewNavController(requireView(), navController)
 
             setTestAndValidDate(testTimeStamp)

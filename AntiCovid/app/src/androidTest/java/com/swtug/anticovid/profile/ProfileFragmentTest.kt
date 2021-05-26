@@ -10,9 +10,9 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.R
-import com.swtug.anticovid.TestUtils
 import com.swtug.anticovid.models.User
 import com.swtug.anticovid.repositories.PreferencesRepo
+import com.swtug.anticovid.utils.TestUtils
 import com.swtug.anticovid.view.profile.ProfileFragment
 import org.junit.After
 import org.junit.Before
@@ -87,6 +87,4 @@ class ProfileFragmentTest {
     fun tearDown() {
         TestUtils.clearSharedPreferences(InstrumentationRegistry.getInstrumentation().targetContext)
     }
-
-
 }

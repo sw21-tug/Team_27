@@ -7,8 +7,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.swtug.anticovid.MainActivity
-import com.swtug.anticovid.TestUtils
 import com.swtug.anticovid.repositories.PreferencesRepo
+import com.swtug.anticovid.utils.TestUtils
 import org.junit.*
 import org.junit.runner.RunWith
 import java.util.*
@@ -24,22 +24,33 @@ class LoadLanguageTest {
     @Before
     fun setup() {
 
-        PreferencesRepo.saveLocale(ApplicationProvider.getApplicationContext(), Locale.SIMPLIFIED_CHINESE)
+        PreferencesRepo.saveLocale(
+            ApplicationProvider.getApplicationContext(),
+            Locale.SIMPLIFIED_CHINESE
+        )
 
-        launchActivityRule.launchActivity(Intent(InstrumentationRegistry.getInstrumentation().targetContext, MainActivity::class.java))
+        launchActivityRule.launchActivity(
+            Intent(
+                InstrumentationRegistry.getInstrumentation().targetContext,
+                MainActivity::class.java
+            )
+        )
 
     }
 
     @After
-    fun tearDown(){
+    fun tearDown() {
         TestUtils.clearSharedPreferences(ApplicationProvider.getApplicationContext())
     }
 
-    @Ignore@Test
+    @Ignore
+    @Test
     fun testLanguageChange() {
 
-        assert((PreferencesRepo.getLocale(ApplicationProvider.getApplicationContext()))
-                == Locale.SIMPLIFIED_CHINESE)
+        assert(
+            (PreferencesRepo.getLocale(ApplicationProvider.getApplicationContext()))
+                    == Locale.SIMPLIFIED_CHINESE
+        )
         Thread.sleep(3500)
         Espresso.pressBackUnconditionally()
 

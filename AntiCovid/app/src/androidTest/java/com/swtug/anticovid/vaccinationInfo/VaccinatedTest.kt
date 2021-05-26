@@ -1,29 +1,22 @@
 package com.swtug.anticovid.vaccinationInfo
 
-import android.content.Context
-import androidx.core.os.bundleOf
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.fragment.app.testing.withFragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.testing.TestNavHostController
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.R
-import com.swtug.anticovid.TestUtils
 import com.swtug.anticovid.models.Vaccination
 import com.swtug.anticovid.repositories.PreferencesRepo
-import com.swtug.anticovid.view.vaccineInfo.VaccinatedFragment
-import junit.framework.TestCase.assertEquals
+import com.swtug.anticovid.utils.TestUtils
+import com.swtug.anticovid.view.main.MainFragment
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -48,13 +41,14 @@ class VaccinatedTest {
 
         navController = mock(NavController::class.java)
 
-        val mainScenario =
-            launchFragmentInContainer<VaccinatedFragment>(themeResId = R.style.Theme_AntiCovid,
-                fragmentArgs = bundleOf("vaccination" to vaccination))
+        val mainScenario = launchFragmentInContainer<MainFragment>(themeResId = R.style.Theme_AntiCovid)
 
         mainScenario.withFragment {
             Navigation.setViewNavController(requireView(), navController)
         }
+
+        onView(withId(R.id.pager)).perform(ViewActions.swipeLeft())
+        onView(withId(R.id.pager)).perform(ViewActions.swipeLeft())
     }
 
     @After
@@ -74,12 +68,6 @@ class VaccinatedTest {
         onView(withId(R.id.first_dose_date)).check(matches(withText(vaccination.firstDose.toString())))
         onView(withId(R.id.second_dose_date)).check(matches(withText(vaccination.secondDose.toString())))
         onView(withId(R.id.institution)).check(matches(withText(vaccination.manufacturor)))
-    }
-
-    @Test
-    fun testClickAddVaccine() {
-        onView(withId(R.id.btn_show_qr_code)).perform(click())
-        verify(navController).navigate(R.id.action_vaccinatedFragment_to_QRCodeFragment)
     }
 }
 

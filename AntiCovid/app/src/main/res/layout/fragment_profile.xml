@@ -5,53 +5,30 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/profile"
-        app:titleTextColor="@color/white">
-
-        <Button
-            android:id="@+id/logoutbutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/log_out"
-            android:layout_gravity="right"
-            />
-
-    </com.google.android.material.appbar.MaterialToolbar>
-
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/toggle_group_language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
-        app:singleSelection="true"
+        app:layout_constraintTop_toTopOf="parent"
         app:selectionRequired="true"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:singleSelection="true">
 
         <com.google.android.material.button.MaterialButton
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            style="?attr/materialButtonOutlinedStyle"
-            android:id="@+id/btn_english"
-            android:text="@string/english" />
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            style="?attr/materialButtonOutlinedStyle"
             android:id="@+id/btn_chinese"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/chinese" />
 
-
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_english"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/english" />
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
 
@@ -206,20 +183,19 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#4E00E9"
         android:text="@string/save_user"
+        app:layout_constraintBottom_toTopOf="@+id/button_change_password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="213dp"
+        android:id="@+id/button_change_password"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:backgroundTint="#4E00E9"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/change_password"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
-
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,16 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.navigation.fragment.findNavController
-import com.google.zxing.WriterException
-import com.swtug.anticovid.view.BaseFragment
 import com.swtug.anticovid.R
 
 
-class AdvancedFeatureFragment : BaseFragment() {
+class AdvancedFeatureFragment : Fragment() {
     private lateinit var btnStat: Button
 
     override fun onCreateView(
@@ -21,7 +18,7 @@ class AdvancedFeatureFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return layoutInflater.inflate(R.layout.fragment_advanced_feature, null)
+        return layoutInflater.inflate(R.layout.fragment_advanced_feature, container, false)
     }
 
 
@@ -29,14 +26,7 @@ class AdvancedFeatureFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initFields(view)
-        initListeners()
 
-    }
-
-    private fun initListeners() {
-        btnStat.setOnClickListener {
-            findNavController().navigate(R.id.action_advancedFeatureFragment_to_statisticFragment)
-        }
     }
 
     private fun initFields(view: View) {

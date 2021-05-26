@@ -2,41 +2,31 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="?colorPrimary"
-        app:title="@string/add_test_report"
-        app:titleTextColor="@color/white"/>
 
     <LinearLayout
         android:id="@+id/current_user_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:background="@drawable/edittext_border"
         android:backgroundTint="@color/light_purple"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:orientation="horizontal"
         android:paddingTop="32dp"
+        android:layout_margin="16dp"
         android:paddingBottom="32dp"
         android:weightSum="2"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
+            android:scaleType="fitCenter"
             android:src="@drawable/ic_account"
-            app:tint="@color/black"
-            android:scaleType="fitCenter"/>
+            app:tint="@color/black" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
@@ -49,9 +39,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/e_mail"
-                android:textSize="10pt"
                 android:textColor="@color/black"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:textSize="10pt"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/text_user_name_info"
@@ -59,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/name_hint"
                 android:textSize="10pt"
-                app:layout_constraintTop_toBottomOf="@id/text_email_info"/>
+                app:layout_constraintTop_toBottomOf="@id/text_email_info" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 

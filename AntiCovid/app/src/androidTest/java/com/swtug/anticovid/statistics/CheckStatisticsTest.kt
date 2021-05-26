@@ -7,20 +7,19 @@ import android.widget.TextView
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.fragment.app.testing.withFragment
 import androidx.navigation.Navigation
+
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions
-import androidx.test.espresso.action.ViewActions.click
+
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.R
-import com.swtug.anticovid.TestUtils
-import com.swtug.anticovid.view.qrCode.StatisticFragment
-import com.swtug.anticovid.view.register.RegisterFragment
-import junit.framework.TestCase
+import com.swtug.anticovid.utils.TestUtils
+import com.swtug.anticovid.view.statistics.StatisticFragment
+
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher

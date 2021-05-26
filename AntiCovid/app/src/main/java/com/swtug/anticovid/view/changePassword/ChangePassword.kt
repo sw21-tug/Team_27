@@ -56,15 +56,18 @@ class ChangePassword : BaseFragment() {
 
     private fun initListeners() {
         editTextCurrentPassword.afterTextChanged {
+            val value = editTextCurrentPassword.text.toString()
 
-            if (user.password == it)
+            if (user.password == value)
                 setTick(editTextCurrentPassword)
             else
                 setError(editTextCurrentPassword, getString(R.string.wrong_password))
         }
 
         editTextNewPassword.afterTextChanged {
-            if (it.length < 8 || it == user.password)
+            val value = editTextNewPassword.text.toString()
+
+            if (value.length < 8 || value == user.password)
                 setError(editTextNewPassword, getString(R.string.password_does_not_match_criteria))
             else
                 setTick(editTextNewPassword)
@@ -78,7 +81,11 @@ class ChangePassword : BaseFragment() {
         }
 
         btnChangePassword.setOnClickListener {
-            if ((editTextNewPassword.text.toString() == editTextRepeatPassword.text.toString()) && (editTextCurrentPassword.text.toString() == user.password)) {
+            val newPassword = editTextNewPassword.text.toString()
+            val repeatPassword = editTextRepeatPassword.text.toString()
+            val currentPassword = editTextCurrentPassword.text.toString()
+
+            if ((newPassword == repeatPassword) && (currentPassword == user.password)) {
                 val user = getNewUser(editTextNewPassword.text.toString())
 
                 saveNewPasswordFirebase(user)

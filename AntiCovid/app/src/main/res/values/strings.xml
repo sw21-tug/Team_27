@@ -118,6 +118,7 @@
     <string name="password_does_not_match_criteria">Password does not meet the criteria</string>
     <string name="passwords_do_not_match">Passwords do not match</string>
     <string name="error_fill_out_filds">You have to fill in the fields beforehand!</string>
+    <string name="password_requirements"> - at least 8 characters long \n- must not match your old password</string>
 
     <string-array name="countries_array">
         <item>Afghanistan</item>

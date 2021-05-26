@@ -95,7 +95,7 @@ class MainNavigationTest {
     @Test
     fun testNavigateFromHomeToAdvancedFeatures() {
         onView(withId(R.id.tabLayout)).perform(selectTabAtPosition(0))
-        onView(withId(R.id.imv_Showflag)).check(matches(isDisplayed()))
+        onView(withId(R.id.casestoday)).check(matches(isDisplayed()))
     }
 
 }

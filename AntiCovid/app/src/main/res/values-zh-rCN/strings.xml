@@ -361,6 +361,9 @@
     <string name="password_does_not_match_criteria">密码不符合条件</string>
     <string name="passwords_do_not_match">密码不匹配</string>
 
+    <string name="error_fill_out_filds">您必須事先填寫字段</string>
+
+
 
 
 </resources>

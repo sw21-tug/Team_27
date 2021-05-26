@@ -9,12 +9,13 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.R
-import com.swtug.anticovid.TestUtils
+import com.swtug.anticovid.utils.TestUtils
 import com.swtug.anticovid.view.login.LoginFragment
 import junit.framework.TestCase
 import org.junit.Before
@@ -49,9 +50,9 @@ class LoginNavigationTest {
     @Test
     fun testLoginWithWrongCredentials() {
 
-        onView(withId(R.id.editTextTextEmailAddress)).perform(ViewActions.typeText("test@test.com"))
+        onView(withId(R.id.editTextTextEmailAddress)).perform(replaceText("test@test.com"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.editTextPassword)).perform(ViewActions.typeText("123456789"))
+        onView(withId(R.id.editTextPassword)).perform(replaceText("123456789"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.buttonLogin)).perform(click())
         Thread.sleep(3000)
@@ -64,9 +65,9 @@ class LoginNavigationTest {
     @Test
     fun testLoginWithCorretCredentials() {
 
-        onView(withId(R.id.editTextTextEmailAddress)).perform(ViewActions.typeText("test@test.com"))
+        onView(withId(R.id.editTextTextEmailAddress)).perform(replaceText("test@test.com"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.editTextPassword)).perform(ViewActions.typeText("testtest"))
+        onView(withId(R.id.editTextPassword)).perform(replaceText("testtest"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
         Thread.sleep(1000)
         onView(withId(R.id.buttonLogin)).perform(click())

@@ -9,8 +9,8 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.R
-import com.swtug.anticovid.TestUtils
 import com.swtug.anticovid.repositories.PreferencesRepo
+import com.swtug.anticovid.utils.TestUtils
 import com.swtug.anticovid.view.splashScreen.SplashScreenFragment
 import junit.framework.TestCase
 import org.junit.Before

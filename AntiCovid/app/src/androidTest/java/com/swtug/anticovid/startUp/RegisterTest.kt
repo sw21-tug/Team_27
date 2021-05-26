@@ -9,12 +9,13 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.R
-import com.swtug.anticovid.TestUtils
+import com.swtug.anticovid.utils.TestUtils
 import com.swtug.anticovid.view.register.RegisterFragment
 import junit.framework.TestCase
 import org.junit.Before
@@ -46,19 +47,19 @@ class RegisterTest {
     }
 
     private fun fillOutRegisterForm(email: String, pwd: String, secID: String) {
-        onView(withId(R.id.editTextEmail)).perform(ViewActions.typeText(email))
+        onView(withId(R.id.editTextEmail)).perform(replaceText(email))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.editTextPassword)).perform(ViewActions.typeText(pwd))
+        onView(withId(R.id.editTextPassword)).perform(replaceText(pwd))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.editTextAddress)).perform(ViewActions.typeText("Im a test dummy 2"))
+        onView(withId(R.id.editTextAddress)).perform(replaceText("Im a test dummy 2"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.editTextName)).perform(ViewActions.typeText("Test"))
+        onView(withId(R.id.editTextName)).perform(replaceText("Test"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.editTextSureName)).perform(ViewActions.typeText("Dont delete me"))
+        onView(withId(R.id.editTextSureName)).perform(replaceText("Dont delete me"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.editTextPhoneNumber)).perform(ViewActions.typeText("+3030303030303030"))
+        onView(withId(R.id.editTextPhoneNumber)).perform(replaceText("+3030303030303030"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.editTextSecurityID)).perform(ViewActions.typeText(secID))
+        onView(withId(R.id.editTextSecurityID)).perform(replaceText(secID))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
     }
 

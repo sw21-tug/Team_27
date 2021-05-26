@@ -155,7 +155,6 @@ class ChangePassword : BaseFragment() {
     }
 
     private fun setTick(editText: EditText) {
-        //TODO: fix this function...currently it's not working
         val icon = ResourcesCompat.getDrawable(
             resources,
             R.drawable.ic_baseline_check_circle_24,
@@ -167,7 +166,8 @@ class ChangePassword : BaseFragment() {
             icon.intrinsicWidth,
             icon.intrinsicHeight
         )
-        editText.setCompoundDrawables(null, null, icon, null)
+        editText.setCompoundDrawables(null, null, null, null)
+        editText.setCompoundDrawablesWithIntrinsicBounds(null, null, icon, null)
 
     }
 

@@ -17,13 +17,12 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.models.User
 import com.swtug.anticovid.R
-import com.swtug.anticovid.Utils
+import com.swtug.anticovid.DateTimeUtils
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.utils.TestUtils
 import com.swtug.anticovid.view.addTestReport.AddTestReportFragment
 import com.swtug.anticovid.view.addTestReport.AddTestReportFragment.Companion.VALID_DAYS_POSITIVE
 import com.swtug.anticovid.view.addTestReport.AddTestReportFragment.Companion.VALID_HOURS_NEGATIVE
-import junit.framework.TestCase
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
@@ -35,7 +34,7 @@ import java.time.LocalDateTime
 
 
 @RunWith(AndroidJUnit4::class)
-class AddTestReportTest {
+class AddTestReportFirebaseTest {
     private lateinit var navController: TestNavHostController
     private val testUser: User = User(-1,
         "Max",
@@ -47,7 +46,7 @@ class AddTestReportTest {
         "testtest")
 
     private val testTimeStamp: LocalDateTime = LocalDateTime.of(2021, 5, 10, 12, 13)
-    private val correctTestDate: String = Utils.getStringFromDate(testTimeStamp)
+    private val correctTestDate: String = DateTimeUtils.getStringFromDate(testTimeStamp)
 
     @Before
     fun setup() {
@@ -87,7 +86,7 @@ class AddTestReportTest {
     fun testNegativeValidationDate() {
         onView(withId(R.id.radio_test_negative)).perform(click())
 
-        val correctValidDate = Utils.getStringFromDate(testTimeStamp.plusHours(VALID_HOURS_NEGATIVE))
+        val correctValidDate = DateTimeUtils.getStringFromDate(testTimeStamp.plusHours(VALID_HOURS_NEGATIVE))
         onView(withId(R.id.text_test_date)).check(matches(isEditTextCorrectSetTo(correctTestDate)))
         onView(withId(R.id.text_valid_date)).check(matches(isEditTextCorrectSetTo(correctValidDate)))
     }
@@ -104,7 +103,7 @@ class AddTestReportTest {
     fun testPositiveValidationDate() {
         onView(withId(R.id.radio_test_positive)).perform(click())
 
-        val correctValidDate = Utils.getStringFromDate(testTimeStamp.plusDays(VALID_DAYS_POSITIVE))
+        val correctValidDate = DateTimeUtils.getStringFromDate(testTimeStamp.plusDays(VALID_DAYS_POSITIVE))
         onView(withId(R.id.text_test_date)).check(matches(isEditTextCorrectSetTo(correctTestDate)))
         onView(withId(R.id.text_valid_date)).check(matches(isEditTextCorrectSetTo(correctValidDate)))
     }

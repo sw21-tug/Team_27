@@ -12,9 +12,9 @@ import androidx.annotation.VisibleForTesting
 import androidx.fragment.app.Fragment
 import com.swtug.anticovid.models.User
 import com.swtug.anticovid.R
-import com.swtug.anticovid.Utils
-import com.swtug.anticovid.models.TestReport
-import com.swtug.anticovid.repositories.FirebaseListener
+import com.swtug.anticovid.DateTimeUtils
+import com.swtug.anticovid.models.FirebaseTestReport
+import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
 import java.time.LocalDateTime
@@ -55,7 +55,7 @@ class AddTestReportFragment: Fragment() {
         initFields(view)
         setTestAndValidDate(LocalDateTime.now())
 
-        initListeners(object : FirebaseListener {
+        initListeners(object : FirebaseUserListener {
             override fun onSuccess(user: User?) {
                 setButtonsEnabled(true)
                 Toast.makeText(requireContext(), getString(R.string.report_added_success),
@@ -75,9 +75,9 @@ class AddTestReportFragment: Fragment() {
 
     }
 
-    private fun addTestReportToFirebase(firebaseListener: FirebaseListener) {
+    private fun addTestReportToFirebase(firebaseUserListener: FirebaseUserListener) {
         if(currentUser != null) {
-            FirebaseRepo.addTestReport(getTestReportOfForm(), firebaseListener)
+            FirebaseRepo.addTestReport(getTestReportOfForm(), firebaseUserListener)
         } else {
             Toast.makeText(requireContext(), getString(R.string.error_no_user_logged_in), Toast.LENGTH_LONG).show()
         }
@@ -86,17 +86,17 @@ class AddTestReportFragment: Fragment() {
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     fun setTestAndValidDate(testDate: LocalDateTime) {
         selectedDate = testDate
-        editTestDate.setText(Utils.getStringFromDate(testDate))
+        editTestDate.setText(DateTimeUtils.getStringFromDate(testDate))
         if(isPositiveTest) {
-            editValidDate.setText(Utils.getStringFromDate(testDate.plusDays(VALID_DAYS_POSITIVE)))
+            editValidDate.setText(DateTimeUtils.getStringFromDate(testDate.plusDays(VALID_DAYS_POSITIVE)))
             txtValidityInfo.text = getString(R.string.positive_test_valid_info)
         } else {
-            editValidDate.setText(Utils.getStringFromDate(testDate.plusHours(VALID_HOURS_NEGATIVE)))
+            editValidDate.setText(DateTimeUtils.getStringFromDate(testDate.plusHours(VALID_HOURS_NEGATIVE)))
             txtValidityInfo.text = getString(R.string.negative_test_valid_info)
         }
     }
 
-    private fun initListeners(firebaseListener: FirebaseListener) {
+    private fun initListeners(firebaseUserListener: FirebaseUserListener) {
 
         buttonAddTestDate.setOnClickListener {
             pickDateAndTime()
@@ -104,18 +104,18 @@ class AddTestReportFragment: Fragment() {
 
         radioNegative.setOnClickListener {
             isPositiveTest = false
-            editValidDate.setText(Utils.getStringFromDate(selectedDate.plusHours(VALID_HOURS_NEGATIVE)))
+            editValidDate.setText(DateTimeUtils.getStringFromDate(selectedDate.plusHours(VALID_HOURS_NEGATIVE)))
             txtValidityInfo.text = getString(R.string.negative_test_valid_info)
         }
 
         radioPositive.setOnClickListener {
             isPositiveTest = true
-            editValidDate.setText(Utils.getStringFromDate(selectedDate.plusDays(VALID_DAYS_POSITIVE)))
+            editValidDate.setText(DateTimeUtils.getStringFromDate(selectedDate.plusDays(VALID_DAYS_POSITIVE)))
             txtValidityInfo.text = getString(R.string.positive_test_valid_info)
         }
 
         buttonAddTestReportToFirebase.setOnClickListener {
-            addTestReportToFirebase(firebaseListener)
+            addTestReportToFirebase(firebaseUserListener)
         }
     }
 
@@ -135,8 +135,8 @@ class AddTestReportFragment: Fragment() {
         }, selectedDate.year, selectedDate.monthValue - 1, selectedDate.dayOfMonth).show()
     }
 
-    private fun getTestReportOfForm(): TestReport {
-        return TestReport(currentUser?.email ?: "",
+    private fun getTestReportOfForm(): FirebaseTestReport {
+        return FirebaseTestReport(currentUser?.email ?: "",
                                 editTestDate.text.toString(),
                                 isPositiveTest,
                                 editValidDate.text.toString())

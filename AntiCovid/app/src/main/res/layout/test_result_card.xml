@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:id="@+id/testResultCardView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    card_view:cardBackgroundColor="@color/white"
+    card_view:cardCornerRadius="8dp"
+    card_view:contentPadding="8dp"
+    android:foreground="?selectableItemBackground"
+    card_view:cardElevation="8dp">
+
+
+        <LinearLayout
+            android:id="@+id/linearContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="3">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:id="@+id/resultDateIcon"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:scaleType="fitCenter"
+                    android:background="@drawable/ic_test_result_date_foreground"
+                    card_view:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintLeft_toLeftOf="parent"/>
+
+                <TextView
+                    android:id="@+id/cardTextTestDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="64dp"
+                    android:text="22.05.2021 13:45"
+                    android:textStyle="bold"
+                    android:textSize="8pt"
+                    card_view:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintLeft_toRightOf="@id/resultDateIcon"
+                    card_view:layout_constraintRight_toRightOf="parent"
+                    android:gravity="center"/>
+
+                <LinearLayout
+                    android:id="@+id/validDateContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="3"
+                    card_view:layout_constraintTop_toBottomOf="@id/resultDateIcon"
+                    card_view:layout_constraintLeft_toLeftOf="parent"
+                    >
+                <TextView
+                    android:id="@+id/cardInfoTextValidUntil"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:textColor="@color/dark_grey"
+                    android:text="Valid until:"
+                    android:gravity="center_vertical"
+                    />
+
+                    <TextView
+                        android:id="@+id/cardTextValidDate"
+                        android:layout_weight="2"
+                        android:layout_width="0dp"
+                        android:layout_height="32dp"
+                        android:text="24.05.2021 13:45"
+                        android:gravity="center_vertical"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="3"
+                    card_view:layout_constraintTop_toBottomOf="@id/validDateContainer"
+                    card_view:layout_constraintLeft_toLeftOf="parent">
+                    <TextView
+                        android:id="@+id/cardInfoTextResult"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="32dp"
+                        android:textColor="@color/dark_grey"
+                        android:text="Result:"
+                        android:gravity="center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/cardTextTestResult"
+                        android:layout_weight="2"
+                        android:layout_width="0dp"
+                        android:layout_height="32dp"
+                        android:text="Positive"
+                        android:gravity="center_vertical"/>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/cardResultImage"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:background="@drawable/ic_sick_emote_foreground"
+                android:backgroundTint="@color/errorRed" />
+
+
+        </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

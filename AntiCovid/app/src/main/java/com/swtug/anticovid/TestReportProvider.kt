@@ -12,5 +12,4 @@ object TestReportProvider {
     fun getAllTestReports(): ArrayList<TestReport> {
         return testReports
     }
-
 }

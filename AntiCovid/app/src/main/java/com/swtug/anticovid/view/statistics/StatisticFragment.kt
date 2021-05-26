@@ -12,6 +12,7 @@ import android.util.Log
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
+import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.view.statistics.CountryService
 import com.swtug.anticovid.view.statistics.MyCountry
 import com.swtug.anticovid.view.statistics.ServiceBuilder
@@ -84,9 +85,10 @@ class StatisticFragment : Fragment() , AdapterView.OnItemSelectedListener{
     private fun initFields(view: View) {
         spinnerCountries = view.findViewById(R.id.spinner)
         spinnerCountries.onItemSelectedListener = this
-
+        if(activity !is MainActivity)
+            return
         ArrayAdapter.createFromResource(
-            requireActivity(),
+            requireContext(),
             R.array.countries_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->

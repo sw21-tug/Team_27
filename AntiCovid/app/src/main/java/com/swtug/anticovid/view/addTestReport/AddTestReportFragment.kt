@@ -11,10 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.models.User
 import com.swtug.anticovid.R
-import com.swtug.anticovid.DateTimeUtils
-import com.swtug.anticovid.MainActivity
+import com.swtug.anticovid.utils.DateTimeUtils
 import com.swtug.anticovid.models.FirebaseTestReport
 import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.FirebaseRepo
@@ -123,7 +123,7 @@ class AddTestReportFragment: Fragment(R.layout.fragment_add_test_report) {
         selectedDate = LocalDateTime.now()
         DatePickerDialog(requireContext(),
             { _, year, month, dayOfMonth ->
-                selectedDate = LocalDateTime.of(year, month, dayOfMonth, 0, 0)
+                selectedDate = LocalDateTime.of(year, month + 1, dayOfMonth, 0, 0)
 
                 TimePickerDialog(requireContext(),
                     { _, hourOfDay, minute ->

@@ -53,16 +53,8 @@ class MainNavigationTest {
     }
 
     @Test
-    fun testNavigateFromHomeToTestResults() {
-        onView(withId(R.id.pager)).perform(swipeLeft())
-        onView(withId(R.id.pager)).perform(swipeLeft())
-        onView(withId(R.id.pager)).perform(swipeLeft())
-        onView(withId(R.id.pager)).perform(swipeLeft())
-        //onView(withId(R.id.toggle_group_language)).check(matches(isDisplayed()))
-    }
-
-    @Test
     fun testNavigateFromHomeToProfile() {
+        onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
@@ -73,13 +65,14 @@ class MainNavigationTest {
     fun testNavigateFromHomeToVaccinationInformation() {
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
+        onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.layout_not_vaccinated)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun testNavigateFromHomeToQRCode() {
+    fun testNavigateFromHomeToTestResults() {
         onView(withId(R.id.pager)).perform(swipeLeft())
-        onView(withId(R.id.QRScreenQRCodeImg)).check(matches(isDisplayed()))
+        onView(withId(R.id.fab_add_test_report)).check(matches(isDisplayed()))
     }
 
     @Test

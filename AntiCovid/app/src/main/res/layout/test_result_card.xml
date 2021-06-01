@@ -10,59 +10,106 @@
     android:layout_marginBottom="8dp"
     card_view:cardBackgroundColor="@color/white"
     card_view:cardCornerRadius="8dp"
-    card_view:contentPadding="8dp"
     android:foreground="?selectableItemBackground"
     card_view:cardElevation="8dp">
+
+    <ImageView
+        android:id="@+id/buttonDeleteTestReport"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="4dp"
+        android:src="@drawable/ic_delete_foreground"
+        card_view:tint="@color/dark_grey"
+        android:scaleType="centerCrop"
+        android:layout_gravity="top|end"
+        android:cropToPadding="true"
+        />
 
 
         <LinearLayout
             android:id="@+id/linearContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="3">
+            android:layout_height="wrap_content"
+            android:weightSum="10"
+            android:layout_margin="16dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="match_parent">
-
-
-                <ImageView
-                    android:id="@+id/resultDateIcon"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:scaleType="fitCenter"
-                    android:background="@drawable/ic_test_result_date_foreground"
-                    card_view:layout_constraintTop_toTopOf="parent"
-                    card_view:layout_constraintLeft_toLeftOf="parent"/>
+                android:layout_weight="7"
+                android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/cardTextTestDate"
+                    android:id="@+id/cardTextTestType"
                     android:layout_width="wrap_content"
-                    android:layout_height="64dp"
-                    android:text="22.05.2021 13:45"
+                    android:layout_height="wrap_content"
+                    android:text="@string/antigen_test"
                     android:textStyle="bold"
                     android:textSize="8pt"
+                    android:layout_marginBottom="16dp"
                     card_view:layout_constraintTop_toTopOf="parent"
-                    card_view:layout_constraintLeft_toRightOf="@id/resultDateIcon"
-                    card_view:layout_constraintRight_toRightOf="parent"
-                    android:gravity="center"/>
+                    card_view:layout_constraintLeft_toLeftOf="parent"
+                    card_view:layout_constraintBottom_toTopOf="@id/testDateContainer"
+                    android:gravity="center_vertical"/>
+
+                <LinearLayout
+                    android:id="@+id/testDateContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="3"
+                    android:layout_marginTop="8dp"
+                    card_view:layout_constraintBottom_toTopOf="@id/validDateContainer"
+                    card_view:layout_constraintLeft_toLeftOf="parent">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="@color/dark_grey"
+                        android:background="@drawable/ic_event_date_foreground"/>
+
+                    <TextView
+                        android:id="@+id/cardInfoTestDate"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/dark_grey"
+                        android:text="@string/test_date_info"
+                        android:gravity="center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/cardTextTestDate"
+                        android:layout_weight="2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="0dp"
+                        android:text=""
+                        android:gravity="center_vertical"/>
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/validDateContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:weightSum="3"
-                    card_view:layout_constraintTop_toBottomOf="@id/resultDateIcon"
+                    card_view:layout_constraintTop_toBottomOf="@id/testDateContainer"
                     card_view:layout_constraintLeft_toLeftOf="parent"
                     >
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="@color/dark_grey"
+                        android:background="@drawable/ic_event_valid_foreground"/>
+
                 <TextView
                     android:id="@+id/cardInfoTextValidUntil"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="32dp"
+                    android:layout_height="match_parent"
                     android:textColor="@color/dark_grey"
-                    android:text="Valid until:"
+                    android:text="@string/valid_until_info"
                     android:gravity="center_vertical"
                     />
 
@@ -70,8 +117,10 @@
                         android:id="@+id/cardTextValidDate"
                         android:layout_weight="2"
                         android:layout_width="0dp"
-                        android:layout_height="32dp"
-                        android:text="24.05.2021 13:45"
+                        android:layout_height="match_parent"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="0dp"
+                        android:text=""
                         android:gravity="center_vertical"/>
                 </LinearLayout>
 
@@ -79,35 +128,47 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:weightSum="3"
-                    card_view:layout_constraintTop_toBottomOf="@id/validDateContainer"
-                    card_view:layout_constraintLeft_toLeftOf="parent">
+                    card_view:layout_constraintBottom_toBottomOf="parent"
+                    card_view:layout_constraintLeft_toLeftOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@id/validDateContainer">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="@color/dark_grey"
+                        android:background="@drawable/ic_info_foreground"/>
+
                     <TextView
                         android:id="@+id/cardInfoTextResult"
-                        android:layout_weight="1"
                         android:layout_width="0dp"
-                        android:layout_height="32dp"
-                        android:textColor="@color/dark_grey"
-                        android:text="Result:"
-                        android:gravity="center_vertical"/>
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/result_info"
+                        android:textColor="@color/dark_grey" />
 
                     <TextView
                         android:id="@+id/cardTextTestResult"
-                        android:layout_weight="2"
                         android:layout_width="0dp"
-                        android:layout_height="32dp"
-                        android:text="Positive"
-                        android:gravity="center_vertical"/>
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center_vertical"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="0dp"
+                        android:text="" />
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
                 android:id="@+id/cardResultImage"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
-                android:background="@drawable/ic_sick_emote_foreground"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_corona_foreground"
                 android:backgroundTint="@color/errorRed" />
 
 

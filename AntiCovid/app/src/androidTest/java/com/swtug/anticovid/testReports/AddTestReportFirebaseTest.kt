@@ -17,7 +17,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.models.User
 import com.swtug.anticovid.R
-import com.swtug.anticovid.DateTimeUtils
+import com.swtug.anticovid.utils.DateTimeUtils
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.utils.TestUtils
 import com.swtug.anticovid.view.addTestReport.AddTestReportFragment

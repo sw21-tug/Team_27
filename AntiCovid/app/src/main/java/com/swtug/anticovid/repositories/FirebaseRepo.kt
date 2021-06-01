@@ -1,8 +1,9 @@
+
 package com.swtug.anticovid.repositories
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
-import com.swtug.anticovid.DateTimeUtils
+import com.swtug.anticovid.utils.DateTimeUtils
 import com.swtug.anticovid.models.FirebaseTestReport
 import com.swtug.anticovid.models.TestReport
 import com.swtug.anticovid.models.User
@@ -141,5 +142,31 @@ object FirebaseRepo {
             document[TEST_REPORT_RESULT] as Boolean,
             DateTimeUtils.getDateFromString(document[TEST_REPORT_VALID] as String)
         )
+    }
+
+    fun deleteTestReport(firebaseTestReport: FirebaseTestReport,
+                         firebaseTestReportListener: FirebaseTestReportListener) {
+        firebaseTestReportListener.onStart()
+        val firebaseStore = FirebaseFirestore.getInstance()
+
+        firebaseStore.collection(COLLECTION_TEST_REPORTS).whereEqualTo(TEST_REPORT_EMAIL, firebaseTestReport.email)
+            .whereEqualTo(TEST_REPORT_DATE, firebaseTestReport.testdate)
+            .whereEqualTo(TEST_REPORT_VALID, firebaseTestReport.validdate)
+            .whereEqualTo(TEST_REPORT_RESULT, firebaseTestReport.testresult).get().addOnSuccessListener { documents ->
+
+                if(documents != null && !documents.isEmpty) {
+                    val documentID = documents.documents[0].id
+                    firebaseStore.collection(COLLECTION_TEST_REPORTS).document(documentID).delete().addOnSuccessListener {
+                        firebaseTestReportListener.onSuccess(ArrayList())
+                    }.addOnFailureListener {
+                        firebaseTestReportListener.onFailure()
+                    }
+                } else {
+                    firebaseTestReportListener.onFailure()
+                }
+
+            }.addOnFailureListener {
+                firebaseTestReportListener.onFailure()
+            }
     }
 }

@@ -3,14 +3,14 @@ package com.swtug.anticovid.view.changePassword
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.R
 import com.swtug.anticovid.models.User
 import com.swtug.anticovid.repositories.FirebaseUserListener
@@ -18,20 +18,15 @@ import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
 
 
-class ChangePassword : Fragment() {
-    private lateinit var btnChangePassword: Button
+class ChangePassword : Fragment(R.layout.fragment_change_password) {
     private lateinit var editTextCurrentPassword: EditText
     private lateinit var editTextNewPassword: EditText
     private lateinit var editTextRepeatPassword: EditText
 
     private lateinit var user: User
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return layoutInflater.inflate(R.layout.fragment_change_password, container, false)
+    init {
+        setHasOptionsMenu(true)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,13 +35,37 @@ class ChangePassword : Fragment() {
         initFields(view)
         initListeners()
 
+        (activity as? MainActivity?)?.run {
+            setSupportActionBar(view.findViewById(R.id.toolbar))
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setDisplayShowHomeEnabled(true)
+        }
+
+
         user = PreferencesRepo.getUser(requireContext())!!
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_add_test, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            android.R.id.home -> {
+                findNavController().popBackStack()
+                true
+            }
+            R.id.save -> {
+                updatePassword()
+                true
+            }
+            else -> false
+        }
+    }
 
     private fun initFields(view: View) {
-        btnChangePassword = view.findViewById(R.id.btnChangePassword)
         editTextCurrentPassword = view.findViewById(R.id.editTextOldPassword)
         editTextNewPassword = view.findViewById(R.id.editTextNewPassword)
         editTextRepeatPassword = view.findViewById(R.id.editTextRepeatPassword)
@@ -78,31 +97,28 @@ class ChangePassword : Fragment() {
             else
                 setError(editTextRepeatPassword, getString(R.string.passwords_do_not_match))
         }
-
-        btnChangePassword.setOnClickListener {
-            val newPassword = editTextNewPassword.text.toString()
-            val repeatPassword = editTextRepeatPassword.text.toString()
-            val currentPassword = editTextCurrentPassword.text.toString()
-
-            if ((newPassword == repeatPassword) && (currentPassword == user.password)) {
-                val user = getNewUser(editTextNewPassword.text.toString())
-
-                saveNewPasswordFirebase(user)
-            }else
-                Toast.makeText(
-                    requireContext(),
-                    requireContext().getString(R.string.error_fill_out_filds),
-                    Toast.LENGTH_LONG
-                ).show()
-        }
     }
 
+    private fun updatePassword() {
+        val newPassword = editTextNewPassword.text.toString()
+        val repeatPassword = editTextRepeatPassword.text.toString()
+        val currentPassword = editTextCurrentPassword.text.toString()
+
+        if ((newPassword == repeatPassword) && (currentPassword == user.password)) {
+            val user = getNewUser(editTextNewPassword.text.toString())
+            saveNewPasswordFirebase(user)
+        }else
+            Toast.makeText(
+                requireContext(),
+                requireContext().getString(R.string.error_fill_out_filds),
+                Toast.LENGTH_LONG
+            ).show()
+    }
 
     private fun saveNewPasswordFirebase(user: User) {
         FirebaseRepo.updateUser(user, object : FirebaseUserListener {
             override fun onSuccess(user: User?) {
-                btnChangePassword.isEnabled = true
-
+                findNavController().popBackStack()
                 user?.let { PreferencesRepo.saveUser(requireContext(), it) }
 
                 Toast.makeText(
@@ -112,13 +128,9 @@ class ChangePassword : Fragment() {
                 ).show()
             }
 
-            override fun onStart() {
-                btnChangePassword.isEnabled = false
-            }
+            override fun onStart() = Unit
 
             override fun onFailure() {
-                btnChangePassword.isEnabled = true
-
                 Toast.makeText(
                     requireContext(),
                     requireContext().getString(R.string.error_firebase_communication),

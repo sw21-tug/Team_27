@@ -13,6 +13,7 @@
         android:theme="@style/Theme.AntiCovid">
         <activity
             android:configChanges="layoutDirection|locale"
+            android:windowSoftInputMode="adjustPan"
             android:name="com.swtug.anticovid.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>

@@ -97,20 +97,18 @@
         <action
             android:id="@+id/action_mainFragment_to_addTestReportFragment"
             app:destination="@id/addTestReportFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_changePassword"
+            app:destination="@id/changePassword" />
     </fragment>
 
-    <fragment
-        android:id="@+id/advancedFeatureFragment"
-        android:name="com.swtug.anticovid.view.advancedFeatures.AdvancedFeatureFragment"
-        android:label="AdvancedFeatureFragment" />
-    <fragment
-        android:id="@+id/statisticFragment"
-        android:name="com.swtug.anticovid.view.statistics.StatisticFragment"
-        android:label="fragment_statistic"
-        tools:layout="@layout/fragment_statistic" />
     <fragment
         android:id="@+id/addTestReportFragment"
         android:name="com.swtug.anticovid.view.addTestReport.AddTestReportFragment"
         android:label="AddTestReportFragment" />
+    <fragment
+        android:id="@+id/changePassword"
+        android:name="com.swtug.anticovid.view.changePassword.ChangePassword"
+        android:label="ChangePassword" />
 
 </navigation>

@@ -64,10 +64,10 @@ class MainFragment : Fragment() {
     private fun setupLayout() {
         val fragments = listOf(
             StatisticFragment() to getString(R.string.statistics),
+            TestResultFragment() to getString(R.string.test_reports),
             QRCodeFragment() to getString(R.string.valid_qr_code),
             VaccinationFragment() to getString(R.string.my_vaccine_information),
-            ProfileFragment() to getString(R.string.profile),
-            TestResultFragment() to getString(R.string.my_previous_test_reports),
+            ProfileFragment() to getString(R.string.profile)
         )
 
         val adapter = ViewPagerAdapter(fragments, childFragmentManager, lifecycle)

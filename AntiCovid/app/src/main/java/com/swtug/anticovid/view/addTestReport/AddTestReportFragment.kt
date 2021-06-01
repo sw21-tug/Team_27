@@ -11,10 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.models.User
 import com.swtug.anticovid.R
-import com.swtug.anticovid.DateTimeUtils
-import com.swtug.anticovid.MainActivity
+import com.swtug.anticovid.utils.DateTimeUtils
 import com.swtug.anticovid.models.FirebaseTestReport
 import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.FirebaseRepo

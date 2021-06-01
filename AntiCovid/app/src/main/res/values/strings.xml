@@ -4,7 +4,7 @@
     <string name="add_test_report">Add Test Report</string>
     <string name="my_vaccine_information">Vaccine Information</string>
     <string name="valid_qr_code">QR Code</string>
-    <string name="my_previous_test_reports">Previous Test Reports</string>
+    <string name="test_reports">Test Reports</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -120,6 +120,14 @@
     <string name="error_fill_out_filds">You have to fill in the fields beforehand!</string>
     <string name="password_requirements"> - at least 8 characters long \n- must not match your old password</string>
     <string name="save">Save</string>
+    <string name="antigen_test">ANTIGEN - Test</string>
+    <string name="test_date_info">Test date: </string>
+    <string name="valid_until_info">Valid until:</string>
+    <string name="result_info">Result: </string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="delete_report_question">Are you sure to delete the following Test Report?</string>
+    <string name="report_delete_success">Test report deleted successfully!</string>
 
     <string-array name="countries_array">
         <item>Afghanistan</item>

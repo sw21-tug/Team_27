@@ -8,20 +8,22 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.swtug.anticovid.DateTimeUtils
+import com.swtug.anticovid.utils.DateTimeUtils
 import com.swtug.anticovid.R
 import com.swtug.anticovid.TestReportProvider
-import java.util.*
+import com.swtug.anticovid.models.TestReport
 
 class TestResultsRecyclerAdapter : RecyclerView.Adapter<TestResultsRecyclerAdapter.ViewHolder>() {
 
-    private val testResults = TestReportProvider.getAllTestReports()
+    private var testResults = TestReportProvider.getAllTestReports()
+    private lateinit var onDeleteClicked: (testReport: TestReport) -> Unit
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var testResultDateText: TextView = itemView.findViewById(R.id.cardTextTestDate)
         var testResultText: TextView = itemView.findViewById(R.id.cardTextTestResult)
         var testValidDateText: TextView = itemView.findViewById(R.id.cardTextValidDate)
         var testResultImageView: ImageView = itemView.findViewById(R.id.cardResultImage)
+        var btnDeleteTestReport: ImageView = itemView.findViewById(R.id.buttonDeleteTestReport)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
@@ -43,6 +45,10 @@ class TestResultsRecyclerAdapter : RecyclerView.Adapter<TestResultsRecyclerAdapt
             setNegativeResultImage(viewHolder.itemView.context, viewHolder.testResultImageView)
             viewHolder.testResultText.text = viewHolder.itemView.context.getString(R.string.negative)
         }
+
+        viewHolder.btnDeleteTestReport.setOnClickListener {
+            onDeleteClicked(testReport)
+        }
     }
 
     private fun setPositiveResultImage(context: Context, imageView: ImageView) {
@@ -57,5 +63,13 @@ class TestResultsRecyclerAdapter : RecyclerView.Adapter<TestResultsRecyclerAdapt
 
     override fun getItemCount(): Int {
         return testResults.size
+    }
+
+    fun setOnItemClickListener(onDeleteClicked: (testReport: TestReport) -> Unit) {
+        this.onDeleteClicked = onDeleteClicked
+    }
+
+    fun setNewDataSet(testReports: ArrayList<TestReport>) {
+        this.testResults = testReports
     }
 }

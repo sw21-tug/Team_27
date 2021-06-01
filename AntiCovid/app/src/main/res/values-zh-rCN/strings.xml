@@ -4,7 +4,7 @@
     <string name="add_test_report">添加测试报告t</string>
     <string name="my_vaccine_information">我的疫苗信息</string>
     <string name="valid_qr_code">有效的QR码</string>
-    <string name="my_previous_test_reports">我以前的测试报告</string>
+    <string name="test_reports">前的测试报告</string>
     <!-- Strings related to login -->
     <string name="prompt_email">电子邮件</string>
     <string name="prompt_password">密码</string>
@@ -364,9 +364,14 @@
 
     <string name="error_fill_out_filds">您必須事先填寫字段</string>
     <string name="password_requirements"> -至少8个字符长\n-不能与您的旧密码匹配</string>
-
-
-
+    <string name="antigen_test">抗原检测 </string>
+    <string name="test_date_info">考试日期:</string>
+    <string name="valid_until_info">有效期至: </string>
+    <string name="result_info">结果: </string>
+    <string name="yes">是的 </string>
+    <string name="no">不 </string>
+    <string name="delete_report_question">您确定要删除以下测试报告吗？</string>
+    <string name="report_delete_success">测试报告删除成功！</string>
 
 
 </resources>

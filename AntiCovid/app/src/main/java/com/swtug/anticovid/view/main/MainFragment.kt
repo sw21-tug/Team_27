@@ -68,7 +68,6 @@ class MainFragment : Fragment() {
             VaccinationFragment() to getString(R.string.my_vaccine_information),
             ProfileFragment() to getString(R.string.profile),
             TestResultFragment() to getString(R.string.my_previous_test_reports),
-            ChangePassword() to getString(R.string.change_password)
         )
 
         val adapter = ViewPagerAdapter(fragments, childFragmentManager, lifecycle)

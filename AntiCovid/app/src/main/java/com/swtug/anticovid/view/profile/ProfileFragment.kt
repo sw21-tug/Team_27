@@ -6,8 +6,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.swtug.anticovid.R
 import com.swtug.anticovid.models.User
 import com.swtug.anticovid.repositories.FirebaseUserListener
@@ -20,7 +22,8 @@ class ProfileFragment : Fragment() {
     private lateinit var btnChinese: MaterialButton
     private lateinit var btnEnglish: MaterialButton
     private lateinit var toggleGroupLanguage: MaterialButtonToggleGroup
-    private lateinit var btnedit: Button
+    private lateinit var fabEdit: FloatingActionButton
+    private lateinit var fabChangePassword: FloatingActionButton
     private lateinit var editTextName: EditText
     private lateinit var editTextSurname: EditText
     private lateinit var editTextEMail: EditText
@@ -58,7 +61,8 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initFields(view: View) {
-        btnedit = view.findViewById(R.id.button2)
+        fabEdit = view.findViewById(R.id.fab_save_user)
+        fabChangePassword = view.findViewById(R.id.fab_change_password)
 
         btnChinese = view.findViewById(R.id.btn_chinese)
         btnEnglish = view.findViewById(R.id.btn_english)
@@ -100,9 +104,12 @@ class ProfileFragment : Fragment() {
             }
         }
 
-        btnedit.setOnClickListener {
+       fabEdit.setOnClickListener {
             storeNewUserData()
+        }
 
+        fabChangePassword.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_changePassword)
         }
 
     }
@@ -163,7 +170,7 @@ class ProfileFragment : Fragment() {
 
         FirebaseRepo.updateUser(newUser, object : FirebaseUserListener {
             override fun onSuccess(user: User?) {
-                btnedit.isEnabled = true
+                fabEdit.isEnabled = true
 
                 PreferencesRepo.saveUser(requireContext(), newUser)
 
@@ -176,11 +183,11 @@ class ProfileFragment : Fragment() {
             }
 
             override fun onStart() {
-                btnedit.isEnabled = false
+                fabEdit.isEnabled = false
             }
 
             override fun onFailure() {
-                btnedit.isEnabled = true
+                fabEdit.isEnabled = true
 
                 assignValues(currentUser)
 

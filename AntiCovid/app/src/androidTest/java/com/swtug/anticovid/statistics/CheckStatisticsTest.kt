@@ -43,7 +43,6 @@ class CheckStatisticsTest{
 
         mainScenario.withFragment {
             navController.setGraph(R.navigation.nav_graph)
-            navController.setCurrentDestination(R.id.statisticFragment)
             Navigation.setViewNavController(requireView(), navController)
         }
     }

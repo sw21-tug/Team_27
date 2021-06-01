@@ -19,7 +19,6 @@ import com.swtug.anticovid.repositories.PreferencesRepo
 
 
 class ChangePassword : Fragment(R.layout.fragment_change_password) {
-    //private lateinit var btnChangePassword: Button
     private lateinit var editTextCurrentPassword: EditText
     private lateinit var editTextNewPassword: EditText
     private lateinit var editTextRepeatPassword: EditText
@@ -67,7 +66,6 @@ class ChangePassword : Fragment(R.layout.fragment_change_password) {
     }
 
     private fun initFields(view: View) {
-        //btnChangePassword = view.findViewById(R.id.btnChangePassword)
         editTextCurrentPassword = view.findViewById(R.id.editTextOldPassword)
         editTextNewPassword = view.findViewById(R.id.editTextNewPassword)
         editTextRepeatPassword = view.findViewById(R.id.editTextRepeatPassword)

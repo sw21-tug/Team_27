@@ -1,166 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
-    <LinearLayout
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/add_test_report"
+        app:titleTextColor="@color/white" />
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/current_user_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittext_border"
-        android:backgroundTint="@color/light_purple"
-        android:orientation="horizontal"
-        android:paddingTop="32dp"
         android:layout_margin="16dp"
-        android:paddingBottom="32dp"
-        android:weightSum="2"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_account"
-            app:tint="@color/black" />
+        android:foreground="?selectableItemBackground"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        app:contentPadding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/text_user_name_info"
+            app:layout_constraintTop_toTopOf="@+id/text_user_name_info">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_account"
+                app:layout_constraintBottom_toBottomOf="@+id/text_user_name_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_email_info"
+                app:tint="@color/black" />
+
 
             <TextView
                 android:id="@+id/text_email_info"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/e_mail"
                 android:textColor="@color/black"
                 android:textSize="10pt"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintBottom_toTopOf="@+id/text_user_name_info"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/text_user_name_info"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/name_hint"
                 android:textSize="10pt"
-                app:layout_constraintTop_toBottomOf="@id/text_email_info" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/text_email_info" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-
-    <LinearLayout
-        android:id="@+id/test_date_layout"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/test_result_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:paddingTop="32dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:weightSum="3"
-        app:layout_constraintBottom_toTopOf="@id/valid_date_layout"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:foreground="?selectableItemBackground"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        android:layout_gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/current_user_layout">
 
-        <TextView
-            android:layout_width="0dp"
+        <RadioGroup
+            android:id="@+id/test_result_group"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/test_date"
-            android:textSize="10pt" />
-
-        <EditText
-            android:id="@+id/text_test_date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.6"
-            android:backgroundTint="@color/purple_500"
-            android:enabled="false"
-            android:textColor="@color/dark_grey"
-            android:textCursorDrawable="@drawable/purple_cursor"
-            android:textSize="10pt" />
-
-        <ImageButton
-            android:id="@+id/button_enter_test_date"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_weight="0.4"
-            android:background="@color/white"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_calendar"
-            android:tint="@color/black" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/valid_date_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="32dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:weightSum="3"
-        app:layout_constraintTop_toBottomOf="@id/test_date_layout">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/valid_date"
-            android:textSize="10pt" />
-
-        <EditText
-            android:id="@+id/text_valid_date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:backgroundTint="@color/purple_500"
-            android:enabled="false"
-            android:textColor="@color/dark_grey"
-            android:textCursorDrawable="@drawable/purple_cursor"
-            android:textSize="10pt" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/validity_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/negative_test_valid_info"
-        android:textColor="@color/dark_grey"
-        app:layout_constraintLeft_toLeftOf="@id/valid_date_layout"
-        app:layout_constraintTop_toBottomOf="@id/valid_date_layout" />
-
-
-    <RadioGroup
-        android:id="@+id/test_result_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittext_border"
-        android:backgroundTint="@color/light_purple"
-        android:layout_marginTop="48dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:weightSum="2"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/validity_info"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:backgroundTint="@color/light_purple"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <RadioButton
                 android:id="@+id/radio_test_positive"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="32dp"
                 android:text="@string/positive"
                 android:textSize="10pt" />
 
@@ -172,23 +119,64 @@
                 android:checked="true"
                 android:text="@string/negative"
                 android:textSize="10pt" />
-    </RadioGroup>
+        </RadioGroup>
+    </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/button_add_test_report_to_firebase"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_height="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/test_date_layout"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/button_border_radius"
-        android:backgroundTint="@color/purple_500"
-        android:color="@color/white"
-        android:elevation="2dp"
-        android:text="@string/add_test_report"
-        android:textSize="21sp"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:hint="@string/test_date"
+        app:endIconDrawable="@drawable/ic_calendar"
+        app:endIconMode="custom"
+        app:endIconTint="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_result_card">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_test_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_valid_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/valid_date"
+        app:layout_constraintTop_toBottomOf="@+id/test_date_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_valid_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/validity_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/negative_test_valid_info"
+        android:textColor="@color/dark_grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_valid_layout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

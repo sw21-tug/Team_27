@@ -92,7 +92,7 @@
     <string name="positive">Positive</string>
     <string name="negative">Negative</string>
     <string name="test_date">Test Date:</string>
-    <string name="valid_date">Valid Date:</string>
+    <string name="valid_date">Valid Until:</string>
     <string name="active">Active</string>
     <string name="land">Austria</string>
     <string name="cases_today">Cases today</string>
@@ -119,6 +119,7 @@
     <string name="passwords_do_not_match">Passwords do not match</string>
     <string name="error_fill_out_filds">You have to fill in the fields beforehand!</string>
     <string name="password_requirements"> - at least 8 characters long \n- must not match your old password</string>
+    <string name="save">Save</string>
 
     <string-array name="countries_array">
         <item>Afghanistan</item>

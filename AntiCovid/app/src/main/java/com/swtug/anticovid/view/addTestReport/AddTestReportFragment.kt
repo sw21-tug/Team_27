@@ -4,32 +4,32 @@ package com.swtug.anticovid.view.addTestReport
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
 import androidx.annotation.VisibleForTesting
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.swtug.anticovid.models.User
 import com.swtug.anticovid.R
 import com.swtug.anticovid.DateTimeUtils
+import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.models.FirebaseTestReport
 import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
 import java.time.LocalDateTime
 
-class AddTestReportFragment: Fragment() {
+class AddTestReportFragment: Fragment(R.layout.fragment_add_test_report) {
 
     private lateinit var txtUserEmail: TextView
     private lateinit var txtUserName: TextView
     private lateinit var txtValidityInfo: TextView
 
-    private lateinit var editTestDate: EditText
+    private lateinit var editTestLayout: TextInputLayout
+    private lateinit var editTestDate: TextInputEditText
     private lateinit var editValidDate: EditText
-    
-    private lateinit var buttonAddTestDate: ImageButton
-    private lateinit var buttonAddTestReportToFirebase: Button
 
     private lateinit var  radioPositive: RadioButton
     private lateinit var  radioNegative: RadioButton
@@ -45,34 +45,39 @@ class AddTestReportFragment: Fragment() {
         const val VALID_DAYS_POSITIVE: Long = 14
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return layoutInflater.inflate(R.layout.fragment_add_test_report, null)
+    init {
+        setHasOptionsMenu(true)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         currentUser = PreferencesRepo.getUser(requireContext())
         initFields(view)
         setTestAndValidDate(LocalDateTime.now())
 
-        initListeners(object : FirebaseUserListener {
-            override fun onSuccess(user: User?) {
-                setButtonsEnabled(true)
-                Toast.makeText(requireContext(), getString(R.string.report_added_success),
-                    Toast.LENGTH_LONG).show()
-            }
+        (activity as MainActivity).run {
+            setSupportActionBar(view.findViewById(R.id.toolbar))
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setDisplayShowHomeEnabled(true)
+        }
 
-            override fun onStart() {
-                setButtonsEnabled(false)
-            }
+        initListeners()
+    }
 
-            override fun onFailure() {
-                setButtonsEnabled(true)
-                Toast.makeText(requireContext(), getString(R.string.error_firebase_communication),
-                    Toast.LENGTH_LONG).show()
-            }
-        })
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_add_test, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+                findNavController().popBackStack()
+            }
+            R.id.save -> {
+                addTestReportToFirebase(firebaseUserListener)
+            }
+        }
+        return true
     }
 
     private fun addTestReportToFirebase(firebaseUserListener: FirebaseUserListener) {
@@ -96,12 +101,7 @@ class AddTestReportFragment: Fragment() {
         }
     }
 
-    private fun initListeners(firebaseUserListener: FirebaseUserListener) {
-
-        buttonAddTestDate.setOnClickListener {
-            pickDateAndTime()
-        }
-
+    private fun initListeners() {
         radioNegative.setOnClickListener {
             isPositiveTest = false
             editValidDate.setText(DateTimeUtils.getStringFromDate(selectedDate.plusHours(VALID_HOURS_NEGATIVE)))
@@ -114,8 +114,8 @@ class AddTestReportFragment: Fragment() {
             txtValidityInfo.text = getString(R.string.positive_test_valid_info)
         }
 
-        buttonAddTestReportToFirebase.setOnClickListener {
-            addTestReportToFirebase(firebaseUserListener)
+        editTestLayout.setEndIconOnClickListener {
+            pickDateAndTime()
         }
     }
 
@@ -147,10 +147,8 @@ class AddTestReportFragment: Fragment() {
         txtUserName = view.findViewById(R.id.text_user_name_info)
         txtValidityInfo = view.findViewById(R.id.validity_info)
         editTestDate = view.findViewById(R.id.text_test_date)
+        editTestLayout = view.findViewById(R.id.test_date_layout)
         editValidDate = view.findViewById(R.id.text_valid_date)
-
-        buttonAddTestDate = view.findViewById(R.id.button_enter_test_date)
-        buttonAddTestReportToFirebase = view.findViewById(R.id.button_add_test_report_to_firebase)
 
         radioPositive = view.findViewById(R.id.radio_test_positive)
         radioNegative = view.findViewById(R.id.radio_test_negative)
@@ -160,11 +158,26 @@ class AddTestReportFragment: Fragment() {
     }
 
     private fun setButtonsEnabled(enabled: Boolean) {
-        buttonAddTestReportToFirebase.isEnabled = enabled
-        buttonAddTestDate.isEnabled = enabled
         radioPositive.isEnabled = enabled
         radioNegative.isEnabled = enabled
     }
 
+    private val firebaseUserListener = object : FirebaseUserListener {
+        override fun onSuccess(user: User?) {
+            setButtonsEnabled(true)
+            Toast.makeText(requireContext(), getString(R.string.report_added_success),
+                Toast.LENGTH_LONG).show()
+            findNavController().popBackStack()
+        }
 
+        override fun onStart() {
+            setButtonsEnabled(false)
+        }
+
+        override fun onFailure() {
+            setButtonsEnabled(true)
+            Toast.makeText(requireContext(), getString(R.string.error_firebase_communication),
+                Toast.LENGTH_LONG).show()
+        }
+    }
 }

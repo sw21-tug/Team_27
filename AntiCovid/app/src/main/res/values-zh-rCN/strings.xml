@@ -372,6 +372,7 @@
     <string name="no">不 </string>
     <string name="delete_report_question">您确定要删除以下测试报告吗？</string>
     <string name="report_delete_success">测试报告删除成功！</string>
+    <string name="no_test_report_found">无检测报告 !<br/>向下滑动刷新 !</string>
 
 
 </resources>

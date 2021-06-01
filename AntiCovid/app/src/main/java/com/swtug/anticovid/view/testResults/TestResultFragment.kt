@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +32,8 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
     private lateinit var swipeLayout: SwipeRefreshLayout
     private lateinit var disableView: View
     private lateinit var fab: FloatingActionButton
+    private lateinit var emptyListText: TextView
+    private lateinit var emptyListImage: ImageView
 
     override fun onResume() {
         super.onResume()
@@ -53,6 +57,8 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
         swipeLayout = view.findViewById(R.id.swipeLayout)
         disableView = view.findViewById(R.id.viewDisableLayout)
         fab = view.findViewById(R.id.fab_add_test_report)
+        emptyListText = view.findViewById(R.id.emptyListText)
+        emptyListImage = view.findViewById(R.id.emptyListImage)
 
         testResultAdapter = TestResultsRecyclerAdapter()
     }
@@ -111,6 +117,16 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
         swipeLayout.isRefreshing = false
     }
 
+    private fun showEmptyView() {
+        emptyListText.visibility = View.VISIBLE
+        emptyListImage.visibility = View.VISIBLE
+    }
+
+    private fun hideEmptyView() {
+        emptyListText.visibility = View.GONE
+        emptyListImage.visibility = View.GONE
+    }
+
     private fun updateTestReports(isSwipeAction: Boolean) {
         val loggedInUser = PreferencesRepo.getUser(requireContext())
         if(loggedInUser != null) {
@@ -118,6 +134,12 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
                 loggedInUser.email,
                 object : FirebaseTestReportListener {
                     override fun onSuccess(testReports: ArrayList<TestReport>) {
+                        if(testReports.isEmpty()) {
+                            showEmptyView()
+                        } else {
+                            hideEmptyView()
+                        }
+
                         TestReportProvider.setTestReports(testReports)
                         testResultAdapter.setNewDataSet(TestReportProvider.getAllTestReports())
                         testResultAdapter.notifyDataSetChanged()

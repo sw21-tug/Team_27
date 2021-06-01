@@ -128,6 +128,7 @@
     <string name="no">No</string>
     <string name="delete_report_question">Are you sure to delete the following Test Report?</string>
     <string name="report_delete_success">Test report deleted successfully!</string>
+    <string name="no_test_report_found">No test reports!\nSwipe down to refresh!</string>
 
     <string-array name="countries_array">
         <item>Afghanistan</item>

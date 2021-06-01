@@ -58,13 +58,11 @@ class MainNavigationTest {
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
-        onView(withId(R.id.pager)).perform(swipeLeft())
         //onView(withId(R.id.toggle_group_language)).check(matches(isDisplayed()))
     }
 
     @Test
     fun testNavigateFromHomeToProfile() {
-        onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
@@ -78,16 +76,7 @@ class MainNavigationTest {
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
-        onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.editTextNewPassword)).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun testNavigateFromHomeToAddTest() {
-        onView(withId(R.id.pager)).perform(swipeLeft())
-        onView(withId(R.id.pager)).perform(swipeLeft())
-        onView(withId(R.id.pager)).perform(swipeLeft())
-        onView(withId(R.id.button_add_test_report_to_firebase)).check(matches(isDisplayed()))
     }
 
     @Test

@@ -66,7 +66,6 @@ class MainFragment : Fragment() {
             StatisticFragment() to getString(R.string.statistics),
             QRCodeFragment() to getString(R.string.valid_qr_code),
             VaccinationFragment() to getString(R.string.my_vaccine_information),
-            AddTestReportFragment() to getString(R.string.add_test_report),
             ProfileFragment() to getString(R.string.profile),
             TestResultFragment() to getString(R.string.my_previous_test_reports),
             ChangePassword() to getString(R.string.change_password)

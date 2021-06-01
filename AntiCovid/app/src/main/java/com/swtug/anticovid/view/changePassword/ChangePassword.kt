@@ -13,7 +13,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.swtug.anticovid.R
 import com.swtug.anticovid.models.User
-import com.swtug.anticovid.repositories.FirebaseListener
+import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
 
@@ -99,7 +99,7 @@ class ChangePassword : Fragment() {
 
 
     private fun saveNewPasswordFirebase(user: User) {
-        FirebaseRepo.updateUser(user, object : FirebaseListener {
+        FirebaseRepo.updateUser(user, object : FirebaseUserListener {
             override fun onSuccess(user: User?) {
                 btnChangePassword.isEnabled = true
 

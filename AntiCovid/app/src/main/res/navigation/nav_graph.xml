@@ -94,6 +94,9 @@
         <action
             android:id="@+id/action_mainFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_addTestReportFragment"
+            app:destination="@id/addTestReportFragment" />
     </fragment>
 
     <fragment
@@ -105,5 +108,9 @@
         android:name="com.swtug.anticovid.view.statistics.StatisticFragment"
         android:label="fragment_statistic"
         tools:layout="@layout/fragment_statistic" />
+    <fragment
+        android:id="@+id/addTestReportFragment"
+        android:name="com.swtug.anticovid.view.addTestReport.AddTestReportFragment"
+        android:label="AddTestReportFragment" />
 
 </navigation>

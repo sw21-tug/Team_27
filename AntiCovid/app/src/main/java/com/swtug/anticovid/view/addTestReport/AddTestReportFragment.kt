@@ -54,7 +54,7 @@ class AddTestReportFragment: Fragment(R.layout.fragment_add_test_report) {
         initFields(view)
         setTestAndValidDate(LocalDateTime.now())
 
-        (activity as MainActivity).run {
+        (activity as? MainActivity?)?.run {
             setSupportActionBar(view.findViewById(R.id.toolbar))
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar?.setDisplayShowHomeEnabled(true)

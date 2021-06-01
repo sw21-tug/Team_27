@@ -31,16 +31,20 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
     private lateinit var disableView: View
     private lateinit var fab: FloatingActionButton
 
+    override fun onResume() {
+        super.onResume()
+        updateTestReports(false)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         initFields(view)
+        initListeners()
 
         testResultsView.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = testResultAdapter
         }
-
-        initListeners()
     }
 
     private fun initFields(view: View) {
@@ -57,11 +61,9 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
         fab.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_addTestReportFragment)
         }
-    }
 
-    private fun initListener() {
         testResultAdapter.setOnItemClickListener {testReport ->
-                createPreConfirmDialog(testReport).show()
+            createPreConfirmDialog(testReport).show()
         }
 
         swipeLayout.setOnRefreshListener {
@@ -117,7 +119,7 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
                 object : FirebaseTestReportListener {
                     override fun onSuccess(testReports: ArrayList<TestReport>) {
                         TestReportProvider.setTestReports(testReports)
-                        testResultAdapter.setNewDataSet(testReports)
+                        testResultAdapter.setNewDataSet(TestReportProvider.getAllTestReports())
                         testResultAdapter.notifyDataSetChanged()
                         hideLoadingScreen(isSwipeAction)
                     }

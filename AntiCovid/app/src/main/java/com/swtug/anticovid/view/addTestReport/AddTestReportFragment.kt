@@ -123,7 +123,7 @@ class AddTestReportFragment: Fragment(R.layout.fragment_add_test_report) {
         selectedDate = LocalDateTime.now()
         DatePickerDialog(requireContext(),
             { _, year, month, dayOfMonth ->
-                selectedDate = LocalDateTime.of(year, month, dayOfMonth, 0, 0)
+                selectedDate = LocalDateTime.of(year, month + 1, dayOfMonth, 0, 0)
 
                 TimePickerDialog(requireContext(),
                     { _, hourOfDay, minute ->

@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -22,6 +23,7 @@ import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.FirebaseTestReportListener
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.utils.DateTimeUtils
+import java.time.LocalDateTime
 import kotlin.collections.ArrayList
 
 class TestResultFragment: Fragment(R.layout.fragment_test_results) {
@@ -34,10 +36,11 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
     private lateinit var fab: FloatingActionButton
     private lateinit var emptyListText: TextView
     private lateinit var emptyListImage: ImageView
+    private lateinit var checkOnlyValids: CheckBox
 
     override fun onResume() {
         super.onResume()
-        updateTestReports(false)
+        updateTestReports(false, checkOnlyValids.isChecked)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,6 +62,7 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
         fab = view.findViewById(R.id.fab_add_test_report)
         emptyListText = view.findViewById(R.id.emptyListText)
         emptyListImage = view.findViewById(R.id.emptyListImage)
+        checkOnlyValids = view.findViewById(R.id.checkShowOnlyValidTests)
 
         testResultAdapter = TestResultsRecyclerAdapter()
     }
@@ -73,7 +77,11 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
         }
 
         swipeLayout.setOnRefreshListener {
-            updateTestReports(true)
+            updateTestReports(true, checkOnlyValids.isChecked)
+        }
+
+        checkOnlyValids.setOnClickListener {
+            updateTestReports(false, checkOnlyValids.isChecked)
         }
     }
 
@@ -88,7 +96,7 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
         FirebaseRepo.deleteTestReport(firebaseReport, object : FirebaseTestReportListener {
             override fun onSuccess(testReports: ArrayList<TestReport>) {
                 Snackbar.make(requireView(), getString(R.string.report_delete_success), Snackbar.LENGTH_LONG).show()
-                updateTestReports(false)
+                updateTestReports(false, checkOnlyValids.isChecked)
             }
 
             override fun onStart() {
@@ -127,7 +135,7 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
         emptyListImage.visibility = View.GONE
     }
 
-    private fun updateTestReports(isSwipeAction: Boolean) {
+    private fun updateTestReports(isSwipeAction: Boolean, showOnlyValids: Boolean) {
         val loggedInUser = PreferencesRepo.getUser(requireContext())
         if(loggedInUser != null) {
             FirebaseRepo.getAllTestReportsFrom(
@@ -141,7 +149,13 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
                         }
 
                         TestReportProvider.setTestReports(testReports)
-                        testResultAdapter.setNewDataSet(TestReportProvider.getAllTestReports())
+
+                        testResultAdapter.setNewDataSet(
+                            if(showOnlyValids) {
+                                TestReportProvider.getOnlyValidTestReports(LocalDateTime.now())
+                            } else {
+                                TestReportProvider.getAllTestReports()
+                            })
                         testResultAdapter.notifyDataSetChanged()
                         hideLoadingScreen(isSwipeAction)
                     }

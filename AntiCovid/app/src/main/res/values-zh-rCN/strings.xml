@@ -374,6 +374,7 @@
     <string name="delete_report_question">您确定要删除以下测试报告吗？</string>
     <string name="report_delete_success">测试报告删除成功！</string>
     <string name="no_test_report_found">无检测报告 !<br/>向下滑动刷新 !</string>
+    <string name="show_only_valid_test_reports">只显示有效的测试报告</string>
 
 
 </resources>

@@ -66,7 +66,7 @@ class MainNavigationTest {
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
-        onView(withId(R.id.layout_not_vaccinated)).check(matches(isDisplayed()))
+        onView(withId(R.id.textInput_manufacturer)).check(matches(isDisplayed()))
     }
 
     @Test

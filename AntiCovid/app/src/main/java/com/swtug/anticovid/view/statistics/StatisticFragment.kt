@@ -11,6 +11,8 @@ import retrofit2.Response
 import android.util.Log
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.squareup.picasso.Picasso
 import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.view.statistics.CountryService
@@ -33,6 +35,7 @@ class StatisticFragment : Fragment() , AdapterView.OnItemSelectedListener{
     private lateinit var update: TextView
     private lateinit var imvFlag: ImageView
     private lateinit var active: TextView
+    private lateinit var fab: FloatingActionButton
 
     val AUSTRIA: Int = 11
     var countryID: Int = AUSTRIA
@@ -74,6 +77,7 @@ class StatisticFragment : Fragment() , AdapterView.OnItemSelectedListener{
                     initFields(view)
                     setErrorMessage()
                 }
+                initListeners()
             }
             override fun onFailure(call: Call<List<MyCountry>>, t: Throwable) {
                 Toast.makeText(context, getString(R.string.statistic_error_message), Toast.LENGTH_SHORT).show()
@@ -82,7 +86,15 @@ class StatisticFragment : Fragment() , AdapterView.OnItemSelectedListener{
 
     }
 
+    private fun initListeners() {
+        fab.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_informationAndRulesFragment)
+        }
+    }
+
     private fun initFields(view: View) {
+        fab = view.findViewById(R.id.fab_show_information_and_rules)
+
         spinnerCountries = view.findViewById(R.id.spinner)
         spinnerCountries.onItemSelectedListener = this
         if(activity !is MainActivity)

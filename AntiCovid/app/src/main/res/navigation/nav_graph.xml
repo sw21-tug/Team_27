@@ -100,6 +100,17 @@
         <action
             android:id="@+id/action_mainFragment_to_changePassword"
             app:destination="@id/changePassword" />
+
+        <action
+            android:id="@+id/action_mainFragment_to_informationAndRulesFragment"
+            app:destination="@+id/informationAndRules"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/informationAndRules"
+        android:name="com.swtug.anticovid.view.informationAndRules.InformationAndRules"
+        android:label="@string/informationAndRules">
+
     </fragment>
 
     <fragment

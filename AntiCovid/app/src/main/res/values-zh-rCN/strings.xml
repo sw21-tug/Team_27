@@ -375,6 +375,14 @@
     <string name="report_delete_success">测试报告删除成功！</string>
     <string name="no_test_report_found">无检测报告 !<br/>向下滑动刷新 !</string>
     <string name="show_only_valid_test_reports">只显示有效的测试报告</string>
+    <string name="important_informations">重要信息</string>
+    <string name="info_hotline">有任何问题请拨打24小时信息热线0800 55 621</string>
+    <string name="info_doctor">去看医生之前先打电话！</string>
+    <string name="info_stay_home">在家待两周！</string>
+    <string name="info_separate">将自己与他人分开！ 避免共享个人家居用品！</string>
+    <string name="info_clean_hands">经常洗手！</string>
+    <string name="info_clean_surface">每天清洁所有，高接触，表面！</string>
+    <string name="additional_info">如果您出现一种或多种严重感染的迹象，例如呼吸困难、发烧、剧烈咳嗽或呼吸急促，请立即拨打救护车 (144)！</string>
 
 
 </resources>

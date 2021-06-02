@@ -10,10 +10,21 @@ object TestReportProvider {
 
     fun setTestReports(newTestReports: ArrayList<TestReport>) {
         testReports = newTestReports
+        testReports.sortByDescending { it.testdate }
     }
 
     fun getAllTestReports(): ArrayList<TestReport> {
-        testReports.sortByDescending { it.testdate }
         return testReports
+    }
+
+    fun getOnlyValidTestReports(currentDate: LocalDateTime): ArrayList<TestReport> {
+        val validReports = ArrayList<TestReport>()
+        for(report in testReports) {
+            if(report.validdate.isAfter(currentDate)) {
+                validReports.add(report)
+            }
+        }
+
+        return validReports
     }
 }

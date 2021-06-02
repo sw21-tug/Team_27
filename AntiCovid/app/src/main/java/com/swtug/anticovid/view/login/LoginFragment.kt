@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.swtug.anticovid.R
@@ -67,6 +68,11 @@ class LoginFragment : Fragment() {
                 txtLoginError.text = getString(R.string.error_firebase_communication)
             }
         })
+
+
+        requireActivity().onBackPressedDispatcher.addCallback(requireActivity()) {
+            requireActivity().finish();
+        }
 
     }
 

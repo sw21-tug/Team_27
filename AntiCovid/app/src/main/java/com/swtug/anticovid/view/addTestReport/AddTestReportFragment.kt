@@ -1,8 +1,10 @@
 
 package com.swtug.anticovid.view.addTestReport
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
 import android.widget.*
@@ -16,8 +18,10 @@ import com.swtug.anticovid.models.User
 import com.swtug.anticovid.R
 import com.swtug.anticovid.utils.DateTimeUtils
 import com.swtug.anticovid.models.FirebaseTestReport
+import com.swtug.anticovid.models.TestReport
 import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.FirebaseRepo
+import com.swtug.anticovid.repositories.FirebaseTestReportListener
 import com.swtug.anticovid.repositories.PreferencesRepo
 import java.time.LocalDateTime
 
@@ -82,7 +86,11 @@ class AddTestReportFragment: Fragment(R.layout.fragment_add_test_report) {
 
     private fun addTestReportToFirebase(firebaseUserListener: FirebaseUserListener) {
         if(currentUser != null) {
-            FirebaseRepo.addTestReport(getTestReportOfForm(), firebaseUserListener)
+            if(isPositiveTest) {
+                createPositiveTestAcceptDialog(getTestReportOfForm(), firebaseUserListener).show()
+            } else {
+                FirebaseRepo.addTestReport(getTestReportOfForm(), firebaseUserListener)
+            }
         } else {
             Toast.makeText(requireContext(), getString(R.string.error_no_user_logged_in), Toast.LENGTH_LONG).show()
         }
@@ -179,5 +187,22 @@ class AddTestReportFragment: Fragment(R.layout.fragment_add_test_report) {
             Toast.makeText(requireContext(), getString(R.string.error_firebase_communication),
                 Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun createPositiveTestAcceptDialog(fbTestReport: FirebaseTestReport,
+                                               fbUserListener: FirebaseUserListener) : AlertDialog.Builder {
+            val dialogClickListener = DialogInterface.OnClickListener { _, which ->
+                if(which == DialogInterface.BUTTON_POSITIVE) {
+                    FirebaseRepo.addTestReport(fbTestReport, fbUserListener)
+                }
+            }
+
+            val alertDialogBuilder = AlertDialog.Builder(context)
+            alertDialogBuilder.setView(R.layout.positive_test_accept_dialogue)
+
+            alertDialogBuilder.setPositiveButton(getString(R.string.accept), dialogClickListener)
+            alertDialogBuilder.setNegativeButton(getString(R.string.action_cancel_register), dialogClickListener)
+
+            return alertDialogBuilder
     }
 }

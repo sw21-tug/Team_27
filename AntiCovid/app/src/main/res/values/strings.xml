@@ -130,6 +130,14 @@
     <string name="report_delete_success">Test report deleted successfully!</string>
     <string name="no_test_report_found">No test reports!\nSwipe down to refresh!</string>
     <string name="show_only_valid_test_reports">Show only valid test reports</string>
+    <string name="important_informations">Important informations</string>
+    <string name="info_hotline">When you have any questions call the 24h information hotline 0800 55 621</string>
+    <string name="info_doctor">Call ahead before visiting your doctor!</string>
+    <string name="info_stay_home">Stay at home for 2 weeks!</string>
+    <string name="info_separate">Separate yourself from other people! Avoid sharing personal household items!</string>
+    <string name="info_clean_hands">Clean your hands often!</string>
+    <string name="info_clean_surface">Clean all, high-touch , surface everyday!</string>
+    <string name="additional_info">If you get one or more signs of heavy infection, which would be difficulty to breath, a fever, coughing badly or shortness of breathing don\'t hesitate to call ambulance (144)!</string>
     <string name="informationAndRules">Current Informations and Rules</string>
 
     <string-array name="countries_array">

@@ -5,7 +5,7 @@ import java.util.*
 
 data class Vaccination(
     var manufacturor: String,
-    var firstDose: Date,
-    var secondDose: Date,
+    var firstDose: String,
+    var secondDose: String,
     val institution: String
 ) : Serializable

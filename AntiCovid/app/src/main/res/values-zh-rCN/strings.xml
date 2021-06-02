@@ -129,6 +129,7 @@
     <string name="report_added_success">测试报告添加成功！</string>
 
     <string name="changes_saved">"更改已成功保存 "</string>
+    <string name="informationAndRules">当前信息和规则</string>
 
     <string-array name="countries_array">
         <item>阿富汗</item>

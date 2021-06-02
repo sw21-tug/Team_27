@@ -1,169 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
 
-    <LinearLayout
-        android:id="@+id/layout_not_vaccinated"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_add_vaccine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible"
-        android:visibility="gone">
+        android:layout_margin="16dp"
+        android:text="@string/add_vaccine"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="@string/no_vaccine_info" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="16dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="@string/recently_vaccined_question" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="16dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="@string/insert_id_for_vaccine_qr_code" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="16dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="@string/qr_code_created_after_second_dose" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="16dp"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/add_vaccine_id">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInput_vaccine_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_add_vaccine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/add_vaccine"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_vaccinated"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
-        android:visibility="gone"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxStrokeColor="@null"
-            android:hint="@string/manufacturer">
+            android:hint="@string/manufacturer"
+            app:boxStrokeColor="@null">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInput_manufacturer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:enabled="false"/>
+                android:background="@color/transparent"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Space
             android:layout_width="0dp"
-            android:layout_height="16dp"/>
+            android:layout_height="16dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxStrokeColor="@null"
-            android:hint="@string/first_dose_date">
+            android:hint="@string/first_dose_date"
+            app:boxStrokeColor="@null">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/first_dose_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:enabled="false"/>
+                android:background="@color/transparent"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Space
             android:layout_width="0dp"
-            android:layout_height="16dp"/>
+            android:layout_height="16dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxStrokeColor="@null"
-            android:hint="@string/second_dose_date">
+            android:hint="@string/second_dose_date"
+            app:boxStrokeColor="@null">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/second_dose_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:enabled="false"/>
+                android:background="@color/transparent"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Space
             android:layout_width="0dp"
-            android:layout_height="16dp"/>
+            android:layout_height="16dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxStrokeColor="@null"
-            android:hint="@string/institution">
+            android:hint="@string/institution"
+            app:boxStrokeColor="@null">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/institution"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:enabled="false"/>
+                android:background="@color/transparent"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

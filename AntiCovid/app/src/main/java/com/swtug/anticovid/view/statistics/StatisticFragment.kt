@@ -1,5 +1,6 @@
 package com.swtug.anticovid.view.statistics
 
+import android.icu.number.NumberFormatter.with
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
 import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.view.statistics.CountryService
@@ -84,6 +86,7 @@ class StatisticFragment : Fragment() , AdapterView.OnItemSelectedListener{
             }
         })
 
+
     }
 
     private fun initListeners() {
@@ -110,17 +113,17 @@ class StatisticFragment : Fragment() , AdapterView.OnItemSelectedListener{
             spinnerCountries.adapter = adapter
             spinnerCountries.setSelection(AUSTRIA)
 
-            totalCases = view.findViewById<TextView>(R.id.totalcasesvalue)
-            totalTest = view.findViewById<TextView>(R.id.totaltestedvalue)
-            totalDeath = view.findViewById<TextView>(R.id.totaldeathvalue)
-            todayCases = view.findViewById<TextView>(R.id.casestodayvalue)
-            todayDeath = view.findViewById<TextView>(R.id.deathtodayvalue)
-            todayRecovered = view.findViewById<TextView>(R.id.recoveredtodayvalue)
-            totalRecovered = view.findViewById<TextView>(R.id.totalrecoveredvalue)
-            population = view.findViewById<TextView>(R.id.populationvalue)
-            update = view.findViewById<TextView>(R.id.lastupdatevalue)
-            imvFlag = view.findViewById<ImageView>(R.id.imv_Showflag)
-            active = view.findViewById<TextView>(R.id.activevalue)
+            totalCases = view.findViewById(R.id.totalcasesvalue)
+            totalTest = view.findViewById(R.id.totaltestedvalue)
+            totalDeath = view.findViewById(R.id.totaldeathvalue)
+            todayCases = view.findViewById(R.id.casestodayvalue)
+            todayDeath = view.findViewById(R.id.deathtodayvalue)
+            todayRecovered = view.findViewById(R.id.recoveredtodayvalue)
+            totalRecovered = view.findViewById(R.id.totalrecoveredvalue)
+            population = view.findViewById(R.id.populationvalue)
+            update = view.findViewById(R.id.lastupdatevalue)
+            imvFlag = view.findViewById(R.id.imv_Showflag)
+            active = view.findViewById(R.id.activevalue)
         }
     }
 
@@ -139,7 +142,12 @@ class StatisticFragment : Fragment() , AdapterView.OnItemSelectedListener{
             val date = Date(country.updated)
             val format = SimpleDateFormat("dd.MM.yyyy - HH:mm")
             update.text = format.format(date)
-            Picasso.get().load(country.countryInfo.flag).into(imvFlag);
+            Picasso.get()
+                .load(country.countryInfo.flag)
+                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+                .into(imvFlag)
+
+
         }
 
     }

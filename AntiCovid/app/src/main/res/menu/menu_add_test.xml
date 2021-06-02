@@ -4,5 +4,6 @@
     <item
         app:showAsAction="always"
         android:id="@+id/save"
-        android:title="@string/save"/>
+        android:icon="@drawable/ic_save"
+        android:title="" />
 </menu>

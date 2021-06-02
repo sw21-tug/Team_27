@@ -59,7 +59,6 @@ class AddTestReportFirebaseTest {
 
         mainScenario.withFragment {
             navController.setGraph(R.navigation.nav_graph)
-         //   navController.setCurrentDestination(R.id.addTestReportFragment)
             Navigation.setViewNavController(requireView(), navController)
 
             setTestAndValidDate(testTimeStamp)

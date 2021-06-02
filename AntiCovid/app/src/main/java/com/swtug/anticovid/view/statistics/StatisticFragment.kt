@@ -107,9 +107,7 @@ class StatisticFragment : Fragment() , AdapterView.OnItemSelectedListener{
             R.array.countries_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
             spinnerCountries.adapter = adapter
             spinnerCountries.setSelection(AUSTRIA)
 
@@ -166,8 +164,6 @@ class StatisticFragment : Fragment() , AdapterView.OnItemSelectedListener{
     }
 
     override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
-        // An item was selected. You can retrieve the selected item using
-
         countryID = pos
         updateData(CountryList, countryID)
     }
@@ -175,7 +171,6 @@ class StatisticFragment : Fragment() , AdapterView.OnItemSelectedListener{
     override fun onNothingSelected(parent: AdapterView<*>) {
         countryID = 11
         updateData(CountryList, countryID)
-        // Another interface callback
     }
 
 

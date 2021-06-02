@@ -21,6 +21,7 @@ import com.swtug.anticovid.models.Vaccination
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.utils.TestUtils
 import com.swtug.anticovid.view.main.MainFragment
+import junit.framework.Assert.assertEquals
 import org.hamcrest.core.IsNot.not
 import org.junit.After
 import org.junit.Before
@@ -55,19 +56,26 @@ class NotVaccinatedTest {
 
     @Test
     fun testAddVaccineWithID() {
-        onView(withId(R.id.textInput_vaccine_id)).perform(replaceText("test123"))
+        val expectedVaccination = Vaccination("test", Date().toString(), Date().toString(), "test")
 
-        val vaccination = Vaccination("test", Date(), Date(), "test")
+        onView(withId(R.id.textInput_manufacturer)).perform(replaceText(expectedVaccination.manufacturor))
+        onView(withId(R.id.first_dose_date)).perform(replaceText(expectedVaccination.firstDose))
+        onView(withId(R.id.second_dose_date)).perform(replaceText(expectedVaccination.secondDose))
+        onView(withId(R.id.institution)).perform(replaceText(expectedVaccination.institution))
 
-        PreferencesRepo.saveVaccination(
-            InstrumentationRegistry.getInstrumentation().targetContext,
-            vaccination
+        onView(withId(R.id.button_add_vaccine)).perform(click())
+
+        val vaccination = PreferencesRepo.getVaccination(
+            InstrumentationRegistry.getInstrumentation().targetContext
         )
 
-        Thread.sleep(500)
-        onView(withId(R.id.button_add_vaccine)).perform(click())
-        onView(withId(R.id.layout_vaccinated)).check(matches(isDisplayed()))
-        onView(withId(R.id.layout_not_vaccinated)).check(matches(not(isDisplayed())))
+        vaccination!!
+
+        assertEquals("Manufacturer not the same!", vaccination.manufacturor,expectedVaccination.manufacturor)
+        assertEquals("First dose date not the same!", vaccination.firstDose,expectedVaccination.firstDose)
+        assertEquals("Second dose date not the same!", vaccination.secondDose,expectedVaccination.secondDose)
+        assertEquals("Institution not the same!", vaccination.institution,expectedVaccination.institution)
+
     }
 }
 

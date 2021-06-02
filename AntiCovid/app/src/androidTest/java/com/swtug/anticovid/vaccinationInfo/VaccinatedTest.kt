@@ -32,7 +32,7 @@ class VaccinatedTest {
 
     @Before
     fun setup() {
-        val vaccination = Vaccination("test", Date(), Date(), "test")
+        val vaccination = Vaccination("test", Date().toString(), Date().toString(), "test")
 
         PreferencesRepo.saveVaccination(
             InstrumentationRegistry.getInstrumentation().targetContext,
@@ -66,8 +66,8 @@ class VaccinatedTest {
         vaccination!!
 
         onView(withId(R.id.textInput_manufacturer)).check(matches(withText(vaccination.manufacturor)))
-        onView(withId(R.id.first_dose_date)).check(matches(withText(vaccination.firstDose.toString())))
-        onView(withId(R.id.second_dose_date)).check(matches(withText(vaccination.secondDose.toString())))
+        onView(withId(R.id.first_dose_date)).check(matches(withText(vaccination.firstDose)))
+        onView(withId(R.id.second_dose_date)).check(matches(withText(vaccination.secondDose)))
         onView(withId(R.id.institution)).check(matches(withText(vaccination.manufacturor)))
     }
 }

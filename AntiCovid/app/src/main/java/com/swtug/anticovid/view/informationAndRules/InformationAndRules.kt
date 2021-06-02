@@ -8,7 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.R
 
-class InformationAndRules :  Fragment(R.layout.fragment_information_and_rules) {
+class InformationAndRules : Fragment(R.layout.fragment_information_and_rules) {
     private lateinit var webView: WebView
 
     init {
@@ -24,12 +24,11 @@ class InformationAndRules :  Fragment(R.layout.fragment_information_and_rules) {
         }
 
         initFields(view)
-        initListeners()
     }
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             android.R.id.home -> {
                 findNavController().popBackStack()
             }
@@ -42,13 +41,4 @@ class InformationAndRules :  Fragment(R.layout.fragment_information_and_rules) {
         webView.loadUrl("https://www.sozialministerium.at/Informationen-zum-Coronavirus/Coronavirus---Aktuelle-Maßnahmen.html")
 
     }
-
-    private fun initListeners() {
-
-    }
-
-
-
-
-
 }

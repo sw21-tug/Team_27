@@ -1,21 +1,20 @@
 package com.swtug.anticovid.view.register
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.R
 import com.swtug.anticovid.models.User
 import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
 
-class RegisterFragment : Fragment() {
+class RegisterFragment : Fragment(R.layout.fragment_register) {
     private lateinit var btnSignUp: Button
     private lateinit var btnCancelSignUp: Button
     private lateinit var editTxtEmail: EditText
@@ -27,13 +26,8 @@ class RegisterFragment : Fragment() {
     private lateinit var editTextPhoneNumber: EditText
     private lateinit var txtErrorLabel: TextView
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return layoutInflater.inflate(R.layout.fragment_register, null)
+    init {
+        setHasOptionsMenu(true)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,6 +54,21 @@ class RegisterFragment : Fragment() {
                 txtErrorLabel.text = getString(R.string.error_firebase_communication)
             }
         })
+
+        (activity as? MainActivity?)?.run {
+            setSupportActionBar(view.findViewById(R.id.toolbar))
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setDisplayShowHomeEnabled(true)
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                findNavController().popBackStack()
+            }
+        }
+        return true
     }
 
     private fun trySignUpNewUser(user: User, firebaseUserListener: FirebaseUserListener) {

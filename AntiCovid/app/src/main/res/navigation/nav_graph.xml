@@ -79,7 +79,7 @@
         <action
             android:id="@+id/action_registerFragment_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:popUpTo="@id/registerFragment"
+            app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true"
             />
     </fragment>

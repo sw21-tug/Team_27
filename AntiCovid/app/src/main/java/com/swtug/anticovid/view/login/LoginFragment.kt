@@ -68,12 +68,6 @@ class LoginFragment : Fragment() {
                 txtLoginError.text = getString(R.string.error_firebase_communication)
             }
         })
-
-
-        requireActivity().onBackPressedDispatcher.addCallback(requireActivity()) {
-            requireActivity().finish();
-        }
-
     }
 
     private fun fetchTestReports(userEmail: String) {

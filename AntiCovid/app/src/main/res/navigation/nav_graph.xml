@@ -93,7 +93,9 @@
         android:label="MainFragment">
         <action
             android:id="@+id/action_mainFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_mainFragment_to_addTestReportFragment"
             app:destination="@id/addTestReportFragment" />

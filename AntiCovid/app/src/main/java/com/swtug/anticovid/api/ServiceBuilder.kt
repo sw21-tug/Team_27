@@ -1,4 +1,4 @@
-package com.swtug.anticovid.view.statistics
+package com.swtug.anticovid.api
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

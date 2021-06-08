@@ -16,7 +16,6 @@ import com.swtug.anticovid.repositories.PreferencesRepo
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
     private lateinit var btnSignUp: Button
-    private lateinit var btnCancelSignUp: Button
     private lateinit var editTxtEmail: EditText
     private lateinit var editTxtPassword: EditText
     private lateinit var editTxtName: EditText
@@ -81,15 +80,10 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 trySignUpNewUser(getUserObjectFromInputs(), firebaseUserListener)
             }
         }
-
-        btnCancelSignUp.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-        }
     }
 
     private fun initFields(view: View) {
         btnSignUp = view.findViewById(R.id.buttonSignUp)
-        btnCancelSignUp = view.findViewById(R.id.buttonCancelSignUp)
 
         editTxtEmail = view.findViewById(R.id.editTextEmail)
         editTxtPassword = view.findViewById(R.id.editTextPassword)
@@ -145,6 +139,5 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     private fun setButtonsEnabled(enabled: Boolean) {
         btnSignUp.isEnabled = enabled
-        btnCancelSignUp.isEnabled = enabled
     }
 }

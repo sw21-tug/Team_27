@@ -383,6 +383,8 @@
     <string name="info_clean_hands">经常洗手！</string>
     <string name="info_clean_surface">每天清洁所有，高接触，表面！</string>
     <string name="additional_info">如果您出现一种或多种严重感染的迹象，例如呼吸困难、发烧、剧烈咳嗽或呼吸急促，请立即拨打救护车 (144)！</string>
+    <string name="vaccinated">"Vaccinated: "</string>
+    <string name="ok">OK</string>
 
 
 </resources>

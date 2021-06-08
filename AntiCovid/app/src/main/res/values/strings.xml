@@ -139,6 +139,8 @@
     <string name="info_clean_surface">Clean all, high-touch , surface everyday!</string>
     <string name="additional_info">If you get one or more signs of heavy infection, which would be difficulty to breath, a fever, coughing badly or shortness of breathing don\'t hesitate to call ambulance (144)!</string>
     <string name="informationAndRules">Current Informations and Rules</string>
+    <string name="vaccinated">"Vaccinated: "</string>
+    <string name="ok">OK</string>
 
     <string-array name="countries_array">
         <item>Afghanistan</item>

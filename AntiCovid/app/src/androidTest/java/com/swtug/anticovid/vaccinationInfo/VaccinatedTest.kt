@@ -49,7 +49,6 @@ class VaccinatedTest {
 
         onView(withId(R.id.pager)).perform(ViewActions.swipeLeft())
         onView(withId(R.id.pager)).perform(ViewActions.swipeLeft())
-        onView(withId(R.id.pager)).perform(ViewActions.swipeLeft())
     }
 
     @After

@@ -11,10 +11,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.R
 import com.swtug.anticovid.repositories.PreferencesRepo
-import com.swtug.anticovid.view.addTestReport.AddTestReportFragment
-import com.swtug.anticovid.view.changePassword.ChangePassword
 import com.swtug.anticovid.view.profile.ProfileFragment
-import com.swtug.anticovid.view.qrCode.QRCodeFragment
 import com.swtug.anticovid.view.statistics.StatisticFragment
 import com.swtug.anticovid.view.testResults.TestResultFragment
 import com.swtug.anticovid.view.vaccineInfo.VaccinationFragment
@@ -65,7 +62,6 @@ class MainFragment : Fragment() {
         val fragments = listOf(
             StatisticFragment() to getString(R.string.statistics),
             TestResultFragment() to getString(R.string.test_reports),
-            QRCodeFragment() to getString(R.string.valid_qr_code),
             VaccinationFragment() to getString(R.string.my_vaccine_information),
             ProfileFragment() to getString(R.string.profile)
         )

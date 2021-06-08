@@ -6,17 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.swtug.anticovid.models.User
 import com.swtug.anticovid.utils.DateTimeUtils
 import com.swtug.anticovid.R
 import com.swtug.anticovid.TestReportProvider
 import com.swtug.anticovid.models.TestReport
 
-class TestResultsRecyclerAdapter : RecyclerView.Adapter<TestResultsRecyclerAdapter.ViewHolder>() {
+class TestResultsRecyclerAdapter(private val user: User?, private val vaccinated: Boolean) : RecyclerView.Adapter<TestResultsRecyclerAdapter.ViewHolder>() {
 
     private var testResults = TestReportProvider.getAllTestReports()
     private lateinit var onDeleteClicked: (testReport: TestReport) -> Unit
+    private lateinit var onItemClicked: (testReport: TestReport, user: User?, vaccinated: Boolean) -> Unit
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var testResultDateText: TextView = itemView.findViewById(R.id.cardTextTestDate)
@@ -24,6 +27,7 @@ class TestResultsRecyclerAdapter : RecyclerView.Adapter<TestResultsRecyclerAdapt
         var testValidDateText: TextView = itemView.findViewById(R.id.cardTextValidDate)
         var testResultImageView: ImageView = itemView.findViewById(R.id.cardResultImage)
         var btnDeleteTestReport: ImageView = itemView.findViewById(R.id.buttonDeleteTestReport)
+        var cardViewContainer: CardView = itemView.findViewById(R.id.testResultCardView)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
@@ -49,6 +53,10 @@ class TestResultsRecyclerAdapter : RecyclerView.Adapter<TestResultsRecyclerAdapt
         viewHolder.btnDeleteTestReport.setOnClickListener {
             onDeleteClicked(testReport)
         }
+
+        viewHolder.cardViewContainer.setOnClickListener {
+            onItemClicked(testReport, user, vaccinated)
+        }
     }
 
     private fun setPositiveResultImage(context: Context, imageView: ImageView) {
@@ -65,8 +73,10 @@ class TestResultsRecyclerAdapter : RecyclerView.Adapter<TestResultsRecyclerAdapt
         return testResults.size
     }
 
-    fun setOnItemClickListener(onDeleteClicked: (testReport: TestReport) -> Unit) {
+    fun setOnItemClickListener(onDeleteClicked: (testReport: TestReport) -> Unit,
+                               onItemClicked: (testReport: TestReport, user: User?, vaccinated: Boolean) -> Unit) {
         this.onDeleteClicked = onDeleteClicked
+        this.onItemClicked = onItemClicked
     }
 
     fun setNewDataSet(testReports: ArrayList<TestReport>) {

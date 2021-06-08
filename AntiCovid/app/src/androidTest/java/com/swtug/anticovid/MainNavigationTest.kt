@@ -57,13 +57,11 @@ class MainNavigationTest {
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
-        onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.toggle_group_language)).check(matches(isDisplayed()))
     }
 
     @Test
     fun testNavigateFromHomeToVaccinationInformation() {
-        onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.textInput_manufacturer)).check(matches(isDisplayed()))

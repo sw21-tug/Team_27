@@ -1,7 +1,7 @@
 package com.swtug.anticovid
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.swtug.anticovid.view.qrCode.QRCodeGenerator
+import com.swtug.anticovid.utils.QRCodeGenerator
 import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
@@ -10,13 +10,10 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class QRCodeGeneratorTest {
 
-    private lateinit var qrCodeGenerator: QRCodeGenerator
-
     private lateinit var qrCodeTestContent: String
 
     @Before
     fun setUp() {
-        qrCodeGenerator = QRCodeGenerator()
         qrCodeTestContent = "Informations \n" +
                 "\n" +
                 "Simon, Schrimpf \n" +
@@ -27,7 +24,7 @@ class QRCodeGeneratorTest {
 
     @Test
     fun testQRCodeCreation() {
-        val bitmap = qrCodeGenerator.generateQRCode(qrCodeTestContent)
+        val bitmap = QRCodeGenerator.generateQRCode(qrCodeTestContent)
 
         assertNotNull(bitmap)
     }

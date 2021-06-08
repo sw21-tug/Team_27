@@ -1,8 +1,10 @@
 package com.swtug.anticovid.view.testResults
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.CheckBox
 import android.widget.ImageView
@@ -11,22 +13,25 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.android.material.snackbar.Snackbar
+import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.R
 import com.swtug.anticovid.TestReportProvider
+import com.swtug.anticovid.extensions.createPreConfirmDialog
+import com.swtug.anticovid.extensions.createQRCodeDialog
 import com.swtug.anticovid.models.FirebaseTestReport
 import com.swtug.anticovid.models.TestReport
+import com.swtug.anticovid.models.User
 import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.FirebaseTestReportListener
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.utils.DateTimeUtils
 import java.time.LocalDateTime
-import kotlin.collections.ArrayList
 
-class TestResultFragment: Fragment(R.layout.fragment_test_results) {
+class TestResultFragment : Fragment(R.layout.fragment_test_results) {
 
     private lateinit var testResultsView: RecyclerView
     private lateinit var testResultAdapter: TestResultsRecyclerAdapter
@@ -64,7 +69,10 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
         emptyListImage = view.findViewById(R.id.emptyListImage)
         checkOnlyValids = view.findViewById(R.id.checkShowOnlyValidTests)
 
-        testResultAdapter = TestResultsRecyclerAdapter()
+        val currentUser = PreferencesRepo.getUser(requireContext())
+        val vaccinated = PreferencesRepo.getVaccination(requireContext()) != null
+
+        testResultAdapter = TestResultsRecyclerAdapter(currentUser, vaccinated)
     }
 
     private fun initListeners() {
@@ -72,9 +80,15 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
             findNavController().navigate(R.id.action_mainFragment_to_addTestReportFragment)
         }
 
-        testResultAdapter.setOnItemClickListener {testReport ->
-            createPreConfirmDialog(testReport).show()
-        }
+        testResultAdapter.setOnItemClickListener(
+            onDeleteClicked = { testReport ->
+                (activity as? MainActivity?)?.createPreConfirmDialog(testReport) { report -> deleteTestReport(report) }?.show()
+            },
+            onItemClicked = { testReport, user, vaccinated ->
+                (activity as? MainActivity?)?.createQRCodeDialog(testReport, user, vaccinated)
+                    ?.show()
+            }
+        )
 
         swipeLayout.setOnRefreshListener {
             updateTestReports(true, checkOnlyValids.isChecked)
@@ -95,7 +109,11 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
 
         FirebaseRepo.deleteTestReport(firebaseReport, object : FirebaseTestReportListener {
             override fun onSuccess(testReports: ArrayList<TestReport>) {
-                Snackbar.make(requireView(), getString(R.string.report_delete_success), Snackbar.LENGTH_LONG).show()
+                Snackbar.make(
+                    requireView(),
+                    getString(R.string.report_delete_success),
+                    Snackbar.LENGTH_LONG
+                ).show()
                 updateTestReports(false, checkOnlyValids.isChecked)
             }
 
@@ -104,21 +122,25 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
             }
 
             override fun onFailure() {
-                Snackbar.make(requireView(), getString(R.string.error_firebase_communication), Snackbar.LENGTH_LONG).show()
+                Snackbar.make(
+                    requireView(),
+                    getString(R.string.error_firebase_communication),
+                    Snackbar.LENGTH_LONG
+                ).show()
                 hideLoadingScreen(false)
             }
         })
     }
 
     private fun showLoadingScreen(isSwipeAction: Boolean) {
-        if(!isSwipeAction) {
+        if (!isSwipeAction) {
             progressIndicator.show()
         }
         disableView.visibility = View.VISIBLE
     }
 
     private fun hideLoadingScreen(isSwipeAction: Boolean) {
-        if(!isSwipeAction) {
+        if (!isSwipeAction) {
             progressIndicator.hide()
         }
         disableView.visibility = View.GONE
@@ -137,12 +159,12 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
 
     private fun updateTestReports(isSwipeAction: Boolean, showOnlyValids: Boolean) {
         val loggedInUser = PreferencesRepo.getUser(requireContext())
-        if(loggedInUser != null) {
+        if (loggedInUser != null) {
             FirebaseRepo.getAllTestReportsFrom(
                 loggedInUser.email,
                 object : FirebaseTestReportListener {
                     override fun onSuccess(testReports: ArrayList<TestReport>) {
-                        if(testReports.isEmpty()) {
+                        if (testReports.isEmpty()) {
                             showEmptyView()
                         } else {
                             hideEmptyView()
@@ -151,11 +173,12 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
                         TestReportProvider.setTestReports(testReports)
 
                         testResultAdapter.setNewDataSet(
-                            if(showOnlyValids) {
+                            if (showOnlyValids) {
                                 TestReportProvider.getOnlyValidTestReports(LocalDateTime.now())
                             } else {
                                 TestReportProvider.getAllTestReports()
-                            })
+                            }
+                        )
                         testResultAdapter.notifyDataSetChanged()
                         hideLoadingScreen(isSwipeAction)
                     }
@@ -165,7 +188,11 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
                     }
 
                     override fun onFailure() {
-                        Snackbar.make(requireView(), getString(R.string.error_firebase_communication), Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(
+                            requireView(),
+                            getString(R.string.error_firebase_communication),
+                            Snackbar.LENGTH_LONG
+                        ).show()
                         hideLoadingScreen(isSwipeAction)
                     }
                 })
@@ -174,22 +201,4 @@ class TestResultFragment: Fragment(R.layout.fragment_test_results) {
         }
     }
 
-    private fun createPreConfirmDialog(testReport: TestReport) : AlertDialog.Builder {
-        val dialogClickListener = DialogInterface.OnClickListener { _, which ->
-            if(which == DialogInterface.BUTTON_POSITIVE) {
-                deleteTestReport(testReport)
-            }
-        }
-
-        val alertDialogBuilder = AlertDialog.Builder(context)
-        alertDialogBuilder.setMessage(getString(R.string.delete_report_question) + "\n\n"
-                + getString(R.string.test_date_info) + DateTimeUtils.getStringFromDate(testReport.testdate) + "\n"
-                + getString(R.string.valid_until_info) + DateTimeUtils.getStringFromDate(testReport.validdate) + "\n"
-                + getString(R.string.result_info) + if(testReport.testresult) {getString(R.string.positive)} else {getString(R.string.negative)})
-
-        alertDialogBuilder.setPositiveButton(getString(R.string.yes), dialogClickListener)
-        alertDialogBuilder.setNegativeButton(getString(R.string.no), dialogClickListener)
-
-        return alertDialogBuilder
-    }
 }

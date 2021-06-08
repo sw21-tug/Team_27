@@ -140,6 +140,8 @@
     <string name="total">Total</string>
     <string name="today">Today</string>
     <string name="country">Country</string>
+    <string name="vaccinated">"Vaccinated: "</string>
+    <string name="ok">OK</string>
 
     <string-array name="countries_array">
         <item>Afghanistan</item>

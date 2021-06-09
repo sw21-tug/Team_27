@@ -74,7 +74,7 @@ This app also provides users with official institution rules and changes about c
 | [ANTIC-052](https://github.com/sw21-tug/Team_27/issues/105) | Bug Vaccine is not shown in QR-Code Dialog window |
 | [ANTIC-053](https://github.com/sw21-tug/Team_27/issues/106) | Refactor login and register |
 | [ANTIC-054](https://github.com/sw21-tug/Team_27/issues/107) | Refactor E-Mail field in Profile |
-| []() |  |
+| [ANTIC-049](https://github.com/sw21-tug/Team_27/issues/97) | Dark mode |
 
 # Description of Features:
 

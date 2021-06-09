@@ -57,7 +57,7 @@ This app also provides users with official institution rules and changes about c
 | [ANTIC-034](https://github.com/sw21-tug/Team_27/issues/55) | Refactor Create Account |
 | [ANTIC-035](https://github.com/sw21-tug/Team_27/issues/66) | Redesign of Home-Screen |
 | [ANTIC-036](https://github.com/sw21-tug/Team_27/issues/68) | Change "My vaccine Information" |
-| [ANTIC-037](https://github.com/sw21-tug/Team_27/issues/69) | QR-Code add vaccineded as additional information |
+| [ANTIC-037](https://github.com/sw21-tug/Team_27/issues/69) | QR-Code add vaccinaded as additional information |
 | [ANTIC-038](https://github.com/sw21-tug/Team_27/issues/73) | Refactor Update Input Fields to State of the Art |
 | [ANTIC-039](https://github.com/sw21-tug/Team_27/issues/74) | Refactor Get UI on the same design. (character size etc.) |
 | [ANTIC-040](https://github.com/sw21-tug/Team_27/issues/78) | Refactor "Add Test Report"-Screen into Test Reports |
@@ -70,7 +70,7 @@ This app also provides users with official institution rules and changes about c
 | [ANTIC-047](https://github.com/sw21-tug/Team_27/issues/92) | Bugfix should work on smartphone |
 | [ANTIC-048](https://github.com/sw21-tug/Team_27/issues/93) | Bugfix Country FlagANTIC-050 |
 | [ANTIC-050](https://github.com/sw21-tug/Team_27/issues/99) | Bug Vaccine Info not editable |
-| []() |  |
+| [ANTIC-054](https://github.com/sw21-tug/Team_27/issues/107) | Refactor E-Mail field in Profile |
 | []() |  |
 | []() |  |
 

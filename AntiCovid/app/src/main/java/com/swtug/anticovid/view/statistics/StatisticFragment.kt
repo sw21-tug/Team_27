@@ -1,31 +1,19 @@
 package com.swtug.anticovid.view.statistics
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import com.swtug.anticovid.R
-import retrofit2.Callback
-import retrofit2.Call
-import retrofit2.Response
-import android.util.Log
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
 import com.swtug.anticovid.MainActivity
-import com.swtug.anticovid.api.CountryService
-import com.swtug.anticovid.api.ServiceBuilder
+import com.swtug.anticovid.R
 import com.swtug.anticovid.models.Country
-import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class StatisticFragment : Fragment(R.layout.fragment_statistic) , AdapterView.OnItemSelectedListener{
 
@@ -74,7 +62,7 @@ class StatisticFragment : Fragment(R.layout.fragment_statistic) , AdapterView.On
             R.array.countries_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            adapter.setDropDownViewResource(R.layout.spinner_item)
             spinnerCountries.adapter = adapter
             spinnerCountries.setSelection(AUSTRIA)
         }

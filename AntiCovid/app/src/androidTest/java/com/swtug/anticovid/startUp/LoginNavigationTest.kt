@@ -9,14 +9,17 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.R
-import com.swtug.anticovid.TestUtils
+import com.swtug.anticovid.utils.TestUtils
+import com.swtug.anticovid.utils.ToastMatcher
 import com.swtug.anticovid.view.login.LoginFragment
 import junit.framework.TestCase
+
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -49,24 +52,24 @@ class LoginNavigationTest {
     @Test
     fun testLoginWithWrongCredentials() {
 
-        onView(withId(R.id.editTextTextEmailAddress)).perform(ViewActions.typeText("test@test.com"))
+        onView(withId(R.id.editTextTextEmailAddress)).perform(replaceText("test@test.com"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.editTextPassword)).perform(ViewActions.typeText("123456789"))
+        onView(withId(R.id.editTextPassword)).perform(replaceText("123456789"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.buttonLogin)).perform(click())
         Thread.sleep(3000)
 
-        val compareString = TestUtils.getResoureceString(getContext(), R.string.error_wrong_password)
-        onView(withId(R.id.txtLoginError)).check(matches(withText(compareString)))
         TestCase.assertEquals(navController.currentDestination?.id, R.id.loginFragment)
+        onView(withText("The combination of user and password does not exist!")).inRoot(ToastMatcher()).check(matches(isDisplayed()));
+
     }
 
     @Test
     fun testLoginWithCorretCredentials() {
 
-        onView(withId(R.id.editTextTextEmailAddress)).perform(ViewActions.typeText("test@test.com"))
+        onView(withId(R.id.editTextTextEmailAddress)).perform(replaceText("test@test.com"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.editTextPassword)).perform(ViewActions.typeText("testtest"))
+        onView(withId(R.id.editTextPassword)).perform(replaceText("testtest"))
         onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
         Thread.sleep(1000)
         onView(withId(R.id.buttonLogin)).perform(click())
@@ -79,8 +82,14 @@ class LoginNavigationTest {
     fun testLoginWithoutInputs() {
         onView(withId(R.id.buttonLogin)).perform(click())
 
-        val compareString = TestUtils.getResoureceString(getContext(), R.string.error_no_email)
-        onView(withId(R.id.txtEmailError)).check(matches(withText(compareString)))
+        onView(withText("No E-Mail or password entered!")).inRoot(ToastMatcher()).check(matches(isDisplayed()));
+
+
     }
 }
+
+
+
+
+
 

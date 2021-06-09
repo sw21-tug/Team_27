@@ -1,36 +1,39 @@
 
 package com.swtug.anticovid.view.addTestReport
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.DialogInterface
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
 import androidx.annotation.VisibleForTesting
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.models.User
-import com.swtug.anticovid.view.BaseFragment
 import com.swtug.anticovid.R
-import com.swtug.anticovid.Utils
+import com.swtug.anticovid.utils.DateTimeUtils
+import com.swtug.anticovid.models.FirebaseTestReport
 import com.swtug.anticovid.models.TestReport
-import com.swtug.anticovid.repositories.FirebaseListener
+import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.FirebaseRepo
+import com.swtug.anticovid.repositories.FirebaseTestReportListener
 import com.swtug.anticovid.repositories.PreferencesRepo
 import java.time.LocalDateTime
 
-class AddTestReportFragment: BaseFragment() {
+class AddTestReportFragment: Fragment(R.layout.fragment_add_test_report) {
 
     private lateinit var txtUserEmail: TextView
     private lateinit var txtUserName: TextView
     private lateinit var txtValidityInfo: TextView
 
-    private lateinit var editTestDate: EditText
+    private lateinit var editTestLayout: TextInputLayout
+    private lateinit var editTestDate: TextInputEditText
     private lateinit var editValidDate: EditText
-    
-    private lateinit var buttonAddTestDate: ImageButton
-    private lateinit var buttonAddTestReportToFirebase: Button
 
     private lateinit var  radioPositive: RadioButton
     private lateinit var  radioNegative: RadioButton
@@ -46,40 +49,48 @@ class AddTestReportFragment: BaseFragment() {
         const val VALID_DAYS_POSITIVE: Long = 14
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return layoutInflater.inflate(R.layout.fragment_add_test_report, null)
+    init {
+        setHasOptionsMenu(true)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         currentUser = PreferencesRepo.getUser(requireContext())
         initFields(view)
         setTestAndValidDate(LocalDateTime.now())
 
-        initListeners(object : FirebaseListener {
-            override fun onSuccess(user: User?) {
-                setButtonsEnabled(true)
-                Toast.makeText(requireContext(), getString(R.string.report_added_success),
-                    Toast.LENGTH_LONG).show()
-                findNavController().navigate(R.id.action_addTestFragment_toMainFragment)
-            }
+        (activity as? MainActivity?)?.run {
+            setSupportActionBar(view.findViewById(R.id.toolbar))
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setDisplayShowHomeEnabled(true)
+        }
 
-            override fun onStart() {
-                setButtonsEnabled(false)
-            }
-
-            override fun onFailure() {
-                setButtonsEnabled(true)
-                Toast.makeText(requireContext(), getString(R.string.error_firebase_communication),
-                    Toast.LENGTH_LONG).show()
-            }
-        })
-
+        initListeners()
     }
 
-    private fun addTestReportToFirebase(firebaseListener: FirebaseListener) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_add_test, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+                findNavController().popBackStack()
+            }
+            R.id.save -> {
+                addTestReportToFirebase(firebaseUserListener)
+            }
+        }
+        return true
+    }
+
+    private fun addTestReportToFirebase(firebaseUserListener: FirebaseUserListener) {
         if(currentUser != null) {
-            FirebaseRepo.addTestReport(getTestReportOfForm(), firebaseListener)
+            if(isPositiveTest) {
+                createPositiveTestAcceptDialog(getTestReportOfForm(), firebaseUserListener).show()
+            } else {
+                FirebaseRepo.addTestReport(getTestReportOfForm(), firebaseUserListener)
+            }
         } else {
             Toast.makeText(requireContext(), getString(R.string.error_no_user_logged_in), Toast.LENGTH_LONG).show()
         }
@@ -88,36 +99,31 @@ class AddTestReportFragment: BaseFragment() {
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     fun setTestAndValidDate(testDate: LocalDateTime) {
         selectedDate = testDate
-        editTestDate.setText(Utils.getStringFromDate(testDate))
+        editTestDate.setText(DateTimeUtils.getStringFromDate(testDate))
         if(isPositiveTest) {
-            editValidDate.setText(Utils.getStringFromDate(testDate.plusDays(VALID_DAYS_POSITIVE)))
+            editValidDate.setText(DateTimeUtils.getStringFromDate(testDate.plusDays(VALID_DAYS_POSITIVE)))
             txtValidityInfo.text = getString(R.string.positive_test_valid_info)
         } else {
-            editValidDate.setText(Utils.getStringFromDate(testDate.plusHours(VALID_HOURS_NEGATIVE)))
+            editValidDate.setText(DateTimeUtils.getStringFromDate(testDate.plusHours(VALID_HOURS_NEGATIVE)))
             txtValidityInfo.text = getString(R.string.negative_test_valid_info)
         }
     }
 
-    private fun initListeners(firebaseListener: FirebaseListener) {
-
-        buttonAddTestDate.setOnClickListener {
-            pickDateAndTime()
-        }
-
+    private fun initListeners() {
         radioNegative.setOnClickListener {
             isPositiveTest = false
-            editValidDate.setText(Utils.getStringFromDate(selectedDate.plusHours(VALID_HOURS_NEGATIVE)))
+            editValidDate.setText(DateTimeUtils.getStringFromDate(selectedDate.plusHours(VALID_HOURS_NEGATIVE)))
             txtValidityInfo.text = getString(R.string.negative_test_valid_info)
         }
 
         radioPositive.setOnClickListener {
             isPositiveTest = true
-            editValidDate.setText(Utils.getStringFromDate(selectedDate.plusDays(VALID_DAYS_POSITIVE)))
+            editValidDate.setText(DateTimeUtils.getStringFromDate(selectedDate.plusDays(VALID_DAYS_POSITIVE)))
             txtValidityInfo.text = getString(R.string.positive_test_valid_info)
         }
 
-        buttonAddTestReportToFirebase.setOnClickListener {
-            addTestReportToFirebase(firebaseListener)
+        editTestLayout.setEndIconOnClickListener {
+            pickDateAndTime()
         }
     }
 
@@ -125,7 +131,7 @@ class AddTestReportFragment: BaseFragment() {
         selectedDate = LocalDateTime.now()
         DatePickerDialog(requireContext(),
             { _, year, month, dayOfMonth ->
-                selectedDate = LocalDateTime.of(year, month, dayOfMonth, 0, 0)
+                selectedDate = LocalDateTime.of(year, month + 1, dayOfMonth, 0, 0)
 
                 TimePickerDialog(requireContext(),
                     { _, hourOfDay, minute ->
@@ -137,8 +143,8 @@ class AddTestReportFragment: BaseFragment() {
         }, selectedDate.year, selectedDate.monthValue - 1, selectedDate.dayOfMonth).show()
     }
 
-    private fun getTestReportOfForm(): TestReport {
-        return TestReport(currentUser?.email ?: "",
+    private fun getTestReportOfForm(): FirebaseTestReport {
+        return FirebaseTestReport(currentUser?.email ?: "",
                                 editTestDate.text.toString(),
                                 isPositiveTest,
                                 editValidDate.text.toString())
@@ -149,10 +155,8 @@ class AddTestReportFragment: BaseFragment() {
         txtUserName = view.findViewById(R.id.text_user_name_info)
         txtValidityInfo = view.findViewById(R.id.validity_info)
         editTestDate = view.findViewById(R.id.text_test_date)
+        editTestLayout = view.findViewById(R.id.test_date_layout)
         editValidDate = view.findViewById(R.id.text_valid_date)
-
-        buttonAddTestDate = view.findViewById(R.id.button_enter_test_date)
-        buttonAddTestReportToFirebase = view.findViewById(R.id.button_add_test_report_to_firebase)
 
         radioPositive = view.findViewById(R.id.radio_test_positive)
         radioNegative = view.findViewById(R.id.radio_test_negative)
@@ -162,11 +166,43 @@ class AddTestReportFragment: BaseFragment() {
     }
 
     private fun setButtonsEnabled(enabled: Boolean) {
-        buttonAddTestReportToFirebase.isEnabled = enabled
-        buttonAddTestDate.isEnabled = enabled
         radioPositive.isEnabled = enabled
         radioNegative.isEnabled = enabled
     }
 
+    private val firebaseUserListener = object : FirebaseUserListener {
+        override fun onSuccess(user: User?) {
+            setButtonsEnabled(true)
+            Toast.makeText(requireContext(), getString(R.string.report_added_success),
+                Toast.LENGTH_LONG).show()
+            findNavController().popBackStack()
+        }
 
+        override fun onStart() {
+            setButtonsEnabled(false)
+        }
+
+        override fun onFailure() {
+            setButtonsEnabled(true)
+            Toast.makeText(requireContext(), getString(R.string.error_firebase_communication),
+                Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun createPositiveTestAcceptDialog(fbTestReport: FirebaseTestReport,
+                                               fbUserListener: FirebaseUserListener) : AlertDialog.Builder {
+            val dialogClickListener = DialogInterface.OnClickListener { _, which ->
+                if(which == DialogInterface.BUTTON_POSITIVE) {
+                    FirebaseRepo.addTestReport(fbTestReport, fbUserListener)
+                }
+            }
+
+            val alertDialogBuilder = AlertDialog.Builder(context)
+            alertDialogBuilder.setView(R.layout.positive_test_accept_dialogue)
+
+            alertDialogBuilder.setPositiveButton(getString(R.string.accept), dialogClickListener)
+            alertDialogBuilder.setNegativeButton(getString(R.string.action_cancel_register), dialogClickListener)
+
+            return alertDialogBuilder
+    }
 }

@@ -1,79 +1,82 @@
 package com.swtug.anticovid.view.main
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
+import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.R
 import com.swtug.anticovid.repositories.PreferencesRepo
+import com.swtug.anticovid.view.profile.ProfileFragment
+import com.swtug.anticovid.view.statistics.StatisticFragment
+import com.swtug.anticovid.view.testResults.TestResultFragment
+import com.swtug.anticovid.view.vaccineInfo.VaccinationFragment
+
 
 class MainFragment : Fragment() {
-    private lateinit var btnProfile: Button
-    private lateinit var btnAddTest: Button
-    private lateinit var btnVaccineInfo: Button
-    private lateinit var btnPreviousTestReports: Button
-    private lateinit var btnQRCode: Button
-    private lateinit var btnAdvFeatures: Button
-    private lateinit var navController: NavController
+    private lateinit var tabLayout: TabLayout
+    private lateinit var viewPager2: ViewPager2
+
+    init {
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_profile, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.logout -> {
+                PreferencesRepo.deleteUser(requireContext())
+                PreferencesRepo.deleteVaccinated(requireContext())
+                findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
+            }
+        }
+        return true
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return layoutInflater.inflate(R.layout.fragment_main, null)
+        return layoutInflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initFields(view)
-        initListeners()
+        val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)
+        (requireActivity() as? MainActivity)?.setSupportActionBar(toolbar)
 
+        initFields(view)
+        setupLayout()
     }
 
-    private fun initListeners() {
-        btnProfile.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_profileFragment)
-        }
+    private fun setupLayout() {
+        val fragments = listOf(
+            StatisticFragment() to getString(R.string.statistics),
+            TestResultFragment() to getString(R.string.test_reports),
+            VaccinationFragment() to getString(R.string.my_vaccine_information),
+            ProfileFragment() to getString(R.string.profile)
+        )
 
-        btnAddTest.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_addTestReportFragment)
-        }
+        val adapter = ViewPagerAdapter(fragments, childFragmentManager, lifecycle)
+        viewPager2.adapter = adapter
 
-        btnPreviousTestReports.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_testResultFragment)
-        }
-
-        btnVaccineInfo.setOnClickListener {
-            val vaccination = PreferencesRepo.getVaccination(requireContext())
-            if(vaccination == null) {
-                findNavController().navigate(R.id.action_mainFragment_to_notVaccinatedFragment)
-            } else {
-                val direction = MainFragmentDirections.actionMainFragmentToVaccinatedFragment(vaccination)
-                findNavController().navigate(direction)
-            }
-        }
-
-        btnQRCode.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_QRCodeFragment)
-        }
-
-        btnAdvFeatures.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_advancedFeatureFragment)
-        }
+        TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+            tab.text = (viewPager2.adapter as ViewPagerAdapter).getItemNameAtPosition(position)
+            viewPager2.setCurrentItem(tab.position, true)
+        }.attach()
     }
 
     private fun initFields(view: View) {
-        btnProfile = view.findViewById(R.id.button_profile)
-        btnAddTest = view.findViewById(R.id.button_add_test_report)
-        btnVaccineInfo = view.findViewById(R.id.button_vaccine_info)
-        btnPreviousTestReports = view.findViewById(R.id.button_previous_test_reports)
-        btnQRCode = view.findViewById(R.id.button_valid_qr_code)
-        btnAdvFeatures = view.findViewById(R.id.button_advaced_features)
+        viewPager2 = view.findViewById(R.id.pager)
+        tabLayout = view.findViewById(R.id.tabLayout)
     }
 }

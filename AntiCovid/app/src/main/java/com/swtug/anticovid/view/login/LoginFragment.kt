@@ -7,12 +7,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.swtug.anticovid.R
+import com.swtug.anticovid.TestReportProvider
+import com.swtug.anticovid.models.TestReport
 import com.swtug.anticovid.models.User
-import com.swtug.anticovid.repositories.FirebaseListener
+import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.FirebaseRepo
+import com.swtug.anticovid.repositories.FirebaseTestReportListener
 import com.swtug.anticovid.repositories.PreferencesRepo
 import java.util.*
 
@@ -24,8 +29,7 @@ class LoginFragment : Fragment() {
     private lateinit var editTextEmail: EditText
     private lateinit var editTextPassword: EditText
 
-    private lateinit var txtEmailError: TextView
-    private lateinit var txtLoginError: TextView
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,39 +44,62 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initFields(view)
-        initListeners(object : FirebaseListener {
+        initListeners(object : FirebaseUserListener {
             override fun onSuccess(user: User?) {
-                setButtonsEnabled(true)
 
                 if(user != null && editTextPassword.text.toString() == user.password) {
                     PreferencesRepo.saveUser(requireContext(), user)
+                    fetchTestReports(user.email)
+
                     findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                 } else {
-                    txtLoginError.text = getString(R.string.error_wrong_password)
+                    Toast.makeText(
+                        requireContext(),
+                        requireContext().getString(R.string.error_wrong_password),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
 
             override fun onStart() {
-                setButtonsEnabled(false)
             }
 
             override fun onFailure() {
-                setButtonsEnabled(true)
-                txtLoginError.text = getString(R.string.error_firebase_communication)
+                Toast.makeText(
+                    requireContext(),
+                    requireContext().getString(R.string.error_firebase_communication),
+                    Toast.LENGTH_LONG
+                ).show()
             }
         })
+    }
 
+    private fun fetchTestReports(userEmail: String) {
+        FirebaseRepo.getAllTestReportsFrom(userEmail, object : FirebaseTestReportListener {
+            override fun onSuccess(testReports: ArrayList<TestReport>) {
+                TestReportProvider.setTestReports(testReports)
+            }
+
+            override fun onStart() { }
+
+            override fun onFailure() {
+                Toast.makeText(
+                    requireContext(),
+                    requireContext().getString(R.string.error_firebase_communication),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        })
     }
 
 
-    private fun initListeners(firebaseListener: FirebaseListener) {
+    private fun initListeners(firebaseUserListener: FirebaseUserListener) {
 
         btnLogin.setOnClickListener {
-            checkUserCredentials(firebaseListener)
+            checkUserCredentials(firebaseUserListener)
         }
 
         btnRegister.setOnClickListener {
-            clearErrorLabels()
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
     }
@@ -83,30 +110,33 @@ class LoginFragment : Fragment() {
         editTextEmail = view.findViewById(R.id.editTextTextEmailAddress)
         editTextPassword = view.findViewById(R.id.editTextPassword)
 
-        txtEmailError = view.findViewById(R.id.txtEmailError)
-        txtLoginError = view.findViewById(R.id.txtLoginError)
+
 
     }
 
-    private fun checkUserCredentials(firebaseListener: FirebaseListener) {
-        clearErrorLabels()
-        val email = editTextEmail.text.toString().toLowerCase(Locale.ROOT).trim()
+    private fun checkUserCredentials(firebaseUserListener: FirebaseUserListener) {
 
-        if(email.isEmpty()) {
-            txtEmailError.text = getString(R.string.error_no_email)
+        val email = editTextEmail.text.toString().toLowerCase(Locale.ROOT).trim()
+        val password = editTextPassword.text.toString().trim()
+
+        if(email.isEmpty() || password.isEmpty()) {
+
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.error_no_credentials),
+                    Toast.LENGTH_LONG
+                ).show()
+
+
         } else {
-            FirebaseRepo.getUser(email, firebaseListener)
+            FirebaseRepo.getUser(email, firebaseUserListener)
         }
     }
 
-    private fun clearErrorLabels() {
-        txtLoginError.text = ""
-        txtEmailError.text = ""
-    }
 
-    private fun setButtonsEnabled(enabled: Boolean) {
-        btnRegister.isEnabled = enabled
-        btnLogin.isEnabled = enabled
-    }
+
+
+
+
 }
 

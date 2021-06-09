@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashScreenFragment">
 
@@ -58,10 +59,10 @@
 
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true"/>
+            app:destination="@id/registerFragment" />
     </fragment>
+
+
 
     <fragment
         android:id="@+id/registerFragment"
@@ -78,7 +79,7 @@
         <action
             android:id="@+id/action_registerFragment_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:popUpTo="@id/registerFragment"
+            app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true"
             />
     </fragment>
@@ -89,85 +90,36 @@
         android:name="com.swtug.anticovid.view.main.MainFragment"
         android:label="MainFragment">
         <action
+            android:id="@+id/action_mainFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+        <action
             android:id="@+id/action_mainFragment_to_addTestReportFragment"
             app:destination="@id/addTestReportFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_mainFragment_to_changePassword"
+            app:destination="@id/changePassword" />
+
         <action
-            android:id="@+id/action_mainFragment_to_QRCodeFragment"
-            app:destination="@id/QRCodeFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_testResultFragment"
-            app:destination="@id/testResultFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_notVaccinatedFragment"
-            app:destination="@id/notVaccinatedFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_vaccinatedFragment"
-            app:destination="@id/vaccinatedFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_advancedFeatureFragment"
-            app:destination="@id/advancedFeatureFragment" />
+            android:id="@+id/action_mainFragment_to_informationAndRulesFragment"
+            app:destination="@+id/informationAndRules"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/informationAndRules"
+        android:name="com.swtug.anticovid.view.informationAndRules.InformationAndRules"
+        android:label="@string/informationAndRules">
+
     </fragment>
 
     <fragment
         android:id="@+id/addTestReportFragment"
         android:name="com.swtug.anticovid.view.addTestReport.AddTestReportFragment"
-        android:label="AddTestReportFragment">
-        <action
-            android:id="@+id/action_addTestFragment_toMainFragment"
-            app:destination="@id/mainFragment"
-            app:popUpTo="@id/addTestReportFragment"
-            app:popUpToInclusive="true" />
-        </fragment>
-
+        android:label="AddTestReportFragment" />
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.swtug.anticovid.view.profile.ProfileFragment"
-        android:label="ProfileFragment" >
-        <action
-            android:id="@+id/action_profileFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:popUpTo="@id/nav_graph" />
-    </fragment>
-    <fragment
-        android:id="@+id/QRCodeFragment"
-        android:name="com.swtug.anticovid.view.qrCode.QRCodeFragment"
-        android:label="QRCodeFragment" />
-    <fragment
-        android:id="@+id/testResultFragment"
-        android:name="com.swtug.anticovid.view.testResults.TestResultFragment"
-        android:label="TestResultFragment" />
-
-
-
-
-
-    <fragment
-        android:id="@+id/notVaccinatedFragment"
-        android:name="com.swtug.anticovid.view.vaccineInfo.NotVaccinatedFragment"
-        android:label="NotVaccinatedFragment" >
-        <action
-            android:id="@+id/action_notVaccinatedFragment_to_vaccinatedFragment"
-            app:popUpTo="@id/notVaccinatedFragment"
-            app:destination="@id/vaccinatedFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/vaccinatedFragment"
-        android:name="com.swtug.anticovid.view.vaccineInfo.VaccinatedFragment"
-        android:label="VaccinatedFragment" >
-        <argument
-            android:name="vaccination"
-            app:argType="com.swtug.anticovid.models.Vaccination" />
-        <action
-            android:id="@+id/action_vaccinatedFragment_to_QRCodeFragment"
-            app:destination="@id/QRCodeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/advancedFeatureFragment"
-        android:name="com.swtug.anticovid.view.qrCode.AdvancedFeatureFragment"
-        android:label="AdvancedFeatureFragment" />
+        android:id="@+id/changePassword"
+        android:name="com.swtug.anticovid.view.changePassword.ChangePassword"
+        android:label="ChangePassword" />
 
 </navigation>

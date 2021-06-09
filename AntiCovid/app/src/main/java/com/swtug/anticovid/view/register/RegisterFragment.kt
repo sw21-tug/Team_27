@@ -1,23 +1,21 @@
 package com.swtug.anticovid.view.register
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.R
 import com.swtug.anticovid.models.User
-import com.swtug.anticovid.repositories.FirebaseListener
+import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.PreferencesRepo
 
-class RegisterFragment : Fragment() {
+class RegisterFragment : Fragment(R.layout.fragment_register) {
     private lateinit var btnSignUp: Button
-    private lateinit var btnCancelSignUp: Button
     private lateinit var editTxtEmail: EditText
     private lateinit var editTxtPassword: EditText
     private lateinit var editTxtName: EditText
@@ -27,19 +25,14 @@ class RegisterFragment : Fragment() {
     private lateinit var editTextPhoneNumber: EditText
     private lateinit var txtErrorLabel: TextView
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return layoutInflater.inflate(R.layout.fragment_register, null)
+    init {
+        setHasOptionsMenu(true)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initFields(view)
-        initListeners(object : FirebaseListener {
+        initListeners(object : FirebaseUserListener {
             override fun onSuccess(user: User?) {
                 setButtonsEnabled(true)
 
@@ -60,27 +53,37 @@ class RegisterFragment : Fragment() {
                 txtErrorLabel.text = getString(R.string.error_firebase_communication)
             }
         })
+
+        (activity as? MainActivity?)?.run {
+            setSupportActionBar(view.findViewById(R.id.toolbar))
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setDisplayShowHomeEnabled(true)
+        }
     }
 
-    private fun trySignUpNewUser(user: User, firebaseListener: FirebaseListener) {
-        FirebaseRepo.saveUser(user, firebaseListener)
-    }
-
-    private fun initListeners(firebaseListener: FirebaseListener) {
-        btnSignUp.setOnClickListener {
-            if (checkEditTextInputs()) {
-                trySignUpNewUser(getUserObjectFromInputs(), firebaseListener)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                findNavController().popBackStack()
             }
         }
+        return true
+    }
 
-        btnCancelSignUp.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+    private fun trySignUpNewUser(user: User, firebaseUserListener: FirebaseUserListener) {
+        FirebaseRepo.saveUser(user, firebaseUserListener)
+    }
+
+    private fun initListeners(firebaseUserListener: FirebaseUserListener) {
+        btnSignUp.setOnClickListener {
+            if (checkEditTextInputs()) {
+                trySignUpNewUser(getUserObjectFromInputs(), firebaseUserListener)
+            }
         }
     }
 
     private fun initFields(view: View) {
         btnSignUp = view.findViewById(R.id.buttonSignUp)
-        btnCancelSignUp = view.findViewById(R.id.buttonCancelSignUp)
 
         editTxtEmail = view.findViewById(R.id.editTextEmail)
         editTxtPassword = view.findViewById(R.id.editTextPassword)
@@ -113,6 +116,11 @@ class RegisterFragment : Fragment() {
             return false;
         }
 
+        if (editTxtSocialSecurityId.text.length != 10) {
+            txtErrorLabel.text = getString(R.string.error_secID_lenth)
+            return false;
+        }
+
         return true;
     }
 
@@ -131,6 +139,5 @@ class RegisterFragment : Fragment() {
 
     private fun setButtonsEnabled(enabled: Boolean) {
         btnSignUp.isEnabled = enabled
-        btnCancelSignUp.isEnabled = enabled
     }
 }

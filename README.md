@@ -50,3 +50,41 @@ This app also provides users with official institution rules and changes about c
 | [ANTIC-024](https://github.com/sw21-tug/Team_27/issues/42) | Change language to Chinese |
 | [ANTIC-025](https://github.com/sw21-tug/Team_27/issues/43) | Research for User Statistics |
 | [ANTIC-027](https://github.com/sw21-tug/Team_27/issues/46) | Add Test Report |
+| [ANTIC-029](https://github.com/sw21-tug/Team_27/issues/50) | Refactor Correct data in QR-Code |
+| [ANTIC-031](https://github.com/sw21-tug/Team_27/issues/52) | Refactor Home-Screen |
+| [ANTIC-032](https://github.com/sw21-tug/Team_27/issues/53) | Delete Test Reports |
+| [ANTIC-033](https://github.com/sw21-tug/Team_27/issues/54) | Corona statistic for all countries |
+| [ANTIC-034](https://github.com/sw21-tug/Team_27/issues/55) | Refactor Create Account |
+| [ANTIC-035](https://github.com/sw21-tug/Team_27/issues/66) | Redesign of Home-Screen |
+| [ANTIC-036](https://github.com/sw21-tug/Team_27/issues/68) | Change "My vaccine Information" |
+| [ANTIC-037](https://github.com/sw21-tug/Team_27/issues/69) | QR-Code add vaccinaded as additional information |
+| [ANTIC-038](https://github.com/sw21-tug/Team_27/issues/73) | Refactor Update Input Fields to State of the Art |
+| [ANTIC-039](https://github.com/sw21-tug/Team_27/issues/74) | Refactor Get UI on the same design. (character size etc.) |
+| [ANTIC-040](https://github.com/sw21-tug/Team_27/issues/78) | Refactor "Add Test Report"-Screen into Test Reports |
+| [ANTIC-041](https://github.com/sw21-tug/Team_27/issues/79) | Refactor "QR Code"-Screen into Test Report |
+| [ANTIC-042](https://github.com/sw21-tug/Team_27/issues/81) | Move "Change Password" to Profile |
+| [ANTIC-043](https://github.com/sw21-tug/Team_27/issues/84) | Filter for Test Reports |
+| [ANTIC-044](https://github.com/sw21-tug/Team_27/issues/85) | Refactor Statistic Screen Design |
+| [ANTIC-045](https://github.com/sw21-tug/Team_27/issues/88) | Refactor Logout and Save Icons |
+| [ANTIC-046](https://github.com/sw21-tug/Team_27/issues/89) | Bugfix Logout Button |
+| [ANTIC-047](https://github.com/sw21-tug/Team_27/issues/92) | Bugfix should work on smartphone |
+| [ANTIC-048](https://github.com/sw21-tug/Team_27/issues/93) | Bugfix Country FlagANTIC-050 |
+| [ANTIC-049](https://github.com/sw21-tug/Team_27/issues/97) | Dark mode |
+| [ANTIC-050](https://github.com/sw21-tug/Team_27/issues/99) | Bug Vaccine Info not editable |
+| [ANTIC-051](https://github.com/sw21-tug/Team_27/issues/104) | Refactor Log in Error Messages |
+| [ANTIC-052](https://github.com/sw21-tug/Team_27/issues/105) | Bug Vaccine is not shown in QR-Code Dialog window |
+| [ANTIC-053](https://github.com/sw21-tug/Team_27/issues/106) | Refactor login and register |
+| [ANTIC-054](https://github.com/sw21-tug/Team_27/issues/107) | Refactor E-Mail field in Profile |
+
+# Description of Features:
+
+This is a Covid-19-App where you can save your corona tests and show them to people via QR-Code. But lets start from the beginning.
+At first you have to create an account for the app. You can change your personal data later in the profile window.
+The first thing you will see if you log in into the app is the statistics screen. This screen is showing you latest corona statistic for countries.
+Next window is the test reports window. Here you have all your test reports from corona tests. You can sort them by validity. You can delete old ones and add new ones with the +
+button. If you add a new test report the date is filled in automatically and if the test you entered is positive you can get information on what to do next.
+You can also click on the test reports individually to get the QR code. In the vaccine information screen you can add your vaccination. This will be added in the QR code as 
+well. In the profile window you can change the language to chinese. You can also change your password. I you use the app in the dark it has a dark mode too.
+
+
+

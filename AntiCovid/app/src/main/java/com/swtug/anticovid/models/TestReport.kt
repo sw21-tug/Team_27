@@ -5,7 +5,7 @@ import java.time.LocalDateTime
 
 data class TestReport(
     var email: String,
-    var testdate: String,
+    var testdate: LocalDateTime,
     var testresult: Boolean,
-    val validdate: String
+    val validdate: LocalDateTime
 ) : Serializable

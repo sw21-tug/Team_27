@@ -16,8 +16,10 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.swtug.anticovid.R
 import com.swtug.anticovid.utils.TestUtils
+import com.swtug.anticovid.utils.ToastMatcher
 import com.swtug.anticovid.view.login.LoginFragment
 import junit.framework.TestCase
+
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -57,9 +59,9 @@ class LoginNavigationTest {
         onView(withId(R.id.buttonLogin)).perform(click())
         Thread.sleep(3000)
 
-        val compareString = TestUtils.getResoureceString(getContext(), R.string.error_wrong_password)
-        onView(withId(R.id.txtLoginError)).check(matches(withText(compareString)))
         TestCase.assertEquals(navController.currentDestination?.id, R.id.loginFragment)
+        onView(withText("The combination of user and password does not exist!")).inRoot(ToastMatcher()).check(matches(isDisplayed()));
+
     }
 
     @Test
@@ -80,8 +82,14 @@ class LoginNavigationTest {
     fun testLoginWithoutInputs() {
         onView(withId(R.id.buttonLogin)).perform(click())
 
-        val compareString = TestUtils.getResoureceString(getContext(), R.string.error_no_email)
-        onView(withId(R.id.txtEmailError)).check(matches(withText(compareString)))
+        onView(withText("No E-Mail or password entered!")).inRoot(ToastMatcher()).check(matches(isDisplayed()));
+
+
     }
 }
+
+
+
+
+
 

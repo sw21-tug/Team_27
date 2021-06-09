@@ -50,16 +50,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <TextView
-        android:id="@+id/txtEmailError"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/errorRed"
-        android:textSize="8pt"
-        app:layout_constraintStart_toStartOf="@+id/emaillayout"
-        app:layout_constraintTop_toBottomOf="@+id/emaillayout" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordlayout"
         android:layout_width="match_parent"
@@ -81,15 +71,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/txtLoginError"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/errorRed"
-        android:textSize="8pt"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRegister"
-        tools:layout_editor_absoluteX="8dp" />
+
 
     <Button
         android:id="@+id/buttonLogin"

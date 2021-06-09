@@ -86,7 +86,8 @@
     <string name="error_user_exists">A user with the same E-mail already exists!</string>
     <string name="error_firebase_communication">An error occurred communicating with Firebase!</string>
     <string name="action_cancel_register">Cancel</string>
-    <string name="error_no_email">No email entered!</string>
+    <string name="error_no_credentials">No E-Mail or password entered!</string>
+
     <string name="error_wrong_password">The combination of user and password does not exist!</string>
     <string name="error_secID_lenth">The Social security ID has to be 10 characters long!</string>
     <string name="positive">Positive</string>

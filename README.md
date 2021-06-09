@@ -74,5 +74,15 @@ This app also provides users with official institution rules and changes about c
 | []() |  |
 | []() |  |
 
+# Description of Features:
+
+This is a Covid-19-App where you can save your corona tests and show them to people via QR-Code. But lets start from the beginning.
+At first you have to create an account for the app. You can change your personal data later in the profile window.
+The first thing you will see if you log in into the app is the statistics screen. This screen is showing you latest corona statistic for countries.
+Next window is the test reports window. Here you have all your test reports from corona tests. You can sort them by validity. You can delete old ones and add new ones with the +
+button. If you add a new test report the date is filled in automatically and if the test you entered is positive you can get information on what to do next.
+You can also click on the test reports individually to get the QR code. In the vaccine information screen you can add your vaccination. This will be added in the QR code as 
+well. In the profile window you can change the language to chinese. You can also change your password.
+
 
 

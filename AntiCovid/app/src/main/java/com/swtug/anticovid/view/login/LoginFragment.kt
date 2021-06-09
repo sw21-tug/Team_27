@@ -66,8 +66,11 @@ class LoginFragment : Fragment() {
             }
 
             override fun onFailure() {
-                txtLoginError.text = getString(R.string.error_firebase_communication)
-
+                Toast.makeText(
+                    requireContext(),
+                    requireContext().getString(R.string.error_firebase_communication),
+                    Toast.LENGTH_LONG
+                ).show()
             }
         })
     }
@@ -119,27 +122,13 @@ class LoginFragment : Fragment() {
         val password = editTextPassword.text.toString().trim()
 
         if(email.isEmpty() || password.isEmpty()) {
-            if(email.isEmpty() && password.isNotEmpty()) {
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.error_no_email),
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-            else if(password.isEmpty() && email.isNotEmpty()){
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.error_no_password),
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-            else{
+
                 Toast.makeText(
                     requireContext(),
                     getString(R.string.error_no_credentials),
                     Toast.LENGTH_LONG
                 ).show()
-            }
+
 
         } else {
             FirebaseRepo.getUser(email, firebaseUserListener)

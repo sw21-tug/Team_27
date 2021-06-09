@@ -72,7 +72,7 @@ class TestResultFragment : Fragment(R.layout.fragment_test_results) {
         val currentUser = PreferencesRepo.getUser(requireContext())
         val vaccinated = PreferencesRepo.getVaccination(requireContext()) != null
 
-        testResultAdapter = TestResultsRecyclerAdapter(currentUser, vaccinated)
+        testResultAdapter = TestResultsRecyclerAdapter(currentUser)
     }
 
     private fun initListeners() {
@@ -84,8 +84,8 @@ class TestResultFragment : Fragment(R.layout.fragment_test_results) {
             onDeleteClicked = { testReport ->
                 (activity as? MainActivity?)?.createPreConfirmDialog(testReport) { report -> deleteTestReport(report) }?.show()
             },
-            onItemClicked = { testReport, user, vaccinated ->
-                (activity as? MainActivity?)?.createQRCodeDialog(testReport, user, vaccinated)
+            onItemClicked = { testReport, user ->
+                (activity as? MainActivity?)?.createQRCodeDialog(testReport, user)
                     ?.show()
             }
         )

@@ -71,7 +71,6 @@ class VaccinationFragment : Fragment() {
     }
 
     private fun getVaccination(): Vaccination {
-        //TODO check if vaccineID is valid
         return Vaccination(
             txtManufacturer.text.toString(),
             txtFirstDose.text.toString(),

@@ -29,8 +29,7 @@ class LoginFragment : Fragment() {
     private lateinit var editTextEmail: EditText
     private lateinit var editTextPassword: EditText
 
-    private lateinit var txtEmailError: TextView
-    private lateinit var txtLoginError: TextView
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,7 +46,6 @@ class LoginFragment : Fragment() {
         initFields(view)
         initListeners(object : FirebaseUserListener {
             override fun onSuccess(user: User?) {
-                setButtonsEnabled(true)
 
                 if(user != null && editTextPassword.text.toString() == user.password) {
                     PreferencesRepo.saveUser(requireContext(), user)
@@ -55,17 +53,23 @@ class LoginFragment : Fragment() {
 
                     findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                 } else {
-                    txtLoginError.text = getString(R.string.error_wrong_password)
+                    Toast.makeText(
+                        requireContext(),
+                        requireContext().getString(R.string.error_wrong_password),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
 
             override fun onStart() {
-                setButtonsEnabled(false)
             }
 
             override fun onFailure() {
-                setButtonsEnabled(true)
-                txtLoginError.text = getString(R.string.error_firebase_communication)
+                Toast.makeText(
+                    requireContext(),
+                    requireContext().getString(R.string.error_firebase_communication),
+                    Toast.LENGTH_LONG
+                ).show()
             }
         })
     }
@@ -96,7 +100,6 @@ class LoginFragment : Fragment() {
         }
 
         btnRegister.setOnClickListener {
-            clearErrorLabels()
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
     }
@@ -107,30 +110,33 @@ class LoginFragment : Fragment() {
         editTextEmail = view.findViewById(R.id.editTextTextEmailAddress)
         editTextPassword = view.findViewById(R.id.editTextPassword)
 
-        txtEmailError = view.findViewById(R.id.txtEmailError)
-        txtLoginError = view.findViewById(R.id.txtLoginError)
+
 
     }
 
     private fun checkUserCredentials(firebaseUserListener: FirebaseUserListener) {
-        clearErrorLabels()
-        val email = editTextEmail.text.toString().toLowerCase(Locale.ROOT).trim()
 
-        if(email.isEmpty()) {
-            txtEmailError.text = getString(R.string.error_no_email)
+        val email = editTextEmail.text.toString().toLowerCase(Locale.ROOT).trim()
+        val password = editTextPassword.text.toString().trim()
+
+        if(email.isEmpty() || password.isEmpty()) {
+
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.error_no_credentials),
+                    Toast.LENGTH_LONG
+                ).show()
+
+
         } else {
             FirebaseRepo.getUser(email, firebaseUserListener)
         }
     }
 
-    private fun clearErrorLabels() {
-        txtLoginError.text = ""
-        txtEmailError.text = ""
-    }
 
-    private fun setButtonsEnabled(enabled: Boolean) {
-        btnRegister.isEnabled = enabled
-        btnLogin.isEnabled = enabled
-    }
+
+
+
+
 }
 

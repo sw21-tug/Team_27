@@ -22,13 +22,13 @@ Dev 9: Tobias Stangl
 
 | Syntax      | Dev 1   	  | Dev 2   	  | Dev 3       | Dev 4       | Dev 5   	  | Dev 6   	  | Dev 7   	  | Dev 8   	  | Dev 9   	  | Dev 10      |
 | :---        |    :----:   |    :----:   |    :----:   |    :----:   |    :----:   |    :----:   |    :----:   |    :----:   |    :----:   |    :----:   |
-| Dev 1       | 08:00       | 08:00       | HH:MM       | HH:MM       | 08:00       | 08:00       | 08:00       | HH:MM       | HH:MM       | HH:MM       |
-| Dev 2       | 08:00       | X           | HH:MM       | HH:MM       | 08:00       | 12:00       | 08:00       | 08:00       | 04:00       | HH:MM       |
+| Dev 1       | 08:00       | 08:00       | HH:MM       | HH:MM       | 08:00       | 08:00       | 08:00       | HH:MM       | 04:00       | HH:MM       |
+| Dev 2       | 08:00       | X           | HH:MM       | HH:MM       | 12:00       | 12:00       | 08:00       | 08:00       | 04:00       | HH:MM       |
 | Dev 3       | HH:MM       | HH:MM       | X           | HH:MM       | HH:MM       | HH:MM       | HH:MM       | HH:MM       | HH:MM       | 00:00       |
 | Dev 4       | HH:MM       | HH:MM       | HH:MM       | X           | HH:MM       | HH:MM       | HH:MM       | 08:00       | 08:00       | HH:MM       |
-| Dev 5       | 08:00       | 08:00       | HH:MM       | HH:MM       | X           | 08:00       | 04:00       | 16:00       | 08:00       | HH:MM       |
+| Dev 5       | 08:00       | 12:00       | HH:MM       | HH:MM       | X           | 08:00       | 04:00       | 16:00       | 08:00       | HH:MM       |
 | Dev 6       | 08:00       | 12:00       | HH:MM       | HH:MM       | 08:00       | X           | 08:00       | 04:00       | 08:00       | HH:MM       |
-| Dev 7       | 08:00       | 08:00       | HH:MM       | HH:MM       | 04:00       | 08:00       | 08:00       | HH:MM       | 16:00       | HH:MM       |
-| Dev 8       | HH:MM       | 08:00       | HH:MM       | 08:00       | 16:00       | 04:00       | HH:MM       | 08:00       | 08:00       | HH:MM       |
-| Dev 9       | HH:MM       | 04:00       | HH:MM       | 08:00       | 08:00       | 08:00       | 16:00       | 08:00       | 08:00       | HH:MM       |
+| Dev 7       | 08:00       | 08:00       | HH:MM       | HH:MM       | 04:00       | 08:00       | 08:00       | 04:00       | 20:00       | HH:MM       |
+| Dev 8       | HH:MM       | 08:00       | HH:MM       | 08:00       | 16:00       | 04:00       | 04:00       | 08:00       | 08:00       | HH:MM       |
+| Dev 9       | 04:00       | 04:00       | HH:MM       | 08:00       | 08:00       | 08:00       | 20:00       | 08:00       | 08:00       | HH:MM       |
 | Dev 10      | HH:MM       | HH:MM       | 00:00       | HH:MM       | HH:MM       | HH:MM       | HH:MM       | HH:MM       | HH:MM       | X           |

@@ -29,6 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:textColor="@color/black"
                 android:text="@string/country"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -54,13 +55,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/imv_Showflag"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imv_Showflag"
                 app:layout_constraintTop_toTopOf="@+id/imv_Showflag" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/txt_population"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -72,6 +74,7 @@
                 app:layout_constraintWidth_percent="0.45" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/txt_population_count"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

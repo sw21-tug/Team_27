@@ -17,6 +17,7 @@ import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.PreferencesRepo
 import java.util.*
+import javax.annotation.meta.When
 
 
 class ProfileFragment : Fragment() {
@@ -130,9 +131,13 @@ class ProfileFragment : Fragment() {
     }
 
     private fun changeDarkMode(){
+        when(AppCompatDelegate.getDefaultNightMode()){
+            AppCompatDelegate.MODE_NIGHT_YES -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            AppCompatDelegate.MODE_NIGHT_NO -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        
+           else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
     }
 
     private fun getUserFromEditText(): User {

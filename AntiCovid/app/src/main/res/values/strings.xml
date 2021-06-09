@@ -142,6 +142,7 @@
     <string name="country">Country</string>
     <string name="vaccinated">"Vaccinated: "</string>
     <string name="ok">OK</string>
+    <string name="updated_vaccination">Vaccination updated successfully!</string>
 
     <string-array name="countries_array">
         <item>Afghanistan</item>

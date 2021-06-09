@@ -10,8 +10,10 @@ import androidx.navigation.fragment.findNavController
 import com.swtug.anticovid.R
 import com.swtug.anticovid.TestReportProvider
 import com.swtug.anticovid.models.TestReport
+import com.swtug.anticovid.models.Vaccination
 import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.FirebaseTestReportListener
+import com.swtug.anticovid.repositories.FirebaseVaccinationListener
 import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.view.statistics.StatisticsViewModel
 

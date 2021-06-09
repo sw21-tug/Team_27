@@ -30,7 +30,7 @@ object PreferencesRepo {
         return getPreferences(context).getBoolean(TERMS_OF_USE, false)
     }
 
-    fun saveVaccination(context: Context, vaccination: Vaccination) {
+    fun saveVaccination(context: Context, vaccination: Vaccination?) {
         val gson = Gson()
         val json = gson.toJson(vaccination)
 

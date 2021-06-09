@@ -1,10 +1,11 @@
 package com.swtug.anticovid.view.profile
 
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.*
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
@@ -12,8 +13,8 @@ import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.swtug.anticovid.R
 import com.swtug.anticovid.models.User
-import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.FirebaseRepo
+import com.swtug.anticovid.repositories.FirebaseUserListener
 import com.swtug.anticovid.repositories.PreferencesRepo
 import java.util.*
 
@@ -41,7 +42,15 @@ class ProfileFragment : Fragment() {
     ): View? {
         return layoutInflater.inflate(R.layout.fragment_profile, container, false)
     }
+/*
+    override fun onCreate(savedInstanceState: Bundle?) {
 
+
+
+        super.onCreate(savedInstanceState)
+        activity?.getTheme()?.applyStyle(R.style.Theme_AntiCovidnight, true)
+    }
+*/
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -122,6 +131,8 @@ class ProfileFragment : Fragment() {
 
     private fun changeDarkMode(){
 
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        
     }
 
     private fun getUserFromEditText(): User {

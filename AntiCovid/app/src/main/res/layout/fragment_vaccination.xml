@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="?backgroundColor">
 
 
 
@@ -31,14 +31,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/manufacturer"
-            app:boxStrokeColor="@null">
+            android:hint="@string/manufacturer">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInput_manufacturer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:background="@color/transparent"/>
 
@@ -53,7 +51,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/first_dose_date"
-            app:boxStrokeColor="@null"
             app:endIconDrawable="@drawable/ic_clear"
             app:endIconMode="custom"
             app:endIconTint="@color/black"
@@ -64,7 +61,6 @@
                 android:id="@+id/first_dose_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:background="@color/transparent"
                 android:enabled="false"/>
@@ -80,7 +76,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/second_dose_date"
-            app:boxStrokeColor="@null"
             app:endIconDrawable="@drawable/ic_clear"
             app:endIconMode="custom"
             app:endIconTint="@color/black"
@@ -91,7 +86,6 @@
                 android:id="@+id/second_dose_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:background="@color/transparent"
                 android:enabled="false"/>
@@ -105,14 +99,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/institution"
-            app:boxStrokeColor="@null">
+            android:hint="@string/institution">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/institution"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:background="@color/transparent"/>
 

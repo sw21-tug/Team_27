@@ -69,12 +69,12 @@ This app also provides users with official institution rules and changes about c
 | [ANTIC-046](https://github.com/sw21-tug/Team_27/issues/89) | Bugfix Logout Button |
 | [ANTIC-047](https://github.com/sw21-tug/Team_27/issues/92) | Bugfix should work on smartphone |
 | [ANTIC-048](https://github.com/sw21-tug/Team_27/issues/93) | Bugfix Country FlagANTIC-050 |
+| [ANTIC-049](https://github.com/sw21-tug/Team_27/issues/97) | Dark mode |
 | [ANTIC-050](https://github.com/sw21-tug/Team_27/issues/99) | Bug Vaccine Info not editable |
 | [ANTIC-051](https://github.com/sw21-tug/Team_27/issues/104) | Refactor Log in Error Messages |
 | [ANTIC-052](https://github.com/sw21-tug/Team_27/issues/105) | Bug Vaccine is not shown in QR-Code Dialog window |
 | [ANTIC-053](https://github.com/sw21-tug/Team_27/issues/106) | Refactor login and register |
 | [ANTIC-054](https://github.com/sw21-tug/Team_27/issues/107) | Refactor E-Mail field in Profile |
-| [ANTIC-049](https://github.com/sw21-tug/Team_27/issues/97) | Dark mode |
 
 # Description of Features:
 

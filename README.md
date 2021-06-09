@@ -50,3 +50,29 @@ This app also provides users with official institution rules and changes about c
 | [ANTIC-024](https://github.com/sw21-tug/Team_27/issues/42) | Change language to Chinese |
 | [ANTIC-025](https://github.com/sw21-tug/Team_27/issues/43) | Research for User Statistics |
 | [ANTIC-027](https://github.com/sw21-tug/Team_27/issues/46) | Add Test Report |
+| [ANTIC-029](https://github.com/sw21-tug/Team_27/issues/50) | Refactor Correct data in QR-Code |
+| [ANTIC-031](https://github.com/sw21-tug/Team_27/issues/52) | Refactor Home-Screen |
+| [ANTIC-032](https://github.com/sw21-tug/Team_27/issues/53) | Delete Test Reports |
+| [ANTIC-033](https://github.com/sw21-tug/Team_27/issues/54) | Corona statistic for all countries |
+| [ANTIC-034](https://github.com/sw21-tug/Team_27/issues/55) | Refactor Create Account |
+| [ANTIC-035](https://github.com/sw21-tug/Team_27/issues/66) | Redesign of Home-Screen |
+| [ANTIC-036](https://github.com/sw21-tug/Team_27/issues/68) | Change "My vaccine Information" |
+| [ANTIC-037](https://github.com/sw21-tug/Team_27/issues/69) | QR-Code add vaccineded as additional information |
+| [ANTIC-038](https://github.com/sw21-tug/Team_27/issues/73) | Refactor Update Input Fields to State of the Art |
+| [ANTIC-039](https://github.com/sw21-tug/Team_27/issues/74) | Refactor Get UI on the same design. (character size etc.) |
+| [ANTIC-040](https://github.com/sw21-tug/Team_27/issues/78) | Refactor "Add Test Report"-Screen into Test Reports |
+| [ANTIC-041](https://github.com/sw21-tug/Team_27/issues/79) | Refactor "QR Code"-Screen into Test Report |
+| [ANTIC-042](https://github.com/sw21-tug/Team_27/issues/81) | Move "Change Password" to Profile |
+| [ANTIC-043](https://github.com/sw21-tug/Team_27/issues/84) | Filter for Test Reports |
+| [ANTIC-044](https://github.com/sw21-tug/Team_27/issues/85) | Refactor Statistic Screen Design |
+| [ANTIC-045](https://github.com/sw21-tug/Team_27/issues/88) | Refactor Logout and Save Icons |
+| [ANTIC-046](https://github.com/sw21-tug/Team_27/issues/89) | Bugfix Logout Button |
+| [ANTIC-047](https://github.com/sw21-tug/Team_27/issues/92) | Bugfix should work on smartphone |
+| [ANTIC-048](https://github.com/sw21-tug/Team_27/issues/93) | Bugfix Country FlagANTIC-050 |
+| [ANTIC-050](https://github.com/sw21-tug/Team_27/issues/99) | Bug Vaccine Info not editable |
+| []() |  |
+| []() |  |
+| []() |  |
+
+
+

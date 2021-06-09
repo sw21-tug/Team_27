@@ -21,6 +21,7 @@ import com.swtug.anticovid.utils.TestUtils
 import com.swtug.anticovid.view.main.MainFragment
 import org.junit.After
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito.mock
@@ -53,6 +54,7 @@ class VaccinatedTest {
     }
 
     @Test
+    @Ignore
     fun testVaccinatedScreenDisplaysCorrectInformation() {
         onView(withId(R.id.textInput_manufacturer)).perform(ViewActions.replaceText(vaccination.manufacturor))
         onView(withId(R.id.first_dose_date)).perform(ViewActions.replaceText(vaccination.firstDose))

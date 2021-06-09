@@ -29,8 +29,7 @@ class LoginFragment : Fragment() {
     private lateinit var editTextEmail: EditText
     private lateinit var editTextPassword: EditText
 
-    private lateinit var txtEmailError: TextView
-    private lateinit var txtLoginError: TextView
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -111,8 +110,7 @@ class LoginFragment : Fragment() {
         editTextEmail = view.findViewById(R.id.editTextTextEmailAddress)
         editTextPassword = view.findViewById(R.id.editTextPassword)
 
-        txtEmailError = view.findViewById(R.id.txtEmailError)
-        txtLoginError = view.findViewById(R.id.txtLoginError)
+
 
     }
 

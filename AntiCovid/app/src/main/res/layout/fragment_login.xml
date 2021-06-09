@@ -50,46 +50,29 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <TextView
-        android:id="@+id/txtEmailError"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/errorRed"
-        android:textSize="8pt"
-        app:layout_constraintStart_toStartOf="@+id/emaillayout"
-        app:layout_constraintTop_toBottomOf="@+id/emaillayout" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:hint="@string/password"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtEmailError"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
             android:layout_marginBottom="32dp"
-            android:background="@color/transparent" />
+            android:background="@color/transparent"
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/txtLoginError"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/errorRed"
-        android:textSize="8pt"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRegister"
-        tools:layout_editor_absoluteX="8dp" />
+
 
     <Button
         android:id="@+id/buttonLogin"

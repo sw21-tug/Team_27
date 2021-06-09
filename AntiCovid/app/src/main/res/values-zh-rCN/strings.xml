@@ -118,6 +118,8 @@
     <string name="error_firebase_communication">與Firebase通訊時發生錯誤！</string>
     <string name="action_cancel_register">取消</string>
     <string name="error_no_email">沒有輸入電子郵件</string>
+    <string name="error_no_password">没有输入密码!</string>
+    <string name="error_no_credentials">缺少证书!</string>
     <string name="error_wrong_password">用戶名和密碼的組合不存在！</string>
     <string name="error_secID_lenth">社会保险号必须为10个字符长！</string>
 

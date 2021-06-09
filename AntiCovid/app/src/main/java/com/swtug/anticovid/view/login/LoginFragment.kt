@@ -47,7 +47,6 @@ class LoginFragment : Fragment() {
         initFields(view)
         initListeners(object : FirebaseUserListener {
             override fun onSuccess(user: User?) {
-                setButtonsEnabled(true)
 
                 if(user != null && editTextPassword.text.toString() == user.password) {
                     PreferencesRepo.saveUser(requireContext(), user)
@@ -55,17 +54,20 @@ class LoginFragment : Fragment() {
 
                     findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                 } else {
-                    txtLoginError.text = getString(R.string.error_wrong_password)
+                    Toast.makeText(
+                        requireContext(),
+                        requireContext().getString(R.string.error_wrong_password),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
 
             override fun onStart() {
-                setButtonsEnabled(false)
             }
 
             override fun onFailure() {
-                setButtonsEnabled(true)
                 txtLoginError.text = getString(R.string.error_firebase_communication)
+
             }
         })
     }
@@ -146,9 +148,8 @@ class LoginFragment : Fragment() {
 
 
 
-    private fun setButtonsEnabled(enabled: Boolean) {
-        btnRegister.isEnabled = enabled
-        btnLogin.isEnabled = enabled
-    }
+
+
+
 }
 

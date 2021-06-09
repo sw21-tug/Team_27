@@ -71,7 +71,9 @@ This app also provides users with official institution rules and changes about c
 | [ANTIC-048](https://github.com/sw21-tug/Team_27/issues/93) | Bugfix Country FlagANTIC-050 |
 | [ANTIC-050](https://github.com/sw21-tug/Team_27/issues/99) | Bug Vaccine Info not editable |
 | [ANTIC-051](https://github.com/sw21-tug/Team_27/issues/104) | Refactor Log in Error Messages |
+| [ANTIC-053](https://github.com/sw21-tug/Team_27/issues/106) | Refactor login and register |
 | [ANTIC-054](https://github.com/sw21-tug/Team_27/issues/107) | Refactor E-Mail field in Profile |
+| []() |  |
 | []() |  |
 
 # Description of Features:

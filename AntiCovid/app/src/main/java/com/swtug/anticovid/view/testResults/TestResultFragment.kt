@@ -1,10 +1,6 @@
 package com.swtug.anticovid.view.testResults
 
-import android.app.AlertDialog
-import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.CheckBox
 import android.widget.ImageView
@@ -24,7 +20,6 @@ import com.swtug.anticovid.extensions.createPreConfirmDialog
 import com.swtug.anticovid.extensions.createQRCodeDialog
 import com.swtug.anticovid.models.FirebaseTestReport
 import com.swtug.anticovid.models.TestReport
-import com.swtug.anticovid.models.User
 import com.swtug.anticovid.repositories.FirebaseRepo
 import com.swtug.anticovid.repositories.FirebaseTestReportListener
 import com.swtug.anticovid.repositories.PreferencesRepo
@@ -70,9 +65,8 @@ class TestResultFragment : Fragment(R.layout.fragment_test_results) {
         checkOnlyValids = view.findViewById(R.id.checkShowOnlyValidTests)
 
         val currentUser = PreferencesRepo.getUser(requireContext())
-        val vaccinated = PreferencesRepo.getVaccination(requireContext()) != null
 
-        testResultAdapter = TestResultsRecyclerAdapter(currentUser, vaccinated)
+        testResultAdapter = TestResultsRecyclerAdapter(currentUser)
     }
 
     private fun initListeners() {
@@ -82,10 +76,14 @@ class TestResultFragment : Fragment(R.layout.fragment_test_results) {
 
         testResultAdapter.setOnItemClickListener(
             onDeleteClicked = { testReport ->
-                (activity as? MainActivity?)?.createPreConfirmDialog(testReport) { report -> deleteTestReport(report) }?.show()
+                (activity as? MainActivity?)?.createPreConfirmDialog(testReport) { report ->
+                    deleteTestReport(
+                        report
+                    )
+                }?.show()
             },
-            onItemClicked = { testReport, user, vaccinated ->
-                (activity as? MainActivity?)?.createQRCodeDialog(testReport, user, vaccinated)
+            onItemClicked = { testReport, user ->
+                (activity as? MainActivity?)?.createQRCodeDialog(testReport, user)
                     ?.show()
             }
         )

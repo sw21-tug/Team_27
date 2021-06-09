@@ -33,7 +33,7 @@ class MainFragment : Fragment() {
         when (item.itemId) {
             R.id.logout -> {
                 PreferencesRepo.deleteUser(requireContext())
-                PreferencesRepo.deleteVaccination(requireContext())
+                PreferencesRepo.deleteVaccinated(requireContext())
                 findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
             }
         }

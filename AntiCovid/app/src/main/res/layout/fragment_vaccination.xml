@@ -7,13 +7,16 @@
     android:background="@color/white">
 
 
-    <com.google.android.material.button.MaterialButton
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_add_vaccine"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="@string/add_vaccine"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:src="@drawable/ic_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
 
 
     <LinearLayout
@@ -46,10 +49,16 @@
             android:layout_height="16dp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutFirstDose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/first_dose_date"
-            app:boxStrokeColor="@null">
+            app:boxStrokeColor="@null"
+            app:endIconDrawable="@drawable/ic_clear"
+            app:endIconMode="custom"
+            app:endIconTint="@color/black"
+            app:startIconDrawable="@drawable/ic_calendar"
+            app:startIconTint="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/first_dose_date"
@@ -57,7 +66,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:background="@color/transparent"/>
+                android:background="@color/transparent"
+                android:enabled="false"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,10 +76,16 @@
             android:layout_height="16dp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutSecondDose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/second_dose_date"
-            app:boxStrokeColor="@null">
+            app:boxStrokeColor="@null"
+            app:endIconDrawable="@drawable/ic_clear"
+            app:endIconMode="custom"
+            app:endIconTint="@color/black"
+            app:startIconDrawable="@drawable/ic_calendar"
+            app:startIconTint="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/second_dose_date"
@@ -77,7 +93,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:background="@color/transparent"/>
+                android:background="@color/transparent"
+                android:enabled="false"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -11,6 +11,7 @@ import com.swtug.anticovid.MainActivity
 import com.swtug.anticovid.R
 import com.swtug.anticovid.models.TestReport
 import com.swtug.anticovid.models.User
+import com.swtug.anticovid.repositories.PreferencesRepo
 import com.swtug.anticovid.utils.DateTimeUtils
 import com.swtug.anticovid.utils.QRCodeGenerator
 
@@ -48,11 +49,10 @@ fun MainActivity.createPreConfirmDialog(
 
 fun MainActivity.createQRCodeDialog(
     testReport: TestReport,
-    user: User?,
-    vaccinated: Boolean
+    user: User?
 ): AlertDialog.Builder {
     val alertDialogBuilder = AlertDialog.Builder(this)
-    alertDialogBuilder.setView(createQRView(testReport, user, vaccinated))
+    alertDialogBuilder.setView(createQRView(testReport, user))
     alertDialogBuilder.setPositiveButton(getString(R.string.ok)) { _, _ -> }
 
     return alertDialogBuilder
@@ -60,8 +60,7 @@ fun MainActivity.createQRCodeDialog(
 
 private fun MainActivity.createQRView(
     testReport: TestReport,
-    user: User?,
-    vaccinated: Boolean
+    user: User?
 ): View {
     val qrView = LayoutInflater.from(this).inflate(R.layout.dialog_qr_code, null)
 
@@ -87,6 +86,7 @@ private fun MainActivity.createQRView(
         qrView.findViewById<TextView>(R.id.textQRPhoneNumber).text = user.phonenumber
     }
 
+    val vaccinated = PreferencesRepo.getVaccinated(this)
     qrView.findViewById<TextView>(R.id.textQRVaccinated).text =
         getString(R.string.vaccinated) + " " +
                 if (vaccinated) {

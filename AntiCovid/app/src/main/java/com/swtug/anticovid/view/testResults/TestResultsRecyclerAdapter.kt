@@ -15,11 +15,11 @@ import com.swtug.anticovid.R
 import com.swtug.anticovid.TestReportProvider
 import com.swtug.anticovid.models.TestReport
 
-class TestResultsRecyclerAdapter(private val user: User?, private val vaccinated: Boolean) : RecyclerView.Adapter<TestResultsRecyclerAdapter.ViewHolder>() {
+class TestResultsRecyclerAdapter(private val user: User?) : RecyclerView.Adapter<TestResultsRecyclerAdapter.ViewHolder>() {
 
     private var testResults = TestReportProvider.getAllTestReports()
     private lateinit var onDeleteClicked: (testReport: TestReport) -> Unit
-    private lateinit var onItemClicked: (testReport: TestReport, user: User?, vaccinated: Boolean) -> Unit
+    private lateinit var onItemClicked: (testReport: TestReport, user: User?) -> Unit
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var testResultDateText: TextView = itemView.findViewById(R.id.cardTextTestDate)
@@ -55,7 +55,7 @@ class TestResultsRecyclerAdapter(private val user: User?, private val vaccinated
         }
 
         viewHolder.cardViewContainer.setOnClickListener {
-            onItemClicked(testReport, user, vaccinated)
+            onItemClicked(testReport, user)
         }
     }
 
@@ -74,7 +74,7 @@ class TestResultsRecyclerAdapter(private val user: User?, private val vaccinated
     }
 
     fun setOnItemClickListener(onDeleteClicked: (testReport: TestReport) -> Unit,
-                               onItemClicked: (testReport: TestReport, user: User?, vaccinated: Boolean) -> Unit) {
+                               onItemClicked: (testReport: TestReport, user: User?) -> Unit) {
         this.onDeleteClicked = onDeleteClicked
         this.onItemClicked = onItemClicked
     }

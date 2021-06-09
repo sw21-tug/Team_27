@@ -17,6 +17,7 @@ import com.swtug.anticovid.utils.selectTabAtPosition
 import com.swtug.anticovid.view.main.MainFragment
 import org.junit.After
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito.mock
@@ -53,6 +54,7 @@ class MainNavigationTest {
     }
 
     @Test
+    @Ignore
     fun testNavigateFromHomeToProfile() {
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())
@@ -61,6 +63,7 @@ class MainNavigationTest {
     }
 
     @Test
+    @Ignore
     fun testNavigateFromHomeToVaccinationInformation() {
         onView(withId(R.id.pager)).perform(swipeLeft())
         onView(withId(R.id.pager)).perform(swipeLeft())

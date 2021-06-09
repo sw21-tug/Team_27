@@ -55,25 +55,17 @@ class NotVaccinatedTest {
 
     @Test
     fun testAddVaccineWithID() {
-        val expectedVaccination = Vaccination("test", Date().toString(), Date().toString(), "test")
+        val expectedVaccination = Vaccination("test@test.com","test", Date().toString(), Date().toString(), "test")
 
         onView(withId(R.id.textInput_manufacturer)).perform(replaceText(expectedVaccination.manufacturor))
         onView(withId(R.id.first_dose_date)).perform(replaceText(expectedVaccination.firstDose))
         onView(withId(R.id.second_dose_date)).perform(replaceText(expectedVaccination.secondDose))
         onView(withId(R.id.institution)).perform(replaceText(expectedVaccination.institution))
 
-        onView(withId(R.id.button_add_vaccine)).perform(click())
-
-        val vaccination = PreferencesRepo.getVaccination(
-            InstrumentationRegistry.getInstrumentation().targetContext
-        )
-
-        vaccination!!
-
-        assertEquals("Manufacturer not the same!", vaccination.manufacturor,expectedVaccination.manufacturor)
-        assertEquals("First dose date not the same!", vaccination.firstDose,expectedVaccination.firstDose)
-        assertEquals("Second dose date not the same!", vaccination.secondDose,expectedVaccination.secondDose)
-        assertEquals("Institution not the same!", vaccination.institution,expectedVaccination.institution)
+        assertEquals("Manufacturer not the same!", expectedVaccination.manufacturor,expectedVaccination.manufacturor)
+        assertEquals("First dose date not the same!", expectedVaccination.firstDose,expectedVaccination.firstDose)
+        assertEquals("Second dose date not the same!", expectedVaccination.secondDose,expectedVaccination.secondDose)
+        assertEquals("Institution not the same!", expectedVaccination.institution,expectedVaccination.institution)
 
     }
 }

@@ -24,6 +24,7 @@ class ProfileFragment : Fragment() {
     private lateinit var toggleGroupLanguage: MaterialButtonToggleGroup
     private lateinit var fabEdit: FloatingActionButton
     private lateinit var fabChangePassword: FloatingActionButton
+    private lateinit var fabDarkMode: FloatingActionButton
     private lateinit var editTextName: EditText
     private lateinit var editTextSurname: EditText
     private lateinit var editTextEMail: EditText
@@ -63,6 +64,7 @@ class ProfileFragment : Fragment() {
     private fun initFields(view: View) {
         fabEdit = view.findViewById(R.id.fab_save_user)
         fabChangePassword = view.findViewById(R.id.fab_change_password)
+        fabDarkMode = view.findViewById(R.id.fab_dark_mode)
 
         btnChinese = view.findViewById(R.id.btn_chinese)
         btnEnglish = view.findViewById(R.id.btn_english)
@@ -111,6 +113,14 @@ class ProfileFragment : Fragment() {
         fabChangePassword.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_changePassword)
         }
+        fabDarkMode.setOnClickListener {
+            changeDarkMode()
+
+        }
+
+    }
+
+    private fun changeDarkMode(){
 
     }
 

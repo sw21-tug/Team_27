@@ -55,15 +55,15 @@ class CheckStatisticsTest{
     fun testCheckReceivedData() {
         Thread.sleep(2000)
         val compareString = TestUtils.getResoureceString(getContext(), R.string.statistic_error_message)
-        onView(withId(R.id.activevalue)).check(matches(isEditTextCorrectSetTo(compareString)))
-        onView(withId(R.id.casestodayvalue)).check(matches(isEditTextCorrectSetTo(compareString)))
-        onView(withId(R.id.deathtodayvalue)).check(matches(isEditTextCorrectSetTo(compareString)))
-        onView(withId(R.id.recoveredtodayvalue)).check(matches(isEditTextCorrectSetTo(compareString)))
-        onView(withId(R.id.totalcasesvalue)).check(matches(isEditTextCorrectSetTo(compareString)))
-        onView(withId(R.id.totaldeathvalue)).check(matches(isEditTextCorrectSetTo(compareString)))
-        onView(withId(R.id.totalrecoveredvalue)).check(matches(isEditTextCorrectSetTo(compareString)))
-        onView(withId(R.id.totaltestedvalue)).check(matches(isEditTextCorrectSetTo(compareString)))
-        onView(withId(R.id.populationvalue)).check(matches(isEditTextCorrectSetTo(compareString)))
+        onView(withId(R.id.active_cases)).check(matches(isEditTextCorrectSetTo(compareString)))
+        onView(withId(R.id.infected_count)).check(matches(isEditTextCorrectSetTo(compareString)))
+        onView(withId(R.id.death_count)).check(matches(isEditTextCorrectSetTo(compareString)))
+        onView(withId(R.id.recovered_count)).check(matches(isEditTextCorrectSetTo(compareString)))
+        onView(withId(R.id.infected_total_count)).check(matches(isEditTextCorrectSetTo(compareString)))
+        onView(withId(R.id.death_total_count)).check(matches(isEditTextCorrectSetTo(compareString)))
+        onView(withId(R.id.recovered_total_count)).check(matches(isEditTextCorrectSetTo(compareString)))
+        onView(withId(R.id.tested_total_count)).check(matches(isEditTextCorrectSetTo(compareString)))
+        onView(withId(R.id.txt_population_count)).check(matches(isEditTextCorrectSetTo(compareString)))
     }
 
     private fun isEditTextCorrectSetTo(content: String):

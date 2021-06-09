@@ -93,18 +93,15 @@
     <string name="negative">Negative</string>
     <string name="test_date">Test Date:</string>
     <string name="valid_date">Valid Until:</string>
-    <string name="active">Active</string>
+    <string name="active">Active cases</string>
     <string name="land">Austria</string>
-    <string name="cases_today">Cases today</string>
-    <string name="death_today">Death today</string>
-    <string name="recovered_today">Recovered today</string>
-    <string name="total_cases">Total cases</string>
-    <string name="total_recovered">Total recovered</string>
-    <string name="total_tested">Total tested</string>
+    <string name="cases">Cases</string>
+    <string name="death">Death</string>
+    <string name="tested">Tested</string>
+    <string name="recovered">Recovered</string>
     <string name="population">Population</string>
     <string name="last_update">Last update</string>
-    <string name="total_death">Total death</string>
-    <string name="statistic_error_message">no Data received!</string>
+    <string name="statistic_error_message">-</string>
     <string name="negative_test_valid_info">A negative test is valid for 48 hours!</string>
     <string name="positive_test_valid_info">A positive test is valid for 14 days! Please remain in quarantine!</string>
     <string name="error_no_user_logged_in">No user logged in!</string>
@@ -139,6 +136,10 @@
     <string name="info_clean_surface">Clean all, high-touch , surface everyday!</string>
     <string name="additional_info">If you get one or more signs of heavy infection, which would be difficulty to breath, a fever, coughing badly or shortness of breathing don\'t hesitate to call ambulance (144)!</string>
     <string name="informationAndRules">Current Informations and Rules</string>
+    <string name="infected">Infected</string>
+    <string name="total">Total</string>
+    <string name="today">Today</string>
+    <string name="country">Country</string>
     <string name="vaccinated">"Vaccinated: "</string>
     <string name="ok">OK</string>
 

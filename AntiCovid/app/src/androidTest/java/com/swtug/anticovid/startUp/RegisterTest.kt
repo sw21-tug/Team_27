@@ -130,11 +130,5 @@ class RegisterTest {
         val compareString = TestUtils.getResoureceString(getContext(), R.string.error_user_exists)
         onView(withId(R.id.editTextInputError)).check(matches(withText(compareString)))
     }
-
-    @Test
-    fun testRegisterCancelNavigation() {
-        onView(withId(R.id.buttonCancelSignUp)).perform(click())
-        TestCase.assertEquals(navController.currentDestination?.id, R.id.loginFragment)
-    }
 }
 

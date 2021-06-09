@@ -1,8 +1,8 @@
-package com.swtug.anticovid.view.statistics
+package com.swtug.anticovid.models
 
 import com.google.gson.annotations.SerializedName
 
-data class MyCountry(
+data class Country(
     val active: Int,
     val activePerOneMillion: Double,
     val cases: Int,

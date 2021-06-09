@@ -76,6 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            android:layout_marginBottom="32dp"
             android:background="@color/transparent" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -84,44 +85,32 @@
         android:id="@+id/txtLoginError"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:gravity="center"
         android:textColor="@color/errorRed"
         android:textSize="8pt"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegister"
+        tools:layout_editor_absoluteX="8dp" />
 
     <Button
         android:id="@+id/buttonLogin"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="148dp"
-        android:background="@drawable/button_border_radius"
-        android:color="@color/white"
-        android:elevation="2dp"
-        android:padding="0dp"
+        style="@style/Homescreen_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:text="@string/action_sign_in_short"
-        android:textSize="21sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordlayout" />
 
-    <Button
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonRegister"
-        android:layout_width="166dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@color/transparent"
-        android:color="@color/purple_500"
-        android:elevation="2dp"
-        android:padding="0dp"
-        android:text="@string/register_button_text"
+        app:strokeColor="@color/purple_500"
+        android:height="50dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="8dp"
         android:textColor="@color/purple_500"
-        android:textSize="21sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/register_title"
         app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

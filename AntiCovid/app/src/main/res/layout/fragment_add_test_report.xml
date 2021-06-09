@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:foreground="?selectableItemBackground"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="?backgroundColor"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
         app:contentPadding="8dp"
@@ -45,7 +45,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/text_user_name_info"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/text_email_info"
-                app:tint="@color/black" />
+                app:tint="?android:textColor" />
 
 
             <TextView
@@ -55,7 +55,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/e_mail"
-                android:textColor="@color/black"
+                android:textColor="?android:textColor"
                 android:textSize="10pt"
                 app:layout_constraintBottom_toTopOf="@+id/text_user_name_info"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -71,6 +71,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/name_hint"
                 android:textSize="10pt"
+                android:textColor="?android:textColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/text_email_info" />
@@ -85,7 +86,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:foreground="?selectableItemBackground"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="?backgroundColor"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
         android:layout_gravity="center"
@@ -109,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/positive"
+                android:textColor="?android:textColor"
                 android:textSize="10pt" />
 
             <RadioButton
@@ -117,6 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
+                android:textColor="?android:textColor"
                 android:text="@string/negative"
                 android:textSize="10pt" />
         </RadioGroup>
@@ -132,7 +135,7 @@
         android:hint="@string/test_date"
         app:endIconDrawable="@drawable/ic_calendar"
         app:endIconMode="custom"
-        app:endIconTint="@color/black"
+        app:endIconTint="?android:textColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/test_result_card">
 
@@ -142,7 +145,7 @@
             android:layout_height="wrap_content"
             android:background="@color/transparent"
             android:enabled="false"
-            android:textColor="@color/black"
+            android:textColor="?android:textColor"
             android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -163,7 +166,7 @@
             android:layout_height="wrap_content"
             android:background="@color/transparent"
             android:enabled="false"
-            android:textColor="@color/black"
+            android:textColor="?android:textColor"
             android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -174,7 +177,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/negative_test_valid_info"
-        android:textColor="@color/dark_grey"
+        android:textColor="?android:textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_valid_layout" />
 

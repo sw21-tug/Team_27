@@ -389,6 +389,7 @@
     <string name="vaccinated">"Vaccinated: "</string>
     <string name="ok">OK</string>
     <string name="updated_vaccination">Vaccination updated successfully!</string>
+    <string name="error_second_date_before">Second dose must be after first dose!</string>
 
 
 </resources>

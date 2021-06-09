@@ -49,10 +49,16 @@
             android:layout_height="16dp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutFirstDose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/first_dose_date"
-            app:boxStrokeColor="@null">
+            app:boxStrokeColor="@null"
+            app:endIconDrawable="@drawable/ic_clear"
+            app:endIconMode="custom"
+            app:endIconTint="@color/black"
+            app:startIconDrawable="@drawable/ic_calendar"
+            app:startIconTint="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/first_dose_date"
@@ -60,7 +66,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:background="@color/transparent"/>
+                android:background="@color/transparent"
+                android:enabled="false"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,10 +76,16 @@
             android:layout_height="16dp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutSecondDose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/second_dose_date"
-            app:boxStrokeColor="@null">
+            app:boxStrokeColor="@null"
+            app:endIconDrawable="@drawable/ic_clear"
+            app:endIconMode="custom"
+            app:endIconTint="@color/black"
+            app:startIconDrawable="@drawable/ic_calendar"
+            app:startIconTint="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/second_dose_date"
@@ -80,7 +93,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:background="@color/transparent"/>
+                android:background="@color/transparent"
+                android:enabled="false"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

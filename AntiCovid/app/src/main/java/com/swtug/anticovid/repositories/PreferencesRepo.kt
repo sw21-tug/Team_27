@@ -30,30 +30,16 @@ object PreferencesRepo {
         return getPreferences(context).getBoolean(TERMS_OF_USE, false)
     }
 
-    fun saveVaccination(context: Context, vaccination: Vaccination?) {
-        val gson = Gson()
-        val json = gson.toJson(vaccination)
-
-        getPreferences(context)
-            .edit()
-            .putString(VACCINATION, json)
-            .apply()
+    fun saveVaccinated(context: Context, vaccinated: Boolean) {
+        getPreferences(context).edit().putBoolean(VACCINATION, vaccinated).apply()
     }
 
-    fun deleteVaccination(context: Context){
+    fun deleteVaccinated(context: Context){
         getPreferences(context).edit().remove(VACCINATION).apply()
     }
 
-    fun getVaccination(context: Context): Vaccination? {
-        val json = getPreferences(context)
-            .getString(VACCINATION, null)
-
-        return if (json.isNullOrEmpty()) {
-            null
-        } else {
-            val gson = Gson()
-            gson.fromJson(json, Vaccination::class.java)
-        }
+    fun getVaccinated(context: Context) : Boolean {
+        return getPreferences(context).getBoolean(VACCINATION, false)
     }
 
     fun saveUser(context: Context, user: User) {
@@ -99,6 +85,7 @@ object PreferencesRepo {
             gson.fromJson(json, Locale::class.java)
         }
     }
+
     fun deleteUser(context: Context){
         getPreferences(context).edit().remove(LOGGED_IN_USER).apply()
     }

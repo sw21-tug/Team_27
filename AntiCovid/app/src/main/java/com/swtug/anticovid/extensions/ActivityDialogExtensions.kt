@@ -86,7 +86,7 @@ private fun MainActivity.createQRView(
         qrView.findViewById<TextView>(R.id.textQRPhoneNumber).text = user.phonenumber
     }
 
-    val vaccinated = PreferencesRepo.getVaccination(this) != null
+    val vaccinated = PreferencesRepo.getVaccinated(this)
     qrView.findViewById<TextView>(R.id.textQRVaccinated).text =
         getString(R.string.vaccinated) + " " +
                 if (vaccinated) {

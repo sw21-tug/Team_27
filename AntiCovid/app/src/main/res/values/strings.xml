@@ -127,7 +127,7 @@
     <string name="report_delete_success">Test report deleted successfully!</string>
     <string name="no_test_report_found">No test reports!\nSwipe down to refresh!</string>
     <string name="show_only_valid_test_reports">Show only valid test reports</string>
-    <string name="important_informations">Important informations</string>
+    <string name="important_informations">Important information</string>
     <string name="info_hotline">When you have any questions call the 24h information hotline 0800 55 621</string>
     <string name="info_doctor">Call ahead before visiting your doctor!</string>
     <string name="info_stay_home">Stay at home for 2 weeks!</string>
@@ -143,6 +143,7 @@
     <string name="vaccinated">"Vaccinated: "</string>
     <string name="ok">OK</string>
     <string name="updated_vaccination">Vaccination updated successfully!</string>
+    <string name="error_second_date_before">Second dose must be after first dose!</string>
 
     <string-array name="countries_array">
         <item>Afghanistan</item>
